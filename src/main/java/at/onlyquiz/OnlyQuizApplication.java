@@ -1,18 +1,19 @@
 package at.onlyquiz;
 
+import at.onlyquiz.controller.factories.ControllerFactory;
+import at.onlyquiz.controller.factories.Controllers;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainApplication extends Application {
+public class OnlyQuizApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("src/main/resources/at/onlyquiz/views/menu-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(ControllerFactory.getController(Controllers.QUESTIONNAIRE_VIEW), 1500, 1000);
+        stage.setTitle("OnlyQuiz");
         stage.setScene(scene);
         stage.show();
     }
