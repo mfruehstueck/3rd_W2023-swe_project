@@ -10,7 +10,7 @@ public class GameQuestion {
     public GameQuestion(String question, List<Answer> answers, Difficulty difficulty){
         this.question = question;
         this.answers = answers;
-        difficulty = difficulty;
+        this.difficulty = difficulty;
     }
 
 
