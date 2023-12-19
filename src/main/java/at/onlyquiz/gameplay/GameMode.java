@@ -9,6 +9,10 @@ public abstract class GameMode {
     List<GameQuestion> setOfQuestions = new ArrayList<>();
     Integer achievedScore = 0;
 
+    public Integer scoreCalculator(){
+        return 0;
+    }
+
     public boolean confirmAnswer(){
 
         return false;
