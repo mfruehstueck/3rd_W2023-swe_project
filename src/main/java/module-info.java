@@ -3,6 +3,6 @@ module at.onlyquiz.onlyquiz {
     requires javafx.fxml;
 
 
-    opens at.onlyquiz.onlyquiz to javafx.fxml;
-    exports at.onlyquiz.onlyquiz;
+    opens at.onlyquiz to javafx.fxml;
+    exports at.onlyquiz;
 }
