@@ -3,20 +3,60 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" stylesheets="@../styles/onlyQuiz.css"
-        styleClass="background" spacing="20.0" alignment="CENTER">
-
-    <!-- Box für die Frage -->
-    <VBox styleClass="question-box">
-        <Label text="Frage: Was ist die Hauptstadt von Deutschland?" styleClass="question-label"/>
-    </VBox>
-
-    <!-- Buttons zum Beantworten -->
-    <GridPane hgap="10" vgap="10" alignment="CENTER">
-        <Button text="A. Berlin" styleClass="answer-button" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <Button text="B. Paris" styleClass="answer-button" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <Button text="C. Rom" styleClass="answer-button" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <Button text="D. Madrid" styleClass="answer-button" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    </GridPane>
+<VBox alignment="CENTER" spacing="20.0" styleClass="background" stylesheets="@../styles/onlyQuiz.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <VBox fx:id="right_top" prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <Label text="Total Score: " />
+               <Label text="Achivable Score: " />
+               <Label text="Timer: 00:00" />
+            </children>
+         </VBox>
+         <HBox fx:id="midlle_top" prefHeight="100.0" prefWidth="200.0" />
+         <VBox fx:id="left_top" prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <Label text="Question Number XX" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   <HBox prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <HBox prefHeight="100.0" prefWidth="200.0" />
+         <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <children>
+            
+                <!-- Box für die Frage -->
+                <VBox spacing="50.0" styleClass="question-box">
+                    <Label styleClass="question-label" text="Frage: Was ist die Hauptstadt von Deutschland?" />
+                </VBox>
+            
+                         <!-- Buttons zum Beantworten -->
+                <GridPane alignment="CENTER" hgap="10" vgap="10">
+                    <Button styleClass="answer-button" text="A. Berlin" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Button styleClass="answer-button" text="B. Paris" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Button styleClass="answer-button" text="C. Rom" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Button styleClass="answer-button" text="D. Madrid" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                </GridPane>
+            </children>
+         </VBox>
+         <VBox prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <Button styleClass="joker" text="Button" />
+               <Button styleClass="joker" text="Button" />
+               <Button styleClass="joker" text="Button" />
+            </children>
+         </VBox>
+      </children>
+   </HBox>
 
 </VBox>
