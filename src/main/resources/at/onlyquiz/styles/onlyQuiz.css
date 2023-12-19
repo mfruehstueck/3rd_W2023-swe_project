@@ -1,0 +1,42 @@
+.background {
+    -fx-background-color: lightblue;
+}
+
+.menu-button-vbox {
+    -fx-spacing: 10.0;
+}
+.menu-button {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
+
+.question-box {
+    -fx-background-color: #3232ce;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-max-width: 500;
+}
+
+.question-label {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+}
+
+.answer-button {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.timer-box {
+    -fx-padding: 10;
+}
+
+.timer-label {
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+}
+

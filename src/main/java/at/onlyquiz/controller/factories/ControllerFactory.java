@@ -36,7 +36,6 @@ public class ControllerFactory {
         return fxmlLoader.load();
     }
 
-
     private static GameSessionController getGameSessionController() {
         if (gameSessionController == null) {
             gameSessionController = new GameSessionController();

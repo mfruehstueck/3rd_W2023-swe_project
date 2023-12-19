@@ -12,7 +12,7 @@ import java.io.IOException;
 public class OnlyQuizApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(ControllerFactory.getController(Controllers.QUESTIONNAIRE_VIEW), 1500, 1000);
+        Scene scene = new Scene(ControllerFactory.getController(Controllers.GAME_SESSION_VIEW), 1280, 720);
         stage.setTitle("OnlyQuiz");
         stage.setScene(scene);
         stage.show();
