@@ -1,62 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" styleClass="background" stylesheets="@../styles/onlyQuiz.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <HBox prefHeight="100.0" prefWidth="200.0">
-      <children>
-         <VBox fx:id="right_top" prefHeight="200.0" prefWidth="100.0">
+<GridPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/gameSession.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" percentHeight="15.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" percentHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
             <children>
-               <Label text="Total Score: " />
-               <Label text="Achivable Score: " />
-               <Label text="Timer: 00:00" />
-            </children>
-         </VBox>
-         <HBox fx:id="midlle_top" prefHeight="100.0" prefWidth="200.0" />
-         <VBox fx:id="left_top" prefHeight="200.0" prefWidth="100.0">
-            <children>
-               <Label text="Question Number XX" />
-            </children>
-         </VBox>
-      </children>
-   </HBox>
-   <HBox prefHeight="100.0" prefWidth="200.0">
-      <children>
-         <HBox prefHeight="100.0" prefWidth="200.0" />
-         <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
-            <children>
-            
-                <!-- Box für die Frage -->
-                <VBox spacing="50.0" styleClass="question-box">
-                    <Label styleClass="question-label" text="Frage: Was ist die Hauptstadt von Deutschland?" />
-                </VBox>
-            
-                         <!-- Buttons zum Beantworten -->
-                <GridPane alignment="CENTER" hgap="10" vgap="10">
-                    <Button styleClass="answer-button" text="A. Berlin" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                    <Button styleClass="answer-button" text="B. Paris" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                    <Button styleClass="answer-button" text="C. Rom" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                    <Button styleClass="answer-button" text="D. Madrid" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <columnConstraints>
-                     <ColumnConstraints />
-                     <ColumnConstraints />
-                  </columnConstraints>
-                  <rowConstraints>
-                     <RowConstraints />
-                     <RowConstraints />
-                  </rowConstraints>
+                <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                            <children>
+                                <Label fx:id="totalScoreLabel" styleClass="ui-label" text="Total Score: 000000000" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                            <children>
+                                <Label fx:id="achievableScoreLabel" styleClass="ui-label" text="achievable Score: 000000" />
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                            <children>
+                                <Label fx:id="timeLabel" styleClass="ui-label" text="Time: 00:00" />
+                            </children>
+                        </HBox>
+                    </children>
                 </GridPane>
             </children>
-         </VBox>
-         <VBox prefHeight="200.0" prefWidth="100.0">
+        </GridPane>
+        <GridPane GridPane.columnIndex="2">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
             <children>
-               <Button styleClass="joker" text="Button" />
-               <Button styleClass="joker" text="Button" />
-               <Button styleClass="joker" text="Button" />
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label fx:id="questionCounterLabel" styleClass="ui-label" text="Question number: XX" />
+                    </children>
+                </HBox>
             </children>
-         </VBox>
-      </children>
-   </HBox>
-
-</VBox>
+        </GridPane>
+        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <Button fx:id="fiftyFiftyJokerButton" mnemonicParsing="false" styleClass="joker" text="50/50" />
+                <Button fx:id="audienceJokerButton" mnemonicParsing="false" styleClass="joker" text="Aud Joker" />
+                <Button fx:id="chatJokerButton" mnemonicParsing="false" styleClass="joker" text="Chat Joker" />
+            </children>
+            <GridPane.margin>
+                <Insets />
+            </GridPane.margin>
+            <padding>
+                <Insets bottom="15.0" />
+            </padding>
+        </HBox>
+        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <HBox fx:id="questionBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="question-box">
+                    <children>
+                        <TextField fx:id="questionTextField" alignment="CENTER" editable="false" styleClass="question-textField" text="Question" />
+                    </children>
+                </HBox>
+                <GridPane GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="anserAButton" mnemonicParsing="false" styleClass="answer-button" text="answerA" />
+                        <Button fx:id="answerBButton" mnemonicParsing="false" styleClass="answer-button" text="answerB" GridPane.columnIndex="1" />
+                        <Button fx:id="answerCButton" mnemonicParsing="false" styleClass="answer-button" text="answerC" GridPane.rowIndex="1" />
+                        <Button fx:id="answerDButton" mnemonicParsing="false" styleClass="answer-button" text="answerD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+    </children>
+</GridPane>

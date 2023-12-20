@@ -1,0 +1,14 @@
+.background {
+    -fx-background-color: lightblue;
+}
+
+.menu-button-vbox {
+    -fx-spacing: 10.0;
+}
+
+.menu-button {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
