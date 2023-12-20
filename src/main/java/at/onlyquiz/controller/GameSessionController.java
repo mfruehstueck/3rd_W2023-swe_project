@@ -46,19 +46,19 @@ public class GameSessionController {
 
     public void useFiftyFiftyJoker(ActionEvent actionEvent) {
         if (!currentGameMode.getFiftyFiftyJokers().isEmpty()) {
-            currentGameMode.getFiftyFiftyJokers().pop().use();
+            currentGameMode.getFiftyFiftyJokers().pop().use(currentGameMode.getCurrentQuestion());
         }
     }
 
     public void useAudienceJoker(ActionEvent actionEvent) {
         if (!currentGameMode.getAudienceJokers().isEmpty()) {
-            currentGameMode.getAudienceJokers().pop().use();
+            currentGameMode.getAudienceJokers().pop().use(currentGameMode.getCurrentQuestion());
         }
     }
 
     public void useChatJoker(ActionEvent actionEvent) {
         if (!currentGameMode.getChatJokers().isEmpty()) {
-            currentGameMode.getChatJokers().pop().use();
+            currentGameMode.getChatJokers().pop().use(currentGameMode.getCurrentQuestion());
         }
     }
 

@@ -1,5 +1,7 @@
 package at.onlyquiz.model.joker;
 
+import at.onlyquiz.model.question.GameQuestion;
+
 public abstract class Joker {
 
     boolean used;
@@ -8,7 +10,7 @@ public abstract class Joker {
         used = false;
     }
 
-    public void use() { }
+    public void use(GameQuestion gameQuestion) { }
 
     public boolean isUsed(){
         return used;
