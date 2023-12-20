@@ -4,6 +4,7 @@ import at.onlyquiz.controller.GameSessionController;
 import at.onlyquiz.controller.GameSessionSettingController;
 import at.onlyquiz.controller.MenuController;
 import at.onlyquiz.controller.QuestionnaireController;
+import at.onlyquiz.gameplay.GameMode;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
@@ -14,15 +15,14 @@ public class ControllerFactory {
     private static MenuController menuController;
     private static QuestionnaireController questionnaireController;
 
-    public static <T> T getController(Controllers controller) throws IOException {
-        System.out.println(ControllerFactory.class.getResource(controller.getPath()));
+    public static <T> T getController(Controllers controller, GameMode gameMode) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ControllerFactory.class.getResource(controller.getPath()));
         switch (controller) {
             case MENU_VIEW:
                 fxmlLoader.setController(getMenuController());
                 break;
             case GAME_SESSION_VIEW:
-                fxmlLoader.setController(getGameSessionController());
+                fxmlLoader.setController(getGameSessionController(gameMode));
                 break;
             case QUESTIONNAIRE_VIEW:
                 fxmlLoader.setController(getQuestionnaireController());
@@ -36,9 +36,9 @@ public class ControllerFactory {
         return fxmlLoader.load();
     }
 
-    private static GameSessionController getGameSessionController() {
+    private static GameSessionController getGameSessionController(GameMode gameMode) {
         if (gameSessionController == null) {
-            gameSessionController = new GameSessionController();
+            gameSessionController = new GameSessionController(gameMode);
         }
         return gameSessionController;
     }

@@ -9,7 +9,9 @@ public class DefaultMode extends GameMode {
     private ChatJoker chatJoker;
     private AudienceJoker audienceJoker;
 
-    public DefaultMode(int achievedScore) {
-        this.achievedScore = achievedScore;
+    public DefaultMode() {
+        scoreVisible = true;
+        timerVisible = true;
     }
+
 }
