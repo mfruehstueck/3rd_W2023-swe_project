@@ -8,7 +8,7 @@ public abstract class Joker {
         used = false;
     }
 
-    protected void use() { }
+    public void use() { }
 
     public boolean isUsed(){
         return used;

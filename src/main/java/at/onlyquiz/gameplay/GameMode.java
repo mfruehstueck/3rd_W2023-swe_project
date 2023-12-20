@@ -8,6 +8,7 @@ import java.util.List;
 
 public abstract class GameMode {
     List<GameQuestion> setOfQuestions = new ArrayList<>();
+    GameQuestion currentQuestion;
     Integer totalScore, achievedScore;
     JokerQueue audienceJokers = new JokerQueue();
     JokerQueue fiftyFiftyJokers = new JokerQueue();
@@ -57,4 +58,7 @@ public abstract class GameMode {
         return chatJokers;
     }
 
+    public GameQuestion getCurrentQuestion() {
+        return currentQuestion;
+    }
 }

@@ -6,7 +6,7 @@ public class AudienceJoker extends Joker {
         super();
     }
     @Override
-    protected void use() {
+    public void use() {
         super.use();
     }
 }

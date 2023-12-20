@@ -7,7 +7,7 @@ public class FiftyFiftyJoker extends Joker {
     }
 
     @Override
-    protected void use() {
+    public void use() {
         super.use();
     }
 }
