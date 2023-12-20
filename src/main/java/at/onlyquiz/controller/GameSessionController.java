@@ -1,6 +1,7 @@
 package at.onlyquiz.controller;
 
 import at.onlyquiz.gameplay.GameMode;
+import at.onlyquiz.model.question.Answer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,7 +11,7 @@ import javafx.scene.layout.HBox;
 
 public class GameSessionController {
 
-    private final GameMode currentGameMode;
+    private GameMode currentGameMode;
     @FXML
     private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel;
 
@@ -26,53 +27,87 @@ public class GameSessionController {
     @FXML
     private Button answerAButton, answerBButton, answerCButton, answerDButton;
 
-
-    public GameSessionController(GameMode currentGameMode) {
-        this.currentGameMode = currentGameMode;
+    public GameSessionController() {
     }
 
-    @FXML
-    private void initialize(){
+    private void initialize() {
         System.out.println("init function from GameSession Controller");
         System.out.println(currentGameMode);
 
         setScoreLabelsVisible(currentGameMode.isScoreVisible());
         setTimeVisible(currentGameMode.isTimerVisible());
         setJokersAvailability(currentGameMode.areJokersAvailable());
-        //setUpQuestionLabels();
+        setUpQuestionLabels();
     }
 
-    public void setUpQuestionLabels(){
-        questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
-        answerAButton.setText(currentGameMode.getCurrentQuestion().getAnswers().get(0).getValue());
-        answerBButton.setText(currentGameMode.getCurrentQuestion().getAnswers().get(1).getValue());
-        answerCButton.setText(currentGameMode.getCurrentQuestion().getAnswers().get(2).getValue());
-        answerDButton.setText(currentGameMode.getCurrentQuestion().getAnswers().get(3).getValue());
+    public void setTimeVisible(boolean visible) {
+        timeLabel.visibleProperty().set(visible);
     }
-    public void setJokersAvailability(boolean availability){
+
+    public void useFiftyFiftyJoker(ActionEvent actionEvent) {
+        if (!currentGameMode.getFiftyFiftyJokers().isEmpty()) {
+            currentGameMode.getFiftyFiftyJokers().pop().use();
+        }
+    }
+
+    public void useAudienceJoker(ActionEvent actionEvent) {
+        if (!currentGameMode.getAudienceJokers().isEmpty()) {
+            currentGameMode.getAudienceJokers().pop().use();
+        }
+    }
+
+    public void useChatJoker(ActionEvent actionEvent) {
+        if (!currentGameMode.getChatJokers().isEmpty()) {
+            currentGameMode.getChatJokers().pop().use();
+        }
+    }
+
+
+    public void commitAnswer(Answer answer, Button answerButton) {
+        if (answer.isCorrect()) {
+            answerButton.getStyleClass().add("answer-button-right");
+        } else {
+            answerButton.getStyleClass().add("answer-button-wrong");
+        }
+    }
+
+    public void selectAnswerA(ActionEvent actionEvent) {
+        commitAnswer(currentGameMode.getCurrentQuestion().getSpecificAnswer(0), answerAButton);
+    }
+
+    public void selectAnswerB(ActionEvent actionEvent) {
+        commitAnswer(currentGameMode.getCurrentQuestion().getSpecificAnswer(1), answerBButton);
+    }
+
+    public void selectAnswerC(ActionEvent actionEvent) {
+        commitAnswer(currentGameMode.getCurrentQuestion().getSpecificAnswer(2), answerCButton);
+    }
+
+    public void selectAnswerD(ActionEvent actionEvent) {
+        commitAnswer(currentGameMode.getCurrentQuestion().getSpecificAnswer(3), answerDButton);
+    }
+
+    public void setUpQuestionLabels() {
+        questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
+        answerAButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getValue());
+        answerBButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getValue());
+        answerCButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getValue());
+        answerDButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getValue());
+    }
+
+    public void setJokersAvailability(boolean availability) {
         audienceJokerButton.setVisible(availability);
         chatJokerButton.setVisible(availability);
         fiftyFiftyJokerButton.setVisible(availability);
     }
 
-    public void setScoreLabelsVisible(boolean visible){
+    public void setScoreLabelsVisible(boolean visible) {
         totalScoreLabel.visibleProperty().set(visible);
         achievableScoreLabel.visibleProperty().set(visible);
     }
 
-    public void setTimeVisible(boolean visible){
-        timeLabel.visibleProperty().set(visible);
-    }
-
-    public void useFiftyFiftyJoker(ActionEvent actionEvent){
-        currentGameMode.getFiftyFiftyJokers().pop().use();
-    }
-
-    public void useAudienceJoker(ActionEvent actionEvent){
-        currentGameMode.getAudienceJokers().pop().use();
-    }
-
-    public void useChatJoker(ActionEvent actionEvent){
-        currentGameMode.getChatJokers().pop().use();
+    public void setCurrentGameMode(GameMode currentGameMode) {
+        this.currentGameMode = currentGameMode;
+        initialize();
     }
 }

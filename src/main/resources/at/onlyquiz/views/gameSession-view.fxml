@@ -4,7 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/gameSession.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/gameSession.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionController">
+
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
@@ -111,10 +112,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Button fx:id="anserAButton" mnemonicParsing="false" styleClass="answer-button" text="answerA" />
-                        <Button fx:id="answerBButton" mnemonicParsing="false" styleClass="answer-button" text="answerB" GridPane.columnIndex="1" />
-                        <Button fx:id="answerCButton" mnemonicParsing="false" styleClass="answer-button" text="answerC" GridPane.rowIndex="1" />
-                        <Button fx:id="answerDButton" mnemonicParsing="false" styleClass="answer-button" text="answerD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button fx:id="answerAButton" mnemonicParsing="false" onAction="#selectAnswerA" styleClass="answer-button" text="answerA" />
+                        <Button fx:id="answerBButton" mnemonicParsing="false" onAction="#selectAnswerB" styleClass="answer-button" text="answerB" GridPane.columnIndex="1" />
+                        <Button fx:id="answerCButton" mnemonicParsing="false" onAction="#selectAnswerC" styleClass="answer-button" text="answerC" GridPane.rowIndex="1" />
+                        <Button fx:id="answerDButton" mnemonicParsing="false" onAction="#selectAnswerD" styleClass="answer-button" text="answerD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
             </children>

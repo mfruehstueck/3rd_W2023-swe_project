@@ -13,7 +13,8 @@ import java.io.IOException;
 public class OnlyQuizApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = new Scene(ControllerFactory.getController(Controllers.GAME_SESSION_VIEW, new DefaultMode()), 1280, 720);
+        //Scene scene = new Scene(ControllerFactory.getController(Controllers.GAME_SESSION_VIEW), 1280, 720);
+        Scene scene = new Scene(ControllerFactory.startingGameSession(new DefaultMode()));
         stage.setTitle("OnlyQuiz");
         stage.setScene(scene);
         stage.show();
