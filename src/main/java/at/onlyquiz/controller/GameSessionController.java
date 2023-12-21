@@ -18,13 +18,13 @@ public class GameSessionController {
 
     private GameMode currentGameMode;
     @FXML
-    private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel;
+    private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel, questionLabel;
 
     @FXML
     private HBox questionBox;
 
     @FXML
-    private TextField questionTextField;
+    private TextField questionTextField, answerATextField, answerBTextField, answerCTextField, answerDTextField;
 
     @FXML
     private Button fiftyFiftyJokerButton, audienceJokerButton, chatJokerButton;
@@ -42,7 +42,13 @@ public class GameSessionController {
         setScoreLabelsVisible(currentGameMode.isScoreVisible());
         setTimeVisible(currentGameMode.isTimerVisible());
         setJokersAvailability(currentGameMode.areJokersAvailable());
-        setUpQuestionLabels();
+
+        if (currentGameMode.isEditAble()){
+            setUpEditMode();
+        } else {
+            setUpQuestionLabels();
+        }
+
     }
 
     public void setTimeVisible(boolean visible) {
@@ -93,11 +99,43 @@ public class GameSessionController {
     }
 
     public void setUpQuestionLabels() {
-        questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
+        answerATextField.setVisible(false);
+        answerBTextField.setVisible(false);
+        answerCTextField.setVisible(false);
+        answerDTextField.setVisible(false);
+        questionTextField.setVisible(false);
+
+        questionLabel.setText(currentGameMode.getCurrentQuestion().getQuestion());
         answerAButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getValue());
         answerBButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getValue());
         answerCButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getValue());
         answerDButton.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getValue());
+    }
+
+    public void setUpEditMode(){
+        answerAButton.setVisible(false);
+        answerBButton.setVisible(false);
+        answerCButton.setVisible(false);
+        answerDButton.setVisible(false);
+        questionLabel.setVisible(false);
+
+        if (!currentGameMode.getCurrentQuestion().getQuestion().isEmpty()){
+            questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
+        }
+
+        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getValue().isEmpty()){
+            answerATextField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getValue());
+        }
+        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getValue().isEmpty()){
+            answerBTextField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getValue());
+        }
+        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getValue().isEmpty()){
+            answerCTextField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getValue());
+        }
+        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getValue().isEmpty()){
+            answerDTextField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getValue());
+        }
+
     }
 
     public void setJokersAvailability(boolean availability) {

@@ -5,7 +5,9 @@
 }
 
 .question-textField {
+    -fx-prompt-text-fill: white;
     -fx-text-fill: white;
+    -fx-font-weight: bold;
     -fx-font-size: 18;
     -fx-background-color: #3232ce;
 }
@@ -21,12 +23,30 @@
     -fx-font-size: 16;
 }
 
+.answer-textField-right {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: green;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.answer-textField-wrong {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: darkred;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
 .answer-button-right {
-    -fx-background-color: green !important;
+    -fx-background-color: green;
 }
 
 .answer-button-wrong {
-    -fx-background-color: darkred !important;
+    -fx-background-color: darkred;
 }
 
 .joker {

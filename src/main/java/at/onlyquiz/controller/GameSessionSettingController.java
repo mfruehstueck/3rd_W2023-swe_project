@@ -2,6 +2,7 @@ package at.onlyquiz.controller;
 
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
+import at.onlyquiz.gameplay.CreationMode;
 import at.onlyquiz.gameplay.DefaultMode;
 import at.onlyquiz.gameplay.GameMode;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ public class GameSessionSettingController {
     }
 
     public void pressEndlessModeButton() {
+        startingGameSession(new CreationMode());
     }
 
     public void pressTrainingModeButton() {

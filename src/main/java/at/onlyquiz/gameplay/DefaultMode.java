@@ -9,6 +9,7 @@ import java.util.List;
 public class DefaultMode extends GameMode {
 
     public DefaultMode() {
+        editAble = false;
         scoreVisible = false;
         timerVisible = false;
         List<Answer> answers = new ArrayList<>();
