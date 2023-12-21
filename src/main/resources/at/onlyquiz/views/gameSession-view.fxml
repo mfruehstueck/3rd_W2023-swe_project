@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/gameSession.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionController">
+<GridPane alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionController">
 
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
@@ -120,5 +121,14 @@
                 </GridPane>
             </children>
         </GridPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="stopButton" mnemonicParsing="false" onAction="#pressStopButton" styleClass="stop-button" text="Stop" />
+         </children>
+      </HBox>
     </children>
+   <stylesheets>
+      <URL value="@../styles/general.css" />
+      <URL value="@../styles/gameSession.css" />
+   </stylesheets>
 </GridPane>

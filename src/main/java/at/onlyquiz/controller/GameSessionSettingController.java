@@ -29,6 +29,13 @@ public class GameSessionSettingController {
     }
 
     public void pressBackButton() {
+        try {
+            Stage currentStage = (Stage) defaultModeButton.getScene().getWindow();
+            currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
+            currentStage.sizeToScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void startingGameSession(GameMode gameMode) {

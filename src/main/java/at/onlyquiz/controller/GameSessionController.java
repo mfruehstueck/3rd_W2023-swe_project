@@ -1,5 +1,7 @@
 package at.onlyquiz.controller;
 
+import at.onlyquiz.controller.factories.ControllerFactory;
+import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
 import javafx.event.ActionEvent;
@@ -8,6 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GameSessionController {
 
@@ -109,5 +114,15 @@ public class GameSessionController {
     public void setCurrentGameMode(GameMode currentGameMode) {
         this.currentGameMode = currentGameMode;
         initialize();
+    }
+
+    public void pressStopButton() {
+        try {
+            Stage currentStage = (Stage) answerAButton.getScene().getWindow();
+            currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
+            currentStage.sizeToScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
