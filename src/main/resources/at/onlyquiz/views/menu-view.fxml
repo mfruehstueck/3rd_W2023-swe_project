@@ -6,16 +6,17 @@
 
 <?import java.lang.String?>
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      stylesheets="@../styles/menu.css" xmlns:fx="http://javafx.com/fxml">
+      stylesheets="@../styles/menu.css" xmlns:fx="http://javafx.com/fxml"
+        fx:controller="at.onlyquiz.controller.MenuController">
 
     <styleClass>
         <String fx:value="background"/>
         <String fx:value="menu-button-vbox"/>
     </styleClass>
 
-    <Button styleClass="menu-button" text="Play"/>
-    <Button styleClass="menu-button" text="Questionnaires" />
-    <Button styleClass="menu-button" text="Settings" />
-    <Button styleClass="menu-button" text="Quit" />
+    <Button fx:id="playButton" styleClass="menu-button" text="Play" onAction="#pressPlayButton"/>
+    <Button fx:id="questionnaireButton" styleClass="menu-button" text="Questionnaires" onAction="#pressQuestionnairesButton"/>
+    <Button fx:id="settingsButton" styleClass="menu-button" text="Settings" onAction="#pressSettingsButton"/>
+    <Button fx:id="quitButton" styleClass="menu-button" text="Quit" onAction="#pressQuitButton"/>
 
 </VBox>
