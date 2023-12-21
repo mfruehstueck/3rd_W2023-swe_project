@@ -1,12 +1,13 @@
 package at.onlyquiz.model.joker;
 
+import at.onlyquiz.model.question.GameQuestion;
+
 public class ChatJoker extends Joker {
 
     public ChatJoker(){
         super();
     }
     @Override
-    protected void use() {
-        super.use();
+    public void use(GameQuestion gameQuestion) {
     }
 }

@@ -1,0 +1,52 @@
+.background {
+    -fx-background-color: lightblue;
+}
+
+.question-box {
+    -fx-background-color: #3232ce;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+
+.question-textField {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-background-color: #3232ce;
+}
+
+.ui-label{
+    -fx-font-size: 18;
+    -fx-text-fill: #ecb406;
+    -fx-font-weight: bold;
+}
+
+.answer-button {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.answer-button:hover {
+    -fx-background-color: #4747c4;
+}
+
+.answer-button-right {
+    -fx-background-color: green !important;
+}
+
+.answer-button-wrong {
+    -fx-background-color: darkred !important;
+}
+
+.joker {
+    -fx-background-color: #ecb406;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+}
+
+.joker:hover {
+    -fx-background-color: #f5e021;
+}
