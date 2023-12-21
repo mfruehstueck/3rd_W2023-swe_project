@@ -4,5 +4,6 @@ module at.onlyquiz.onlyquiz {
 
 
     opens at.onlyquiz to javafx.fxml;
+    opens at.onlyquiz.controller to javafx.fxml;
     exports at.onlyquiz;
 }

@@ -4,26 +4,25 @@ import at.onlyquiz.controller.GameSessionController;
 import at.onlyquiz.controller.GameSessionSettingController;
 import at.onlyquiz.controller.MenuController;
 import at.onlyquiz.controller.QuestionnaireController;
+import at.onlyquiz.gameplay.GameMode;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 import java.io.IOException;
 
 public class ControllerFactory {
-    private static GameSessionController gameSessionController;
     private static GameSessionSettingController gameSessionSettingController;
     private static MenuController menuController;
     private static QuestionnaireController questionnaireController;
 
     public static <T> T getController(Controllers controller) throws IOException {
-        System.out.println(ControllerFactory.class.getResource(controller.getPath()));
         FXMLLoader fxmlLoader = new FXMLLoader(ControllerFactory.class.getResource(controller.getPath()));
         switch (controller) {
             case MENU_VIEW:
                 fxmlLoader.setController(getMenuController());
                 break;
-            case GAME_SESSION_VIEW:
-                fxmlLoader.setController(getGameSessionController());
-                break;
+
             case QUESTIONNAIRE_VIEW:
                 fxmlLoader.setController(getQuestionnaireController());
                 break;
@@ -36,12 +35,13 @@ public class ControllerFactory {
         return fxmlLoader.load();
     }
 
+    public static Parent startingGameSession(GameMode gameMode) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(ControllerFactory.class.getResource(Controllers.GAME_SESSION_VIEW.getPath()));
+        Parent scene = fxmlLoader.load();
+        GameSessionController gameSessionController = fxmlLoader.getController();
+        gameSessionController.setCurrentGameMode(gameMode);
 
-    private static GameSessionController getGameSessionController() {
-        if (gameSessionController == null) {
-            gameSessionController = new GameSessionController();
-        }
-        return gameSessionController;
+        return scene;
     }
 
     private static GameSessionSettingController getGameSettingController() {
