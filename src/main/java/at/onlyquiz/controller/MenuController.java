@@ -2,12 +2,9 @@ package at.onlyquiz.controller;
 
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
-import at.onlyquiz.gameplay.DefaultMode;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class MenuController {

@@ -12,7 +12,6 @@ public class OnlyQuizApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Scene scene = ControllerFactory.getScene(Controllers.MENU_VIEW);
-        //Scene scene = new Scene(ControllerFactory.startingGameSession(new DefaultMode()));
         stage.setTitle("OnlyQuiz");
         stage.setWidth(1280);
         stage.setHeight(720);

@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
 <?import java.lang.String?>
 <VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"

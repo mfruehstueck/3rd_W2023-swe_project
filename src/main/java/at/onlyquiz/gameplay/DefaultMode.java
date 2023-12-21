@@ -1,19 +1,12 @@
 package at.onlyquiz.gameplay;
 
-import at.onlyquiz.model.joker.AudienceJoker;
-import at.onlyquiz.model.joker.ChatJoker;
-import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultMode extends GameMode {
-    private FiftyFiftyJoker fiftyFiftyJoker;
-    private ChatJoker chatJoker;
-    private AudienceJoker audienceJoker;
 
     public DefaultMode() {
         scoreVisible = false;

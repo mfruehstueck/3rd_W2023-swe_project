@@ -1,7 +1,5 @@
 package at.onlyquiz.controller.factories;
 
-import java.net.URL;
-
 public enum Controllers {
     MENU_VIEW("/at/onlyquiz/views/menu-view.fxml"),
     GENERAL_SETTINGS_VIEW("/at/onlyquiz/views/generalSettings-view.fxml"),
@@ -10,7 +8,7 @@ public enum Controllers {
     QUESTIONNAIRE_VIEW("/at/onlyquiz/views/questionnaire-view.fxml"),
     QUIT("no path necessary");
 
-    private String path;
+    private final String path;
 
     Controllers(String path) {
         this.path = path;
@@ -18,9 +16,5 @@ public enum Controllers {
 
     public String getPath() {
         return path;
-    }
-
-    public URL getRecource(){
-        return getClass().getResource(path);
     }
 }
