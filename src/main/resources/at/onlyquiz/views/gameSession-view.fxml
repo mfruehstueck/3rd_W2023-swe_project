@@ -181,6 +181,11 @@
                 <Button fx:id="stopButton" mnemonicParsing="false" onAction="#pressStopButton" styleClass="stop-button" text="Stop" />
             </children>
         </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="commit-button" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <children>
+            <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false" onAction="#pressCommitButton" text="commit" />
+         </children>
+      </HBox>
     </children>
     <stylesheets>
         <URL value="@../styles/general.css" />

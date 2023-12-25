@@ -23,6 +23,11 @@
     -fx-font-size: 16;
 }
 
+.commit-button {
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
 .answer-textField-right {
     -fx-text-fill: white;
     -fx-prompt-text-fill: white;
@@ -47,6 +52,10 @@
 
 .answer-button-wrong {
     -fx-background-color: darkred;
+}
+
+.answer-button-selected {
+    -fx-background-color: #02104f;
 }
 
 .joker {
