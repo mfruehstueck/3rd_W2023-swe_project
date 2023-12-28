@@ -9,6 +9,9 @@ public class FiftyFiftyJoker extends Joker {
     }
 
     @Override
-    public void use(GameQuestion gameQuestion) {
+    protected void performAction() {
+
+        // change two wrong answers Jfx object to invisible
     }
+
 }

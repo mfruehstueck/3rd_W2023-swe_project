@@ -4,13 +4,19 @@ import at.onlyquiz.model.question.GameQuestion;
 
 public abstract class Joker {
 
-    boolean used;
+    private boolean used;
 
     public Joker(){
-        used = false;
+        this.used = false;
     }
 
-    public void use(GameQuestion gameQuestion) { }
+    public void use(GameQuestion gameQuestion) {
+        this.used = true;
+        performAction();
+    }
+
+    protected abstract void performAction();
+
 
     public boolean isUsed(){
         return used;
