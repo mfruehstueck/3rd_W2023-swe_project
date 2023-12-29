@@ -16,6 +16,7 @@ public abstract class GameMode {
     boolean scoreVisible, timerVisible;
     boolean jokersAvailable;
     boolean editAble;
+    int timeDurationInSeconds;
 
 
     public abstract void confirmAnswer(boolean isCorrect);
@@ -69,5 +70,9 @@ public abstract class GameMode {
 
     public boolean isEditAble() {
         return editAble;
+    }
+
+    public int getTimeDurationInSeconds() {
+        return timeDurationInSeconds;
     }
 }

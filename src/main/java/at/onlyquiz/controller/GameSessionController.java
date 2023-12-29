@@ -4,12 +4,17 @@ import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -33,13 +38,16 @@ public class GameSessionController {
     @FXML
     private Button answerAButton, answerBButton, answerCButton, answerDButton, commitButton, nextButton;
 
+    private Timeline timer;
+    private int secondsRemaining;
+
     public GameSessionController() {
     }
 
     private void initialize() {
         setJokersAvailability();
         setScoreLabelsVisible();
-        setTimeVisible();
+        setTimeVisible(currentGameMode.isTimerVisible());
 
         if (currentGameMode.isEditAble()) {
             startEditView();
@@ -227,8 +235,42 @@ public class GameSessionController {
         achievableScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
     }
 
-    public void setTimeVisible() {
-        timeLabel.visibleProperty().set(currentGameMode.isTimerVisible());
+
+    // functions for timer
+    public void setTimeVisible(boolean hasTimer) {
+        timeLabel.visibleProperty().set(hasTimer);
+        startTimer();
+
+    }
+
+    private void startTimer(){
+        secondsRemaining = currentGameMode.getTimeDurationInSeconds();
+
+        timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                updateTimerLabel();
+                secondsRemaining--;
+
+                if (secondsRemaining < 0) {
+                    timer.stop();
+                    handleTimerEnd();
+                }
+            }
+        }));
+
+        timer.setCycleCount(Timeline.INDEFINITE);
+        timer.play();
+    }
+
+    private void updateTimerLabel() {
+        int minutes = secondsRemaining / 60;
+        int seconds = secondsRemaining % 60;
+        timeLabel.setText(String.format("Time: %02d:%02d", minutes, seconds));
+    }
+
+    private void handleTimerEnd() {
+        timeLabel.setText("time is over!");
     }
 
 }

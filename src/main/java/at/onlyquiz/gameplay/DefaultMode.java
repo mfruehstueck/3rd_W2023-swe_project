@@ -11,7 +11,8 @@ public class DefaultMode extends GameMode {
     public DefaultMode() {
         editAble = false;
         scoreVisible = false;
-        timerVisible = false;
+        timerVisible = true;
+        timeDurationInSeconds = 5;
 
         createTestQuestions();
         currentQuestion = popQuestionOutOfSet();
