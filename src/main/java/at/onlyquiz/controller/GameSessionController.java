@@ -4,7 +4,6 @@ import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,7 +31,7 @@ public class GameSessionController {
     private Button fiftyFiftyJokerButton, audienceJokerButton, chatJokerButton;
 
     @FXML
-    private Button answerAButton, answerBButton, answerCButton, answerDButton, commitButton;
+    private Button answerAButton, answerBButton, answerCButton, answerDButton, commitButton, nextButton;
 
     public GameSessionController() {
     }
@@ -64,6 +63,7 @@ public class GameSessionController {
         answerDTextField.setVisible(false);
         questionTextField.setVisible(false);
         commitButton.disableProperty().set(true);
+        nextButton.setVisible(false);
 
         freshUpQuestionLabels();
     }
@@ -78,7 +78,7 @@ public class GameSessionController {
 
     private void setUpAnswerButtonText(Button button, int index) {
         button.getStyleClass().removeAll("answer-button-wrong");
-        button.getStyleClass().removeAll("answer-button.right");
+        button.getStyleClass().removeAll("answer-button-right");
         button.getStyleClass().add("answer-button");
         button.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getValue());
     }
@@ -93,6 +93,7 @@ public class GameSessionController {
     public void setUpEditMode() {
         commitButton.setVisible(false);
         commitButton.disableProperty().set(true);
+        nextButton.setVisible(false);
 
         answerAButton.setVisible(false);
         answerBButton.setVisible(false);
@@ -179,12 +180,22 @@ public class GameSessionController {
                     selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
                     selectedAnswerButton.getStyleClass().add("answer-button-wrong");
                 }
+
+                currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
+                commitButton.setVisible(false);
+                nextButton.setVisible(true);
             }
         }
         // When Question is editable, the input text will be saved
         else {
 
         }
+    }
+
+    public void pressNextButton(){
+        commitButton.setVisible(true);
+        nextButton.setVisible(false);
+        freshUpQuestionLabels();
     }
 
     public void pressStopButton() {

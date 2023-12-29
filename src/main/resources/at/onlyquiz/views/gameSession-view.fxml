@@ -183,7 +183,18 @@
         </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="commit-button" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false" onAction="#pressCommitButton" text="commit" />
+            <GridPane alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false" onAction="#pressCommitButton" styleClass="commit-button" text="commit" />
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#pressNextButton" styleClass="commit-button" text="next" />
+               </children>
+            </GridPane>
          </children>
       </HBox>
     </children>

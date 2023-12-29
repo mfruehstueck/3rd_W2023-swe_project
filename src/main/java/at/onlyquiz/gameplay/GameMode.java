@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class GameMode {
     List<GameQuestion> setOfQuestions = new ArrayList<>();
     GameQuestion currentQuestion;
-    Integer totalScore, achievedScore;
+    Integer totalScore, achievedScore, questionCounter;
     JokerQueue audienceJokers = new JokerQueue();
     JokerQueue fiftyFiftyJokers = new JokerQueue();
     JokerQueue chatJokers = new JokerQueue();
@@ -18,10 +18,14 @@ public abstract class GameMode {
     boolean editAble;
 
 
-    public boolean confirmAnswer(){
+    public abstract void confirmAnswer(boolean isCorrect);
 
-        return false;
-    };
+    public GameQuestion popQuestionOutOfSet(){
+        if (setOfQuestions.isEmpty()) return null;
+        GameQuestion q = setOfQuestions.get(0);
+        setOfQuestions.remove(0);
+        return q;
+    }
 
     public boolean isScoreVisible() {
         return scoreVisible;

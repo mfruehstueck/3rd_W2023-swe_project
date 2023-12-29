@@ -22,4 +22,9 @@ public class CreationMode extends GameMode{
 
         currentQuestion = new GameQuestion("", answers, Difficulty.EASY);
     }
+
+    @Override
+    public void confirmAnswer(boolean isCorrect) {
+
+    }
 }
