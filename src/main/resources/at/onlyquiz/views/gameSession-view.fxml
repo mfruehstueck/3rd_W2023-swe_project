@@ -193,6 +193,7 @@
                <children>
                   <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false" onAction="#pressCommitButton" styleClass="commit-button" text="commit" />
                   <Button fx:id="nextButton" mnemonicParsing="false" onAction="#pressNextButton" styleClass="commit-button" text="next" />
+                  <Button fx:id="endButton" mnemonicParsing="false" onAction="#pressEndButton" styleClass="answer-button" text="End" />
                </children>
             </GridPane>
          </children>

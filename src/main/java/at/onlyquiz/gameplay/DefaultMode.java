@@ -25,6 +25,7 @@ public class DefaultMode extends GameMode {
             //TODO calculate the score
             if (setOfQuestions.isEmpty()) {
                 //TODO something when player finished
+                finished = true;
             } else {
                 currentQuestion = popQuestionOutOfSet();
             }

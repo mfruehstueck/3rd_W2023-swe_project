@@ -37,8 +37,11 @@ public class GameSessionController {
     private Button fiftyFiftyJokerButton, audienceJokerButton, chatJokerButton;
 
     @FXML
-    private Button answerAButton, answerBButton, answerCButton, answerDButton, commitButton, nextButton;
+    private Button answerAButton, answerBButton, answerCButton, answerDButton;
+    @FXML
+    private Button commitButton, nextButton, endButton;
 
+    private int questionCounter = 0;
     private Timeline timer;
     private int secondsRemaining;
 
@@ -76,11 +79,13 @@ public class GameSessionController {
         questionTextField.setVisible(false);
         commitButton.disableProperty().set(true);
         nextButton.setVisible(false);
+        endButton.setVisible(false);
 
         freshUpQuestionLabels();
     }
 
     public void freshUpQuestionLabels() {
+        questionCounterLabel.setText("Question number: " + questionCounter);
         questionLabel.setText(currentGameMode.getCurrentQuestion().getQuestion());
         setUpAnswerButtonText(answerAButton, 0);
         setUpAnswerButtonText(answerBButton, 1);
@@ -198,7 +203,14 @@ public class GameSessionController {
                 }
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
                 commitButton.setVisible(false);
-                nextButton.setVisible(true);
+
+                if (currentGameMode.isFinished()) {
+                    endButton.setVisible(true);
+                } else {
+                    questionCounter += 1;
+                    nextButton.setVisible(true);
+                }
+
                 nextState = true;
             }
         }
@@ -214,6 +226,10 @@ public class GameSessionController {
         stopBlinkingSelectedAnswerButton();
         freshUpQuestionLabels();
         nextState = false;
+    }
+
+    public void pressEndButton(){
+
     }
 
     public void pressStopButton() {
