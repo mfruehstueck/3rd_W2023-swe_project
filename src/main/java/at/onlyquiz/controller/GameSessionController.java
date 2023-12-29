@@ -4,6 +4,7 @@ import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
+import at.onlyquiz.util.GeneralSettings;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,7 +30,7 @@ public class GameSessionController {
     private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel, questionLabel;
 
     @FXML
-    private HBox questionBox;
+    private GridPane baseContainer;
 
     @FXML
     private TextField questionTextField, answerATextField, answerBTextField, answerCTextField, answerDTextField;
@@ -52,6 +54,13 @@ public class GameSessionController {
     }
 
     private void initialize() {
+        if (GeneralSettings.isColorBlind()){
+            String colorBlindPath = String.valueOf(getClass().getResource("/at/onlyquiz/styles/colorBlind/colorBlindMode.css"));
+            System.out.println(colorBlindPath);
+            baseContainer.getStylesheets().removeAll();
+            baseContainer.getStylesheets().add(colorBlindPath);
+        }
+
         setJokersAvailability();
         setScoreLabelsVisible();
         setTimeVisible(currentGameMode.isTimerVisible());

@@ -12,7 +12,7 @@
     <Button fx:id="quitButton" onAction="#pressQuitButton" styleClass="menu-button" text="Quit" />
 
     <stylesheets>
-        <URL value="@../styles/general.css" />
-        <URL value="@../styles/menu.css" />
+        <URL value="@../styles/standard/general.css" />
+        <URL value="@../styles/standard/menu.css" />
     </stylesheets>
 </VBox>

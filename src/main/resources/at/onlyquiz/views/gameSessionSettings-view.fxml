@@ -40,7 +40,7 @@
       </HBox>
    </children>
    <stylesheets>
-      <URL value="@../styles/general.css" />
-      <URL value="@../styles/gameSessionSettings.css" />
+      <URL value="@../styles/standard/general.css" />
+      <URL value="@../styles/standard/gameSessionSettings.css" />
    </stylesheets>
 </GridPane>
