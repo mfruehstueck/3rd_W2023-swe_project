@@ -5,6 +5,7 @@ import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
 import javafx.animation.KeyFrame;
+import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,6 +41,9 @@ public class GameSessionController {
 
     private Timeline timer;
     private int secondsRemaining;
+
+    private boolean nextState;
+    private ScaleTransition blinkTransition;
 
     public GameSessionController() {
     }
@@ -166,15 +170,19 @@ public class GameSessionController {
     }
 
     private void selectSpecificAnswer(int index, Button answerButton) {
-        if (selectedAnswerButton != null) {
-            selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
-            selectedAnswerButton.getStyleClass().add("answer-button");
-        }
+        if (!nextState) {
+            if (selectedAnswerButton != null) {
+                selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
+                selectedAnswerButton.getStyleClass().add("answer-button");
+                stopBlinkingSelectedAnswerButton();
+            }
 
-        selectedAnswer = currentGameMode.getCurrentQuestion().getSpecificAnswer(index);
-        selectedAnswerButton = answerButton;
-        selectedAnswerButton.getStyleClass().add("answer-button-selected");
-        commitButton.disableProperty().set(false);
+            selectedAnswer = currentGameMode.getCurrentQuestion().getSpecificAnswer(index);
+            selectedAnswerButton = answerButton;
+            //selectedAnswerButton.getStyleClass().add("answer-button-selected");
+            blinkSelectedAnswerButton(selectedAnswerButton);
+            commitButton.disableProperty().set(false);
+        }
     }
 
     public void pressCommitButton() {
@@ -188,10 +196,10 @@ public class GameSessionController {
                     selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
                     selectedAnswerButton.getStyleClass().add("answer-button-wrong");
                 }
-
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
                 commitButton.setVisible(false);
                 nextButton.setVisible(true);
+                nextState = true;
             }
         }
         // When Question is editable, the input text will be saved
@@ -203,7 +211,9 @@ public class GameSessionController {
     public void pressNextButton(){
         commitButton.setVisible(true);
         nextButton.setVisible(false);
+        stopBlinkingSelectedAnswerButton();
         freshUpQuestionLabels();
+        nextState = false;
     }
 
     public void pressStopButton() {
@@ -216,25 +226,25 @@ public class GameSessionController {
         }
     }
 
+    private void blinkSelectedAnswerButton(Button button) {
+        blinkTransition = new ScaleTransition(Duration.seconds(0.5), button);
+        blinkTransition.setFromX(1);
+        blinkTransition.setToX(1.2);
+        blinkTransition.setFromY(1);
+        blinkTransition.setToY(1.2);
+        blinkTransition.setCycleCount(ScaleTransition.INDEFINITE);
+        blinkTransition.setAutoReverse(true);
 
-    // Setter
-
-    public void setCurrentGameMode(GameMode currentGameMode) {
-        this.currentGameMode = currentGameMode;
-        initialize();
+        blinkTransition.playFromStart();
     }
 
-    public void setJokersAvailability() {
-        audienceJokerButton.setVisible(currentGameMode.areJokersAvailable());
-        chatJokerButton.setVisible(currentGameMode.areJokersAvailable());
-        fiftyFiftyJokerButton.setVisible(currentGameMode.areJokersAvailable());
+    private void stopBlinkingSelectedAnswerButton(){
+        if (blinkTransition != null){
+            blinkTransition.stop();
+            selectedAnswerButton.setScaleX(1.0);
+            selectedAnswerButton.setScaleY(1.0);
+        }
     }
-
-    public void setScoreLabelsVisible() {
-        totalScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
-        achievableScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
-    }
-
 
     // functions for timer
     public void setTimeVisible(boolean hasTimer) {
@@ -272,5 +282,24 @@ public class GameSessionController {
     private void handleTimerEnd() {
         timeLabel.setText("time is over!");
     }
+
+    // Setter
+
+    public void setCurrentGameMode(GameMode currentGameMode) {
+        this.currentGameMode = currentGameMode;
+        initialize();
+    }
+
+    public void setJokersAvailability() {
+        audienceJokerButton.setVisible(currentGameMode.areJokersAvailable());
+        chatJokerButton.setVisible(currentGameMode.areJokersAvailable());
+        fiftyFiftyJokerButton.setVisible(currentGameMode.areJokersAvailable());
+    }
+
+    public void setScoreLabelsVisible() {
+        totalScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
+        achievableScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
+    }
+
 
 }
