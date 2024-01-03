@@ -16,7 +16,6 @@ public abstract class GameMode {
     boolean scoreVisible, timerVisible;
     boolean jokersAvailable;
 
-
     public boolean confirmAnswer(){
 
         return false;

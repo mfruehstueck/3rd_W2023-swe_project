@@ -1,18 +1,18 @@
 package at.onlyquiz.util.csvParser;
 
-import com.opencsv.exceptions.CsvValidationException;
+import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
-import java.net.URL;
+import java.nio.file.Path;
 
-public class CSV_Writer extends CSV_Parser {
-    //NSEC: Singleton
-    private static CSV_Writer __instance__;
-    public static CSV_Writer getInstance(URL pathToFile) { return (__instance__ != null) ? __instance__ : new CSV_Writer(pathToFile); }
-    private CSV_Writer(URL pathToFile) { super(pathToFile); }
-    public static void close() { __instance__ = null; }
+public class CSV_Writer {
+    static public void write_line_by_lineNumber(Path csvPath, int lineNumber) throws IOException, CsvException { }
+    static public void update_line_by_lineNumber(Path csvPath, int lineNumber, String[] entry) throws IOException, CsvException {
 
-    public boolean write() throws IOException, CsvValidationException {
+    }
+
+
+    static public boolean write() {
         return false;
     }
 }

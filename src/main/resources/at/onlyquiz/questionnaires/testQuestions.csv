@@ -1,0 +1,101 @@
+ID;Times Selected;Question;Difficulty;Correct Answer;Wrong Answer 1;Wrong Answer 2;Wrong Answer 3
+0;0;What is the tallest mountain in the world?;HARD;Mount Everest;K2;Lhotse;Kangchenjunga
+1;0;What is the capital city of Spain?;EASY;Madrid;Seville;Barcelona;Valencia
+2;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Marie Curie;Isaac Newton;Albert Einstein
+3;0;Which element has the atomic number 6?;EASY;Carbon;Oxygen;Nitrogen;Hydrogen
+4;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Atlantic Ocean;Indian Ocean;Arctic Ocean
+5;0;In which year did the Titanic sink?;MEDIUM;1912;1913;1910;1911
+6;0;Who is the author of '1984'?;MEDIUM;George Orwell;Ray Bradbury;Thomas More;Aldous Huxley
+7;0;What is the currency of Japan?;EASY;Yen;Won;Euro;Dollar
+8;0;Which planet is closest to the Sun?;EASY;Mercury;Venus;Mars;Earth
+9;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Pablo Picasso;Leonardo da Vinci;Claude Monet
+10;0;What is the tallest mountain in the world?;HARD;Mount Everest;K2;Lhotse;Kangchenjunga
+11;0;What is the capital city of Spain?;EASY;Madrid;Barcelona;Seville;Valencia
+12;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Albert Einstein;Marie Curie;Isaac Newton
+13;0;Which element has the atomic number 6?;EASY;Carbon;Oxygen;Nitrogen;Hydrogen
+14;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Arctic Ocean;Atlantic Ocean;Indian Ocean
+15;0;In which year did the Titanic sink?;MEDIUM;1912;1910;1913;1911
+16;0;Who is the author of '1984'?;MEDIUM;George Orwell;Aldous Huxley;Ray Bradbury;Thomas More
+17;0;What is the currency of Japan?;EASY;Yen;Euro;Dollar;Won
+18;0;Which planet is closest to the Sun?;EASY;Mercury;Earth;Venus;Mars
+19;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Leonardo da Vinci;Pablo Picasso;Claude Monet
+20;0;What is the tallest mountain in the world?;HARD;Mount Everest;K2;Kangchenjunga;Lhotse
+21;0;What is the capital city of Spain?;EASY;Madrid;Valencia;Barcelona;Seville
+22;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Marie Curie;Isaac Newton;Albert Einstein
+23;0;Which element has the atomic number 6?;EASY;Carbon;Nitrogen;Hydrogen;Oxygen
+24;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Indian Ocean;Arctic Ocean;Atlantic Ocean
+25;0;In which year did the Titanic sink?;MEDIUM;1912;1913;1911;1910
+26;0;Who is the author of '1984'?;MEDIUM;George Orwell;Thomas More;Aldous Huxley;Ray Bradbury
+27;0;What is the currency of Japan?;EASY;Yen;Won;Dollar;Euro
+28;0;Which planet is closest to the Sun?;EASY;Mercury;Earth;Venus;Mars
+29;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Leonardo da Vinci;Pablo Picasso;Claude Monet
+30;0;What is the tallest mountain in the world?;HARD;Mount Everest;Kangchenjunga;K2;Lhotse
+31;0;What is the capital city of Spain?;EASY;Madrid;Valencia;Seville;Barcelona
+32;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Isaac Newton;Albert Einstein;Marie Curie
+33;0;Which element has the atomic number 6?;EASY;Carbon;Hydrogen;Oxygen;Nitrogen
+34;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Arctic Ocean;Indian Ocean;Atlantic Ocean
+35;0;In which year did the Titanic sink?;MEDIUM;1912;1910;1911;1913
+36;0;Who is the author of '1984'?;MEDIUM;George Orwell;Thomas More;Ray Bradbury;Aldous Huxley
+37;0;What is the currency of Japan?;EASY;Yen;Won;Euro;Dollar
+38;0;Which planet is closest to the Sun?;EASY;Mercury;Earth;Venus;Mars
+39;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Leonardo da Vinci;Claude Monet;Pablo Picasso
+40;0;What is the tallest mountain in the world?;HARD;Mount Everest;Lhotse;Kangchenjunga;K2
+41;0;What is the capital city of Spain?;EASY;Madrid;Seville;Barcelona;Valencia
+42;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Isaac Newton;Albert Einstein;Marie Curie
+43;0;Which element has the atomic number 6?;EASY;Carbon;Nitrogen;Hydrogen;Oxygen
+44;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Arctic Ocean;Indian Ocean;Atlantic Ocean
+45;0;In which year did the Titanic sink?;MEDIUM;1912;1913;1910;1911
+46;0;Who is the author of '1984'?;MEDIUM;George Orwell;Aldous Huxley;Thomas More;Ray Bradbury
+47;0;What is the currency of Japan?;EASY;Yen;Euro;Dollar;Won
+48;0;Which planet is closest to the Sun?;EASY;Mercury;Venus;Mars;Earth
+49;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Pablo Picasso;Leonardo da Vinci;Claude Monet
+50;0;What is the tallest mountain in the world?;HARD;Mount Everest;Kangchenjunga;K2;Lhotse
+51;0;What is the capital city of Spain?;EASY;Madrid;Barcelona;Valencia;Seville
+52;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Marie Curie;Isaac Newton;Albert Einstein
+53;0;Which element has the atomic number 6?;EASY;Carbon;Nitrogen;Hydrogen;Oxygen
+54;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Indian Ocean;Arctic Ocean;Atlantic Ocean
+55;0;In which year did the Titanic sink?;MEDIUM;1912;1910;1913;1911
+56;0;Who is the author of '1984'?;MEDIUM;George Orwell;Aldous Huxley;Ray Bradbury;Thomas More
+57;0;What is the currency of Japan?;EASY;Yen;Won;Dollar;Euro
+58;0;Which planet is closest to the Sun?;EASY;Mercury;Earth;Mars;Venus
+59;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Claude Monet;Pablo Picasso;Leonardo da Vinci
+60;0;What is the tallest mountain in the world?;HARD;Mount Everest;K2;Lhotse;Kangchenjunga
+61;0;What is the capital city of Spain?;EASY;Madrid;Barcelona;Seville;Valencia
+62;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Albert Einstein;Marie Curie;Isaac Newton
+63;0;Which element has the atomic number 6?;EASY;Carbon;Hydrogen;Nitrogen;Oxygen
+64;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Atlantic Ocean;Arctic Ocean;Indian Ocean
+65;0;In which year did the Titanic sink?;MEDIUM;1912;1911;1913;1910
+66;0;Who is the author of '1984'?;MEDIUM;George Orwell;Aldous Huxley;Ray Bradbury;Thomas More
+67;0;What is the currency of Japan?;EASY;Yen;Won;Euro;Dollar
+68;0;Which planet is closest to the Sun?;EASY;Mercury;Earth;Mars;Venus
+69;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Claude Monet;Leonardo da Vinci;Pablo Picasso
+70;0;What is the tallest mountain in the world?;HARD;Mount Everest;K2;Kangchenjunga;Lhotse
+71;0;What is the capital city of Spain?;EASY;Madrid;Seville;Barcelona;Valencia
+72;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Marie Curie;Isaac Newton;Albert Einstein
+73;0;Which element has the atomic number 6?;EASY;Carbon;Hydrogen;Oxygen;Nitrogen
+74;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Arctic Ocean;Atlantic Ocean;Indian Ocean
+75;0;In which year did the Titanic sink?;MEDIUM;1912;1911;1913;1910
+76;0;Who is the author of '1984'?;MEDIUM;George Orwell;Aldous Huxley;Ray Bradbury;Thomas More
+77;0;What is the currency of Japan?;EASY;Yen;Dollar;Euro;Won
+78;0;Which planet is closest to the Sun?;EASY;Mercury;Mars;Venus;Earth
+79;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Pablo Picasso;Claude Monet;Leonardo da Vinci
+80;0;What is the tallest mountain in the world?;HARD;Mount Everest;Lhotse;K2;Kangchenjunga
+81;0;What is the capital city of Spain?;EASY;Madrid;Valencia;Barcelona;Seville
+82;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Albert Einstein;Marie Curie;Isaac Newton
+83;0;Which element has the atomic number 6?;EASY;Carbon;Oxygen;Nitrogen;Hydrogen
+84;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Indian Ocean;Atlantic Ocean;Arctic Ocean
+85;0;In which year did the Titanic sink?;MEDIUM;1912;1911;1913;1910
+86;0;Who is the author of '1984'?;MEDIUM;George Orwell;Ray Bradbury;Aldous Huxley;Thomas More
+87;0;What is the currency of Japan?;EASY;Yen;Dollar;Euro;Won
+88;0;Which planet is closest to the Sun?;EASY;Mercury;Mars;Earth;Venus
+89;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Pablo Picasso;Claude Monet;Leonardo da Vinci
+90;0;What is the tallest mountain in the world?;HARD;Mount Everest;Kangchenjunga;Lhotse;K2
+91;0;What is the capital city of Spain?;EASY;Madrid;Seville;Valencia;Barcelona
+92;0;Who discovered penicillin?;MEDIUM;Alexander Fleming;Isaac Newton;Albert Einstein;Marie Curie
+93;0;Which element has the atomic number 6?;EASY;Carbon;Nitrogen;Hydrogen;Oxygen
+94;0;What is the largest ocean on Earth?;EASY;Pacific Ocean;Arctic Ocean;Atlantic Ocean;Indian Ocean
+95;0;In which year did the Titanic sink?;MEDIUM;1912;1910;1913;1911
+96;0;Who is the author of '1984'?;MEDIUM;George Orwell;Thomas More;Aldous Huxley;Ray Bradbury
+97;0;What is the currency of Japan?;EASY;Yen;Won;Dollar;Euro
+98;0;Which planet is closest to the Sun?;EASY;Mercury;Mars;Earth;Venus
+99;0;Who painted the 'Starry Night'?;HARD;Vincent van Gogh;Leonardo da Vinci;Pablo Picasso;Claude Monet
