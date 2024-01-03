@@ -1,42 +1,59 @@
 package at.onlyquiz.gameplay;
 
-import at.debugtools.DebugTools;
-import at.onlyquiz.model.joker.AudienceJoker;
-import at.onlyquiz.model.joker.ChatJoker;
-import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
-import at.onlyquiz.util.QuestionDictionary;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultMode extends GameMode {
-    private FiftyFiftyJoker fiftyFiftyJoker;
-    private ChatJoker chatJoker;
-    private AudienceJoker audienceJoker;
 
     public DefaultMode() {
+        editAble = false;
         scoreVisible = false;
-        timerVisible = false;
-        List<Answer> answers = new ArrayList<>();
-        answers.add(new Answer("A", true));
-        answers.add(new Answer("B", false));
-        answers.add(new Answer("C", false));
-        answers.add(new Answer("D", false));
+        timerVisible = true;
+        timeDurationInSeconds = 5;
 
-//        try {
-        System.out.println(DebugTools.get(new Throwable()) + " path: " + QuestionDictionary.get_pathOfQuestionnaireFile_byID(0));
-        List<GameQuestion> test = QuestionDictionary.get_Questions(Difficulty.EASY, 5);
-        System.out.println(test);
-//            HashMap<Difficulty, HashMap<Integer, List<Integer>>> test = CSV_Reader.get_lineNumbers_all_by_timesSelected(QuestionDictionary.get_QuestionnaireFile(0));
-//            System.out.println();
-//        } catch (IOException | CsvException e) {
-//            throw new RuntimeException(e);
-//        }
-
-        currentQuestion = new GameQuestion("A, B, C oder D?", answers, Difficulty.EASY);
+        createTestQuestions();
+        currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();
+    }
+
+    @Override
+    public void confirmAnswer(boolean isCorrect) {
+        if (isCorrect){
+            //TODO calculate the score
+            if (setOfQuestions.isEmpty()) {
+                //TODO something when player finished
+                finished = true;
+            } else {
+                currentQuestion = popQuestionOutOfSet();
+            }
+        }
+    }
+
+
+    private void createTestQuestions(){
+        List<Answer> answers1 = new ArrayList<>();
+        answers1.add(new Answer("A", true));
+        answers1.add(new Answer("B", false));
+        answers1.add(new Answer("C", false));
+        answers1.add(new Answer("D", false));
+
+        List<Answer> answers2 = new ArrayList<>();
+        answers2.add(new Answer("1912", true));
+        answers2.add(new Answer("1910", false));
+        answers2.add(new Answer("1913", false));
+        answers2.add(new Answer("1911", false));
+
+        List<Answer> answers3 = new ArrayList<>();
+        answers3.add(new Answer("George Orwell", true));
+        answers3.add(new Answer("Aldous Huxley", false));
+        answers3.add(new Answer("Ray Bradbury", false));
+        answers3.add(new Answer("Thomas More", false));
+
+        setOfQuestions.add(new GameQuestion("A, B, C oder D?", answers1, Difficulty.EASY));
+        setOfQuestions.add(new GameQuestion("In which year did the Titanic sink?", answers2, Difficulty.MEDIUM));
+        setOfQuestions.add(new GameQuestion("Who is the author of '1984'?", answers3, Difficulty.HARD));
     }
 }

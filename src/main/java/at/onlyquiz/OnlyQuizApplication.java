@@ -2,9 +2,7 @@ package at.onlyquiz;
 
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
-import at.onlyquiz.gameplay.DefaultMode;
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,9 +11,10 @@ import java.io.IOException;
 public class OnlyQuizApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        //Scene scene = new Scene(ControllerFactory.getController(Controllers.GAME_SESSION_VIEW), 1280, 720);
-        Scene scene = new Scene(ControllerFactory.startingGameSession(new DefaultMode()));
+        Scene scene = ControllerFactory.getScene(Controllers.MENU_VIEW);
         stage.setTitle("OnlyQuiz");
+        stage.setWidth(1280);
+        stage.setHeight(720);
         stage.setScene(scene);
         stage.show();
     }

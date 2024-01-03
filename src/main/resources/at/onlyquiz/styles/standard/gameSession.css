@@ -1,0 +1,81 @@
+.question-box {
+    -fx-background-color: #3232ce;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+
+.question-textField {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-background-color: #3232ce;
+}
+
+.ui-label{
+    -fx-font-size: 18;
+    -fx-text-fill: #ecb406;
+    -fx-font-weight: bold;
+}
+
+.answer-button {
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.commit-button {
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.answer-textField-right {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: green;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.answer-textField-wrong {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: darkred;
+    -fx-min-width: 200;
+    -fx-font-size: 16;
+}
+
+.answer-button-right {
+    -fx-background-color: green;
+}
+
+.answer-button-wrong {
+    -fx-background-color: darkred;
+}
+
+.answer-button-selected {
+    -fx-background-color: #02104f;
+}
+
+.joker {
+    -fx-background-color: #ecb406;
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+}
+
+.joker:hover {
+    -fx-background-color: #f5e021;
+}
+
+.stop-button {
+    -fx-background-color: darkred;
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
+
+.stop-button:hover {
+    -fx-background-color: #8c2121;
+}

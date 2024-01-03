@@ -9,17 +9,25 @@ import java.util.List;
 public abstract class GameMode {
     List<GameQuestion> setOfQuestions = new ArrayList<>();
     GameQuestion currentQuestion;
-    Integer totalScore, achievedScore;
+    Integer totalScore, achievedScore, questionCounter;
     JokerQueue audienceJokers = new JokerQueue();
     JokerQueue fiftyFiftyJokers = new JokerQueue();
     JokerQueue chatJokers = new JokerQueue();
     boolean scoreVisible, timerVisible;
     boolean jokersAvailable;
+    boolean editAble;
+    boolean finished = false;
+    int timeDurationInSeconds;
 
-    public boolean confirmAnswer(){
 
-        return false;
-    };
+    public abstract void confirmAnswer(boolean isCorrect);
+
+    public GameQuestion popQuestionOutOfSet(){
+        if (setOfQuestions.isEmpty()) return null;
+        GameQuestion q = setOfQuestions.get(0);
+        setOfQuestions.remove(0);
+        return q;
+    }
 
     public boolean isScoreVisible() {
         return scoreVisible;
@@ -59,5 +67,17 @@ public abstract class GameMode {
 
     public GameQuestion getCurrentQuestion() {
         return currentQuestion;
+    }
+
+    public boolean isEditAble() {
+        return editAble;
+    }
+
+    public int getTimeDurationInSeconds() {
+        return timeDurationInSeconds;
+    }
+
+    public boolean isFinished() {
+        return finished;
     }
 }
