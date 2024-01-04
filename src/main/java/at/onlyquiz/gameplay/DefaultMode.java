@@ -9,8 +9,9 @@ import at.onlyquiz.model.question.GameQuestion;
 
 import java.util.ArrayList;
 import java.util.List;
-import at.onlyquiz.model.question.Difficulty;
-import at.onlyquiz.util.ScoreSystem;
+
+import at.onlyquiz.util.scoring.DefaultScoringStrategy;
+import at.onlyquiz.util.ScoreCalculator;
 
 public class DefaultMode extends GameMode {
 
@@ -22,6 +23,7 @@ public class DefaultMode extends GameMode {
     private FiftyFiftyJoker fiftyFiftyJoker;
     private ChatJoker chatJoker;
     private AudienceJoker audienceJoker;
+    private ScoreCalculator scoreCalculator;
 
     public DefaultMode() {
         editAble = false;
@@ -33,12 +35,14 @@ public class DefaultMode extends GameMode {
         answers.add(new Answer("C", false));
         answers.add(new Answer("D", false));
 
+        this.scoreCalculator = new ScoreCalculator(new DefaultScoringStrategy()) {
+        };
         currentQuestion = new GameQuestion("A, B, C oder D?", answers, Difficulty.EASY);
         currentQuestion.shuffleAnswers();
     }
 
     public int scoreCalculator(Difficulty difficulty, int timeTaken, boolean jokerUsed) {
-        return ScoreSystem.calculateScore(difficulty, timeTaken, jokerUsed);
+        return scoreCalculator.calculateScore(difficulty, timeTaken, jokerUsed);
     }
 
 }

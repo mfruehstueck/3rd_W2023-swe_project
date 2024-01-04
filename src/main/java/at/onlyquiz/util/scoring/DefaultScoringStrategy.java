@@ -1,8 +1,8 @@
-package at.onlyquiz.util;
+package at.onlyquiz.util.scoring;
 
 import at.onlyquiz.model.question.Difficulty;
 
-public class ScoreSystem {
+public class DefaultScoringStrategy implements ScoringStrategy {
 
     private static final int EASY_POINTS = 20000;
     private static final int MEDIUM_POINTS = 60000;
@@ -10,7 +10,8 @@ public class ScoreSystem {
     private static final int TIMER_SECONDS = 45;
     private static final int JOKER_COST = 10000;
 
-    public static int calculateScore(Difficulty difficulty, int timeTaken, boolean jokerUsed) {
+    @Override
+    public int calculateScore(Difficulty difficulty, int timeTaken, boolean jokerUsed) {
         int basePoints;
         switch (difficulty) {
             case EASY:
