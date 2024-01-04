@@ -1,15 +1,19 @@
 package at.onlyquiz.model.question;
 
+
+import javafx.scene.control.Button;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class GameQuestion {
     private  String question;
     private List<Answer> answers;
     private Difficulty difficulty;
     private boolean editable;
-
+    private Map<Button, Answer> buttonAnswerMap;
     public GameQuestion() {
         this.editable = true;
     }
@@ -59,5 +63,13 @@ public class GameQuestion {
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+
+    public void setButtonAnswerMap(Map<Button, Answer> buttonAnswerMap) {
+        this.buttonAnswerMap = buttonAnswerMap;
+    }
+
+    public Answer getAnswerByButton(Button button) {
+        return buttonAnswerMap.get(button);
     }
 }

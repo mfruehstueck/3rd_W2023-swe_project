@@ -3,6 +3,7 @@ package at.onlyquiz.controller;
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
+import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Answer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class GameSessionController {
 
@@ -124,9 +126,12 @@ public class GameSessionController {
 
     public void useFiftyFiftyJoker() {
         if (!currentGameMode.getFiftyFiftyJokers().isEmpty()) {
-            currentGameMode.getFiftyFiftyJokers().pop().use(currentGameMode.getCurrentQuestion());
+            FiftyFiftyJoker joker = (FiftyFiftyJoker) currentGameMode.getFiftyFiftyJokers().pop();
+            joker.performAction(currentGameMode.getCurrentQuestion(),
+                    List.of(answerAButton, answerBButton, answerCButton, answerDButton));
         }
     }
+
 
     public void useAudienceJoker() {
         if (!currentGameMode.getAudienceJokers().isEmpty()) {

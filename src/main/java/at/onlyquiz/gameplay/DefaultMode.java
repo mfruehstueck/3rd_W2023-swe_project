@@ -10,6 +10,7 @@ import at.onlyquiz.model.question.GameQuestion;
 import java.util.ArrayList;
 import java.util.List;
 import at.onlyquiz.model.question.Difficulty;
+import at.onlyquiz.util.ScoreSystem;
 
 public class DefaultMode extends GameMode {
 
@@ -37,27 +38,7 @@ public class DefaultMode extends GameMode {
     }
 
     public int scoreCalculator(Difficulty difficulty, int timeTaken, boolean jokerUsed) {
-        int basePoints;
-        switch (difficulty) {
-            case EASY:
-                basePoints = EASY_POINTS;
-                break;
-            case MEDIUM:
-                basePoints = MEDIUM_POINTS;
-                break;
-            case HARD:
-                basePoints = HARD_POINTS;
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown difficulty level");
-        }
-
-        int score = basePoints - (basePoints / TIMER_SECONDS) * timeTaken;
-        if (jokerUsed) {
-            score -= JOKER_COST;
-        }
-
-        return Math.max(score, 0); // Ensure that score doesn't go below 0
+        return ScoreSystem.calculateScore(difficulty, timeTaken, jokerUsed);
     }
 
 }

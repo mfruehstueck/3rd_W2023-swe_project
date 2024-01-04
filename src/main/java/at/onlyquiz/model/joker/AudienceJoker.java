@@ -2,6 +2,9 @@ package at.onlyquiz.model.joker;
 
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
+import javafx.scene.control.Button;
+
+import java.util.List;
 
 public class AudienceJoker extends Joker {
 
@@ -10,9 +13,10 @@ public class AudienceJoker extends Joker {
     }
 
     @Override
-    protected void performAction() {
-        // return audience survey result based on question difficulty
+    public void performAction(GameQuestion question, List<Button> answerButtons) {
+
     }
+
     public String getSurveyResult(Difficulty difficulty) {
         // Implementation of survey result logic
         return "Survey Result Based on Difficulty";
