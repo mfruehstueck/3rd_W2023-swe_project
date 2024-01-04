@@ -23,6 +23,7 @@ public class DefaultMode extends GameMode {
     private AudienceJoker audienceJoker;
 
     public DefaultMode() {
+        editAble = false;
         scoreVisible = false;
         timerVisible = false;
         List<Answer> answers = new ArrayList<>();

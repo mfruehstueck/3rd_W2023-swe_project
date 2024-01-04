@@ -15,6 +15,7 @@ public abstract class GameMode {
     JokerQueue chatJokers = new JokerQueue();
     boolean scoreVisible, timerVisible;
     boolean jokersAvailable;
+    boolean editAble;
 
 
     public Integer scoreCalculator(){
@@ -64,5 +65,9 @@ public abstract class GameMode {
 
     public GameQuestion getCurrentQuestion() {
         return currentQuestion;
+    }
+
+    public boolean isEditAble() {
+        return editAble;
     }
 }

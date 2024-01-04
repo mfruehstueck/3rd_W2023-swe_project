@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<?import java.lang.String?>
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17.0.2-ea"
-      stylesheets="@../styles/menu.css" xmlns:fx="http://javafx.com/fxml">
+<VBox fx:id="container" alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.MenuController">
 
-    <styleClass>
-        <String fx:value="background"/>
-        <String fx:value="menu-button-vbox"/>
-    </styleClass>
+    <Button fx:id="playButton" onAction="#pressPlayButton" styleClass="menu-button" text="Play" />
+    <Button fx:id="questionnaireButton" onAction="#pressQuestionnairesButton" styleClass="menu-button" text="Questionnaires" />
+    <Button fx:id="settingsButton" onAction="#pressSettingsButton" styleClass="menu-button" text="Settings" />
+    <Button fx:id="quitButton" onAction="#pressQuitButton" styleClass="menu-button" text="Quit" />
 
-    <Button styleClass="menu-button" text="Play"/>
-    <Button styleClass="menu-button" text="Questionnaires" />
-    <Button styleClass="menu-button" text="Settings" />
-    <Button styleClass="menu-button" text="Quit" />
-
+    <stylesheets>
+        <URL value="@../styles/general.css" />
+        <URL value="@../styles/menu.css" />
+    </stylesheets>
 </VBox>
