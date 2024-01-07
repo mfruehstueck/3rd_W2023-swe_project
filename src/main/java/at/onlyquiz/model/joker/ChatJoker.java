@@ -16,7 +16,7 @@ public class ChatJoker extends Joker {
     private static final String API_KEY = "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";
 
     @Override
-    public void performAction(GameQuestion question, List<Button> answerButtons) {
+    public void use(GameQuestion question) {
         // Example prompt
         String prompt = "Act like a family member, you can randomly choose one, be it elderly or very young. the scene is that I need help answering a question, the moment i send you the question we have 30 seconds, you need to stall and act confused, only help me in the last 5 seconds";
         String response = getChatGptResponse(prompt);

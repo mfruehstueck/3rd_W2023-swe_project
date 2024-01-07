@@ -1,9 +1,11 @@
 package at.onlyquiz.model.joker;
 
+import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.GameQuestion;
 import javafx.scene.control.Button;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class FiftyFiftyJoker extends Joker {
@@ -12,28 +14,17 @@ public class FiftyFiftyJoker extends Joker {
         super();
     }
 
-
-
     @Override
-    public void performAction(GameQuestion question, List<Button> answerButtons) {
-        // Find indices of incorrect answers
-        List<Integer> incorrectAnswerIndices = getIncorrectAnswerIndices(question, answerButtons);
-
-        // Hide two incorrect answers
-        hideTwoIncorrectAnswers(answerButtons, incorrectAnswerIndices);
-    }
-
-    private List<Integer> getIncorrectAnswerIndices(GameQuestion question, List<Button> answerButtons) {
-        return answerButtons.stream()
-                .filter(button -> !question.getAnswerByButton(button).isCorrect())
-                .map(answerButtons::indexOf)
-                .collect(Collectors.toList());
-    }
-
-    private void hideTwoIncorrectAnswers(List<Button> answerButtons, List<Integer> incorrectAnswerIndices) {
-        Collections.shuffle(incorrectAnswerIndices);
-        incorrectAnswerIndices.stream()
-                .limit(2)
-                .forEach(index -> answerButtons.get(index).setVisible(false));
+    public void use(GameQuestion gameQuestion) {
+        List<Answer> answers = gameQuestion.getAnswers();
+        Integer counter = 0;
+        while (counter<2){
+            Integer random_number = new Random().nextInt(0,4);
+            if(answers.get(random_number).isCorrect() == false && answers.get(random_number).isVisible()){
+                answers.get(random_number).setVisible(false);
+                counter++;
+            }
+        }
+        used = true;
     }
 }

@@ -13,7 +13,7 @@ public class AudienceJoker extends Joker {
     }
 
     @Override
-    public void performAction(GameQuestion question, List<Button> answerButtons) {
+    public void use(GameQuestion question) {
 
     }
 
