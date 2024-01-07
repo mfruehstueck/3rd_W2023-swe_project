@@ -10,7 +10,7 @@ import at.onlyquiz.model.question.GameQuestion;
 import java.util.ArrayList;
 import java.util.List;
 
-import at.onlyquiz.util.scoring.DefaultScoringStrategy;
+import at.onlyquiz.model.scoring.DefaultScoringStrategy;
 import at.onlyquiz.util.ScoreCalculator;
 
 public class DefaultMode extends GameMode {

@@ -1,4 +1,4 @@
-package at.onlyquiz.util.scoring;
+package at.onlyquiz.model.scoring;
 
 import at.onlyquiz.model.question.Difficulty;
 

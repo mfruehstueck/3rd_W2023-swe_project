@@ -1,7 +1,7 @@
 package at.onlyquiz.util;
 
 import at.onlyquiz.model.question.Difficulty;
-import at.onlyquiz.util.scoring.ScoringStrategy;
+import at.onlyquiz.model.scoring.ScoringStrategy;
 
 public class ScoreCalculator {
 
