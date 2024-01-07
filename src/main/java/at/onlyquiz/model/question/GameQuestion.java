@@ -52,7 +52,7 @@ public class GameQuestion {
         return out.toArray(String[]::new);
     }
 
-    public void shuffleAnswers() { Collections.shuffle(new ArrayList<>(answers)); }
+    public void shuffleAnswers() { Collections.shuffle(answers); }
 
 
     //NSEC: getter

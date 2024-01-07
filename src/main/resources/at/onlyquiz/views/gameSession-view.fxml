@@ -202,10 +202,10 @@
       </HBox>
       <BarChart fx:id="votingResultsChart" prefHeight="381.0" prefWidth="640.0" GridPane.columnIndex="1">
         <xAxis>
-          <CategoryAxis side="BOTTOM" />
+          <CategoryAxis prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
         </xAxis>
         <yAxis>
-          <NumberAxis autoRanging="false" label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
+          <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
                <tickLabelFont>
                   <Font size="15.0" />
                </tickLabelFont></NumberAxis>

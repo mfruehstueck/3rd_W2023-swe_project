@@ -44,7 +44,7 @@ public class GameSessionController {
     @FXML
     private Button commitButton, nextButton, endButton;
     @FXML
-    public BarChart<String, Integer> votingResultsChart;
+    public BarChart<String, Double> votingResultsChart;
     private Timeline timer;
     private int secondsRemaining;
 
@@ -60,14 +60,6 @@ public class GameSessionController {
             baseContainer.getStylesheets().removeAll();
             baseContainer.getStylesheets().add(colorBlindPath);
         }
-
-        XYChart.Series<String, Integer> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Answer A", 20));
-        series.getData().add(new XYChart.Data<>("Answer B", 30));
-        series.getData().add(new XYChart.Data<>("Answer C", 40));
-        series.getData().add(new XYChart.Data<>("Answer D", 10));
-
-        votingResultsChart.getData().add(series);
 
         setJokersAvailability();
         setScoreLabelsVisible();
@@ -169,6 +161,14 @@ public class GameSessionController {
     public void useAudienceJoker() {
         if (!currentGameMode.getAudienceJokers().isEmpty()) {
             currentGameMode.getAudienceJokers().pop().use(currentGameMode.getCurrentQuestion());
+
+            XYChart.Series<String, Double> series = new XYChart.Series<>();
+            series.getData().add(new XYChart.Data<>(answerAButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getVotingValue()));
+            series.getData().add(new XYChart.Data<>(answerBButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getVotingValue()));
+            series.getData().add(new XYChart.Data<>(answerCButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getVotingValue()));
+            series.getData().add(new XYChart.Data<>(answerDButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getVotingValue()));
+
+            votingResultsChart.getData().add(series);
         }
     }
 
