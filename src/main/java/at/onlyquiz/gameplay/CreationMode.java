@@ -27,4 +27,9 @@ public class CreationMode extends GameMode{
     public void confirmAnswer(boolean isCorrect) {
 
     }
+
+    @Override
+    public int calculateScore() {
+        return 0;
+    }
 }

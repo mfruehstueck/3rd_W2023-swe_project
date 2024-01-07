@@ -45,9 +45,7 @@ public class GameSessionController {
     private Button commitButton, nextButton, endButton;
     @FXML
     public BarChart<String, Double> votingResultsChart;
-    private Timeline timer;
-    private int secondsRemaining;
-
+    private Timeline timer, achievableScore;
     private boolean nextState;
     private ScaleTransition blinkTransition;
 
@@ -62,7 +60,7 @@ public class GameSessionController {
         }
 
         setJokersAvailability();
-        setScoreLabelsVisible();
+        setScoreLabelsVisible(currentGameMode.isScoreVisible());
         setTimeVisible(currentGameMode.isTimerVisible());
 
         if (currentGameMode.isEditAble()) {
@@ -94,6 +92,7 @@ public class GameSessionController {
     }
 
     public void freshUpQuestionLabels() {
+        votingResultsChart.setVisible(false);
         questionCounterLabel.setText("Question number: " + currentGameMode.getQuestionCounter());
         questionLabel.setText(currentGameMode.getCurrentQuestion().getQuestion());
         setUpAnswerButtonText(answerAButton, 0);
@@ -121,7 +120,7 @@ public class GameSessionController {
         commitButton.setVisible(false);
         commitButton.disableProperty().set(true);
         nextButton.setVisible(false);
-
+        votingResultsChart.setVisible(false);
         answerAButton.setVisible(false);
         answerBButton.setVisible(false);
         answerCButton.setVisible(false);
@@ -148,12 +147,20 @@ public class GameSessionController {
     }
 
 
+    // UI refresh functions
+    private void refreshAnswerView(){
+        totalScoreLabel.setText("Total Score: " + currentGameMode.getTotalScore());
+        freshUpQuestionLabels();
+    }
+
     //Basic functions for UI
 
     public void useFiftyFiftyJoker() {
         if (!currentGameMode.getFiftyFiftyJokers().isEmpty()) {
             currentGameMode.getFiftyFiftyJokers().pop().use(currentGameMode.getCurrentQuestion());
-            freshUpQuestionLabels();
+            currentGameMode.setJokerUsed(true);
+
+            refreshAnswerView();
         }
     }
 
@@ -161,6 +168,7 @@ public class GameSessionController {
     public void useAudienceJoker() {
         if (!currentGameMode.getAudienceJokers().isEmpty()) {
             currentGameMode.getAudienceJokers().pop().use(currentGameMode.getCurrentQuestion());
+            currentGameMode.setJokerUsed(true);
 
             XYChart.Series<String, Double> series = new XYChart.Series<>();
             series.getData().add(new XYChart.Data<>(answerAButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getVotingValue()));
@@ -169,12 +177,14 @@ public class GameSessionController {
             series.getData().add(new XYChart.Data<>(answerDButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getVotingValue()));
 
             votingResultsChart.getData().add(series);
+            votingResultsChart.setVisible(true);
         }
     }
 
     public void useChatJoker() {
         if (!currentGameMode.getChatJokers().isEmpty()) {
             currentGameMode.getChatJokers().pop().use(currentGameMode.getCurrentQuestion());
+            currentGameMode.setJokerUsed(true);
         }
     }
 
@@ -204,7 +214,6 @@ public class GameSessionController {
 
             selectedAnswer = currentGameMode.getCurrentQuestion().getSpecificAnswer(index);
             selectedAnswerButton = answerButton;
-            //selectedAnswerButton.getStyleClass().add("answer-button-selected");
             blinkSelectedAnswerButton(selectedAnswerButton);
             commitButton.disableProperty().set(false);
         }
@@ -213,6 +222,8 @@ public class GameSessionController {
     public void pressCommitButton() {
         // When Question is not editable the answer will be committed
         if (!currentGameMode.isEditAble()) {
+            timer.stop();
+            achievableScore.stop();
             if (selectedAnswer != null && selectedAnswerButton != null) {
                 if (selectedAnswer.isCorrect()) {
                     selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
@@ -243,7 +254,16 @@ public class GameSessionController {
         commitButton.setVisible(true);
         nextButton.setVisible(false);
         stopBlinkingSelectedAnswerButton();
-        freshUpQuestionLabels();
+        refreshAnswerView();
+
+        if (currentGameMode.isTimerVisible()){
+            currentGameMode.resetTimer();
+            startTimer();
+        }
+
+        if (currentGameMode.isScoreVisible()){
+            startAchievableScoreCountDown();
+        }
         nextState = false;
     }
 
@@ -284,20 +304,24 @@ public class GameSessionController {
     // functions for timer
     public void setTimeVisible(boolean hasTimer) {
         timeLabel.visibleProperty().set(hasTimer);
-        startTimer();
-
+        if (hasTimer) {
+            currentGameMode.resetTimer();
+            startTimer();
+        }
     }
 
     private void startTimer(){
-        secondsRemaining = currentGameMode.getTimeDurationInSeconds();
-
         timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 updateTimerLabel();
-                secondsRemaining--;
+                if (currentGameMode.getReadingSecondsRemaining() != 0){
+                    currentGameMode.setReadingSecondsRemaining(currentGameMode.getReadingSecondsRemaining() - 1);
+                } else {
+                    currentGameMode.setAnswerSecondsRemaining(currentGameMode.getAnswerSecondsRemaining() - 1);
+                }
 
-                if (secondsRemaining < 0) {
+                if (currentGameMode.getAnswerSecondsRemaining() <= 0) {
                     timer.stop();
                     handleTimerEnd();
                 }
@@ -309,13 +333,38 @@ public class GameSessionController {
     }
 
     private void updateTimerLabel() {
-        int minutes = secondsRemaining / 60;
-        int seconds = secondsRemaining % 60;
-        timeLabel.setText(String.format("Time: %02d:%02d", minutes, seconds));
+        int minutes = 0;
+        int seconds = 0;
+        String timeLabelText;
+
+        if (currentGameMode.getReadingSecondsRemaining() != 0){
+            minutes = currentGameMode.getReadingSecondsRemaining() / 60;
+            seconds = currentGameMode.getReadingSecondsRemaining() % 60;
+            timeLabelText = "Time to read";
+        } else {
+            minutes = currentGameMode.getAnswerSecondsRemaining() / 60;
+            seconds = currentGameMode.getAnswerSecondsRemaining() % 60;
+            timeLabelText = "Time to answer";
+        }
+
+        timeLabel.setText(String.format(timeLabelText + ": %02d:%02d", minutes, seconds));
     }
 
     private void handleTimerEnd() {
-        timeLabel.setText("time is over!");
+        timeLabel.setText("Time over. No additional points.");
+    }
+
+    //achievable score
+    private void startAchievableScoreCountDown(){
+        achievableScore = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                achievableScoreLabel.setText("achievable Score: " + currentGameMode.calculateScore());
+            }
+        }));
+
+        achievableScore.setCycleCount(Timeline.INDEFINITE);
+        achievableScore.play();
     }
 
     // Setter
@@ -331,9 +380,12 @@ public class GameSessionController {
         fiftyFiftyJokerButton.setVisible(currentGameMode.areJokersAvailable());
     }
 
-    public void setScoreLabelsVisible() {
-        totalScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
-        achievableScoreLabel.visibleProperty().set(currentGameMode.isScoreVisible());
+    public void setScoreLabelsVisible(boolean hasScoreLabels) {
+            totalScoreLabel.visibleProperty().set(hasScoreLabels);
+            achievableScoreLabel.visibleProperty().set(hasScoreLabels);
+            if (hasScoreLabels) {
+                startAchievableScoreCountDown();
+            }
     }
 
 
