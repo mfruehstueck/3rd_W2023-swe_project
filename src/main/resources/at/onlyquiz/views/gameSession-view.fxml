@@ -212,17 +212,28 @@
             </GridPane>
          </children>
       </HBox>
-      <BarChart fx:id="votingResultsChart" legendVisible="false" prefHeight="381.0" prefWidth="640.0" style="-fx-region-background: blue;" GridPane.columnIndex="1">
-        <xAxis>
-          <CategoryAxis animated="false" prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
-               <tickLabelFont>
-                  <Font size="15.0" />
-               </tickLabelFont></NumberAxis>
-        </yAxis>
-      </BarChart>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <BarChart fx:id="votingResultsChart" legendVisible="false" prefHeight="381.0" prefWidth="640.0" style="-fx-region-background: blue;">
+              <xAxis>
+                <CategoryAxis animated="false" prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
+                     <tickLabelFont>
+                        <Font size="15.0" />
+                     </tickLabelFont>
+                  </NumberAxis>
+              </yAxis>
+            </BarChart>
+         </children>
+      </GridPane>
     </children>
     <stylesheets>
         <URL value="@../styles/standard/general.css" />
