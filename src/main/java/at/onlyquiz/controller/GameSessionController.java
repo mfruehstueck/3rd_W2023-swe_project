@@ -11,6 +11,8 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -20,6 +22,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class GameSessionController {
+
 
     private GameMode currentGameMode;
     private Answer selectedAnswer;
@@ -40,6 +43,8 @@ public class GameSessionController {
     private Button answerAButton, answerBButton, answerCButton, answerDButton;
     @FXML
     private Button commitButton, nextButton, endButton;
+    @FXML
+    public BarChart<String, Integer> votingResultsChart;
     private Timeline timer;
     private int secondsRemaining;
 
@@ -55,6 +60,14 @@ public class GameSessionController {
             baseContainer.getStylesheets().removeAll();
             baseContainer.getStylesheets().add(colorBlindPath);
         }
+
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        series.getData().add(new XYChart.Data<>("Answer A", 20));
+        series.getData().add(new XYChart.Data<>("Answer B", 30));
+        series.getData().add(new XYChart.Data<>("Answer C", 40));
+        series.getData().add(new XYChart.Data<>("Answer D", 10));
+
+        votingResultsChart.getData().add(series);
 
         setJokersAvailability();
         setScoreLabelsVisible();

@@ -2,8 +2,10 @@
 
 <?import java.net.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane fx:id="baseContainer" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionController">
 
@@ -198,6 +200,17 @@
             </GridPane>
          </children>
       </HBox>
+      <BarChart fx:id="votingResultsChart" prefHeight="381.0" prefWidth="640.0" GridPane.columnIndex="1">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis autoRanging="false" label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
+               <tickLabelFont>
+                  <Font size="15.0" />
+               </tickLabelFont></NumberAxis>
+        </yAxis>
+      </BarChart>
     </children>
     <stylesheets>
         <URL value="@../styles/standard/general.css" />
