@@ -14,7 +14,11 @@ import java.util.List;
 import static at.onlyquiz.util.Configuration.DEFAULT_CSV_HEADEREND_POSITION;
 
 public class CSV_Reader {
-    static public String[] get_line_by_lineNumber(Path csvPath, int lineNumber) throws IOException, CsvException { return get_csvLines_all(csvPath).get(lineNumber); }
+
+    //TODO Manuel -> the first two question in the question file get ignored. why?
+    static public String[] get_line_by_lineNumber(Path csvPath, int lineNumber) throws IOException, CsvException {
+        return get_csvLines_all(csvPath).get(lineNumber);
+    }
     static public List<String[]> get_lines_bulk(Path csvPath, List<Integer> lineNumbers) throws IOException, CsvException {
         List<String[]> lines_all = get_csvLines_all(csvPath);
         List<String[]> lines_bulk = new ArrayList<>();

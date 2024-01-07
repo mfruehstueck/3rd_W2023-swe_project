@@ -2,12 +2,14 @@ package at.onlyquiz.util;
 
 import at.onlyquiz.model.joker.Joker;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JokerQueue {
     List<Joker> queue;
 
     public JokerQueue() {
+        queue = new ArrayList<>();
     }
 
     public void add(Joker joker){

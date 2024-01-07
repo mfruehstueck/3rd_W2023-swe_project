@@ -29,6 +29,7 @@ public class QuestionDictionary {
     public static List<GameQuestion> get_Questions(List<String> questionnaireFileNames, Difficulty difficulty, int amount) {
         List<GameQuestion> questions = new ArrayList<>();
         List<Integer> current_lineNumbers;
+        List<Integer> selectedRandomLineNumbers = new ArrayList<>();
         HashMap<Integer, List<Integer>> current_lineNumbersByTimesSelected;
         GameQuestion currentGameQuestion;
         Random random = new Random();
@@ -51,22 +52,25 @@ public class QuestionDictionary {
             do {
                 current_lineNumbers = current_lineNumbersByTimesSelected.get(current_timesSelected);
                 current_timesSelected++;
-            } while (current_lineNumbers == null);
+            } while (current_lineNumbers == null || current_lineNumbers.isEmpty());
+            //TODO Manuel fix this. There can be 0 question of one difficulty in a questionnaire
 
             randomLineNumber = random.nextInt(0, current_lineNumbers.size());
 
             try {
-                current_line = CSV_Reader.get_line_by_lineNumber(pathOfQuestionnaireFile, randomLineNumber);
+                current_line = CSV_Reader.get_line_by_lineNumber(pathOfQuestionnaireFile, current_lineNumbers.get(randomLineNumber));
 
-                currentGameQuestion = new GameQuestion(randomLineNumber, current_line);
+                currentGameQuestion = new GameQuestion(current_lineNumbers.get(randomLineNumber), current_line);
                 currentGameQuestion.incrementTimesSelected();
 
-                CSV_Writer.update_line(pathOfQuestionnaireFile, randomLineNumber, currentGameQuestion.getCsvLine());
+                CSV_Writer.update_line(pathOfQuestionnaireFile, current_lineNumbers.get(randomLineNumber), currentGameQuestion.getCsvLine());
 
                 questions.add(currentGameQuestion);
             } catch (IOException | CsvException e) {
                 throw new RuntimeException(e);
             }
+            //TODO remove this init and find a solution to not get the same questions twice
+            init();
         }
 
         return questions;

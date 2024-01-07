@@ -3,7 +3,6 @@ package at.onlyquiz.controller;
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.Controllers;
 import at.onlyquiz.gameplay.GameMode;
-import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.util.GeneralSettings;
 import javafx.animation.KeyFrame;
@@ -18,9 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
-import java.util.List;
 
 public class GameSessionController {
 
@@ -105,6 +102,7 @@ public class GameSessionController {
         button.getStyleClass().removeAll("answer-button-right");
         button.getStyleClass().add("answer-button");
         button.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getAnswer());
+        button.setVisible(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).isVisible());
     }
 
 
@@ -149,9 +147,8 @@ public class GameSessionController {
 
     public void useFiftyFiftyJoker() {
         if (!currentGameMode.getFiftyFiftyJokers().isEmpty()) {
-            FiftyFiftyJoker joker = (FiftyFiftyJoker) currentGameMode.getFiftyFiftyJokers().pop();
-            joker.performAction(currentGameMode.getCurrentQuestion(),
-                    List.of(answerAButton, answerBButton, answerCButton, answerDButton));
+            currentGameMode.getFiftyFiftyJokers().pop().use(currentGameMode.getCurrentQuestion());
+            freshUpQuestionLabels();
         }
     }
 
