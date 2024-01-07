@@ -123,7 +123,7 @@
                             </rowConstraints>
                             <children>
                                 <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="question-textField" text="QuestionLabel" GridPane.hgrow="ALWAYS" />
-                        <TextField fx:id="questionTextField" promptText="Type your Question here!" styleClass="question-textField" />
+                        <TextFlow fx:id="questionTextField" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" />
                             </children>
                         </GridPane>
                     </children>

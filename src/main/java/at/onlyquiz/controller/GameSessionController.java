@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -34,7 +36,9 @@ public class GameSessionController {
     private GridPane baseContainer;
 
     @FXML
-    private TextField questionTextField, answerATextField, answerBTextField, answerCTextField, answerDTextField;
+    private TextField answerATextField, answerBTextField, answerCTextField, answerDTextField;
+    @FXML
+    private TextFlow questionTextField;
 
     @FXML
     private Button fiftyFiftyJokerButton, audienceJokerButton, chatJokerButton;
@@ -132,7 +136,7 @@ public class GameSessionController {
 
     private void freshUpTextFields() {
         if (!currentGameMode.getCurrentQuestion().getQuestion().isEmpty()) {
-            questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
+            questionTextField = new TextFlow(new Text(currentGameMode.getCurrentQuestion().getQuestion()));
         }
         setUpTextField(answerATextField, 0);
         setUpTextField(answerBTextField, 1);
