@@ -15,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -106,7 +105,7 @@ public class GameSessionController {
         button.getStyleClass().removeAll("answer-button-wrong");
         button.getStyleClass().removeAll("answer-button-right");
         button.getStyleClass().add("answer-button");
-        button.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getValue());
+        button.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getAnswer());
     }
 
 
@@ -141,8 +140,8 @@ public class GameSessionController {
     }
 
     private void setUpTextField(TextField textField, int index) {
-        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getValue().isEmpty()) {
-            textField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getValue());
+        if (!currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getAnswer().isEmpty()) {
+            textField.setText(currentGameMode.getCurrentQuestion().getSpecificAnswer(index).getAnswer());
         }
     }
 

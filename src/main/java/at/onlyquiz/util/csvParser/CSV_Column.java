@@ -1,7 +1,6 @@
 package at.onlyquiz.util.csvParser;
 
 public enum CSV_Column {
-    ID,
     TIMES_SELECTED,
     QUESTION,
     DIFFICULTY,

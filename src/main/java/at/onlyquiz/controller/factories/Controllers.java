@@ -1,6 +1,7 @@
 package at.onlyquiz.controller.factories;
 
 public enum Controllers {
+//    at/onlyquiz/views/menu-view.fxml
     MENU_VIEW("/at/onlyquiz/views/menu-view.fxml"),
     GENERAL_SETTINGS_VIEW("/at/onlyquiz/views/generalSettings-view.fxml"),
     GAME_SESSION_VIEW("/at/onlyquiz/views/gameSession-view.fxml"),

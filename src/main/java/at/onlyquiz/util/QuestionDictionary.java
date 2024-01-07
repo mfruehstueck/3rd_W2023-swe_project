@@ -1,56 +1,69 @@
 package at.onlyquiz.util;
 
-import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
-import at.onlyquiz.util.csvParser.CSV_Column;
 import at.onlyquiz.util.csvParser.CSV_Reader;
+import at.onlyquiz.util.csvParser.CSV_Writer;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Stream;
 
-import static at.onlyquiz.util.Configuration.DEFAULT_PATH_QUESTIONNARES;
+import static at.onlyquiz.util.Configuration.DEFAULT_BASEPATH_QUESTIONNARES;
 
 public class QuestionDictionary {
     //N: HashMap: Difficulty, CsvFile, TimesSelected, LineNumber
-    private static final HashMap<Difficulty, HashMap<Path, HashMap<Integer, List<Integer>>>> dictionary;
-    private static final List<Path> questionnaireFiles;
+    private static HashMap<Difficulty, HashMap<Path, HashMap<Integer, List<Integer>>>> dictionary;
+    private static HashMap<String, Path> questionnaireFiles;
 
     //N: read csv-files on app start
-    static {
+    public static void init() {
         questionnaireFiles = get_ListOfQuestionnaireFiles();
         dictionary = readQuestionnaireFiles();
-//        System.out.println("questionnaireFiles = " + questionnaireFiles);
-//        System.out.println(get_Questions(Difficulty.EASY, 5));
-        System.out.println(dictionary);
     }
 
-    public static List<GameQuestion> get_Questions(Difficulty difficulty, int amount) {
+    public static List<GameQuestion> get_Questions(List<String> questionnaireFileNames, Difficulty difficulty, int amount) {
         List<GameQuestion> questions = new ArrayList<>();
-        List<Answer> answers;
-        String[] current_line;
+        List<Integer> current_lineNumbers;
+        HashMap<Integer, List<Integer>> current_lineNumbersByTimesSelected;
+        GameQuestion currentGameQuestion;
         Random random = new Random();
         int randomFileID;
-        int randomLineID;
+        int randomLineNumber;
+        int current_timesSelected;
+        Path pathOfQuestionnaireFile;
+        String[] current_line;
 
         for (int i = 0; i < amount; i++) {
-            randomFileID = random.nextInt(0, questionnaireFiles.size());
-            randomLineID = random.nextInt(0, dictionary.get(difficulty).get(get_pathOfQuestionnaireFile_byID(randomFileID)).get(0).size());
+            randomFileID = random.nextInt(0, questionnaireFileNames.size());
+            pathOfQuestionnaireFile = questionnaireFiles.get(questionnaireFileNames.get(randomFileID));
+            current_lineNumbersByTimesSelected = dictionary.get(difficulty).get(pathOfQuestionnaireFile);
+            current_timesSelected = 0;
+
+            if (current_lineNumbersByTimesSelected == null) {
+                i--;
+                continue;
+            }
+            do {
+                current_lineNumbers = current_lineNumbersByTimesSelected.get(current_timesSelected);
+                current_timesSelected++;
+            } while (current_lineNumbers == null);
+
+            randomLineNumber = random.nextInt(0, current_lineNumbers.size());
 
             try {
-                answers = new ArrayList<>();
+                current_line = CSV_Reader.get_line_by_lineNumber(pathOfQuestionnaireFile, randomLineNumber);
 
-                current_line = CSV_Reader.get_line_by_lineNumber(get_pathOfQuestionnaireFile_byID(randomFileID), randomLineID);
-                answers.add(new Answer(current_line[CSV_Column.CORRECT_ANSWER.ordinal()], true));
-                answers.add(new Answer(current_line[CSV_Column.WRONG_ANSWER_1.ordinal()], false));
-                answers.add(new Answer(current_line[CSV_Column.WRONG_ANSWER_2.ordinal()], false));
-                answers.add(new Answer(current_line[CSV_Column.WRONG_ANSWER_3.ordinal()], false));
+                currentGameQuestion = new GameQuestion(randomLineNumber, current_line);
+                currentGameQuestion.incrementTimesSelected();
 
-                questions.add(new GameQuestion(current_line[CSV_Column.QUESTION.ordinal()], answers, Difficulty.valueOf(current_line[CSV_Column.DIFFICULTY.ordinal()])));
+                CSV_Writer.update_line(pathOfQuestionnaireFile, randomLineNumber, currentGameQuestion.getCsvLine());
+
+                questions.add(currentGameQuestion);
             } catch (IOException | CsvException e) {
                 throw new RuntimeException(e);
             }
@@ -59,30 +72,69 @@ public class QuestionDictionary {
         return questions;
     }
 
-    public static List<Path> get_QuestionnaireFiles() { return questionnaireFiles; }
-    public static Path get_pathOfQuestionnaireFile_byID(int position) { return questionnaireFiles.get(position); }
+//    public static void update_questions_bulk(Path csvPath, List<GameQuestion> questions) {
+//        HashMap<Integer, String[]> csvLines = new HashMap<>();
+//
+//        for (GameQuestion q : questions) { csvLines.put(q.getLineNumber(), q.getCsvLine()); }
+//
+//        try {
+//            CSV_Writer.update_lines_bulk(csvPath, csvLines);
+//        } catch (IOException | CsvException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-    private static List<Path> get_ListOfQuestionnaireFiles() {
+    public static HashMap<String, Path> get_QuestionnaireFiles() { return questionnaireFiles; }
+    private static Path get_pathOfQuestionnaireFile_byID(int position) { return questionnaireFiles.get(position); }
+
+    private static HashMap<String, Path> get_ListOfQuestionnaireFiles() {
+        HashMap<String, Path> csvPaths = new HashMap<>();
+        List<Path> pathList;
+
         try {
-            File[] csvFiles_all_array = Objects.requireNonNull(new File(DEFAULT_PATH_QUESTIONNARES.toString()).listFiles());
-            return Stream.of(csvFiles_all_array)
+            File[] csvFiles_all_array = Objects.requireNonNull(new File(DEFAULT_BASEPATH_QUESTIONNARES.toString()).listFiles());
+            pathList = Stream.of(csvFiles_all_array)
                     .filter(file -> !file.isDirectory())
                     .map(File::getPath)
                     .map(Path::of)
                     .toList();
+            for (Path p : pathList) { csvPaths.put(p.getFileName().toString().split("\\.")[0], p); }
+            return csvPaths;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static Path get_pathOfQuestionnaireFile(String csvPath) { return null; }
+    public static void create_questionnaire(String nameOfQuestionnaire, List<GameQuestion> gameQuestions) {
+        Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + "\\" + nameOfQuestionnaire + ".csv");
+        List<String[]> csvLines = new ArrayList<>();
+
+        if (!Files.exists(csvPath)) {
+            try {
+                Files.createFile(csvPath);
+                questionnaireFiles.put(nameOfQuestionnaire, csvPath);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (GameQuestion gameQuestion : gameQuestions) { csvLines.add(gameQuestion.getCsvLine()); }
+
+        try {
+            CSV_Writer.append_lines(csvPath, csvLines);
+        } catch (IOException | CsvException e) {
+            throw new RuntimeException(e);
+        } finally {
+            init();
+        }
+    }
 
     private static HashMap<Difficulty, HashMap<Path, HashMap<Integer, List<Integer>>>> readQuestionnaireFiles() {
         HashMap<Difficulty, HashMap<Path, HashMap<Integer, List<Integer>>>> dictionary = new HashMap<>();
         HashMap<Path, HashMap<Integer, List<Integer>>> lineNumbers_by_csvPath;
         HashMap<Difficulty, HashMap<Integer, List<Integer>>> lineNumbers_by_difficulty;
 
-        for (Path csvPath : questionnaireFiles) {
+        for (Path csvPath : questionnaireFiles.values()) {
             try {
                 lineNumbers_by_difficulty = CSV_Reader.get_lineNumbers_all_by_timesSelected(csvPath);
                 for (Difficulty d : lineNumbers_by_difficulty.keySet()) {
@@ -99,13 +151,5 @@ public class QuestionDictionary {
         }
 
         return dictionary;
-    }
-
-    public static GameQuestion read_line_in_csv() {
-        return null;
-    }
-
-    private static GameQuestion getGameQuestionFromFile() {
-        return null;
     }
 }
