@@ -21,6 +21,7 @@ public class DefaultMode extends GameMode {
 
         //set up jokers;
         fiftyFiftyJokers.add(new FiftyFiftyJoker());
+        audienceJokers.add(new AudienceJoker());
 
         List<String> testQuestionnaire = new ArrayList<>();
         testQuestionnaire.add("test_testQuestions");

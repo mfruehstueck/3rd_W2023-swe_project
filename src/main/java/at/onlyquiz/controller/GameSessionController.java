@@ -61,14 +61,6 @@ public class GameSessionController {
             baseContainer.getStylesheets().add(colorBlindPath);
         }
 
-        XYChart.Series<String, Integer> series = new XYChart.Series<>();
-        series.getData().add(new XYChart.Data<>("Answer A", 20));
-        series.getData().add(new XYChart.Data<>("Answer B", 30));
-        series.getData().add(new XYChart.Data<>("Answer C", 40));
-        series.getData().add(new XYChart.Data<>("Answer D", 10));
-
-        votingResultsChart.getData().add(series);
-
         setJokersAvailability();
         setScoreLabelsVisible();
         setTimeVisible(currentGameMode.isTimerVisible());
