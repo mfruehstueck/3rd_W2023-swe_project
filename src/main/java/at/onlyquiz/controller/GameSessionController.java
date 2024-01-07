@@ -43,8 +43,6 @@ public class GameSessionController {
     private Button answerAButton, answerBButton, answerCButton, answerDButton;
     @FXML
     private Button commitButton, nextButton, endButton;
-
-    private int questionCounter = 0;
     private Timeline timer;
     private int secondsRemaining;
 
@@ -57,7 +55,6 @@ public class GameSessionController {
     private void initialize() {
         if (GeneralSettings.isColorBlind()){
             String colorBlindPath = String.valueOf(getClass().getResource("/at/onlyquiz/styles/colorBlind/colorBlindMode.css"));
-            System.out.println(colorBlindPath);
             baseContainer.getStylesheets().removeAll();
             baseContainer.getStylesheets().add(colorBlindPath);
         }
@@ -95,7 +92,7 @@ public class GameSessionController {
     }
 
     public void freshUpQuestionLabels() {
-        questionCounterLabel.setText("Question number: " + questionCounter);
+        questionCounterLabel.setText("Question number: " + currentGameMode.getQuestionCounter());
         questionLabel.setText(currentGameMode.getCurrentQuestion().getQuestion());
         setUpAnswerButtonText(answerAButton, 0);
         setUpAnswerButtonText(answerBButton, 1);
@@ -220,7 +217,6 @@ public class GameSessionController {
                 if (currentGameMode.isFinished()) {
                     endButton.setVisible(true);
                 } else {
-                    questionCounter += 1;
                     nextButton.setVisible(true);
                 }
 

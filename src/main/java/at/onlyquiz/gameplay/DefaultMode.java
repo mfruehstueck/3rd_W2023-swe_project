@@ -14,6 +14,8 @@ public class DefaultMode extends GameMode {
         timerVisible = true;
         timeDurationInSeconds = 5;
 
+        questionCounter = 0;
+
         createTestQuestions();
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();
@@ -28,7 +30,10 @@ public class DefaultMode extends GameMode {
                 finished = true;
             } else {
                 currentQuestion = popQuestionOutOfSet();
+                questionCounter += 1;
             }
+        } else {
+            finished = true;
         }
     }
 

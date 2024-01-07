@@ -19,7 +19,6 @@ public abstract class GameMode {
     boolean finished = false;
     int timeDurationInSeconds;
 
-
     public abstract void confirmAnswer(boolean isCorrect);
 
     public GameQuestion popQuestionOutOfSet(){
@@ -79,5 +78,9 @@ public abstract class GameMode {
 
     public boolean isFinished() {
         return finished;
+    }
+
+    public Integer getQuestionCounter() {
+        return questionCounter;
     }
 }
