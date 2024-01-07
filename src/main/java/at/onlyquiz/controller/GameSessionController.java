@@ -59,7 +59,7 @@ public class GameSessionController {
             baseContainer.getStylesheets().add(colorBlindPath);
         }
 
-        setJokersAvailability();
+        setJokersAvailability(currentGameMode.areJokersAvailable());
         setScoreLabelsVisible(currentGameMode.isScoreVisible());
         setTimeVisible(currentGameMode.isTimerVisible());
 
@@ -153,6 +153,18 @@ public class GameSessionController {
         freshUpQuestionLabels();
     }
 
+    private void refreshJokerButtons(){
+        if (currentGameMode.getFiftyFiftyJokers().isEmpty()){
+            fiftyFiftyJokerButton.disableProperty().set(true);
+        }
+        if (currentGameMode.getAudienceJokers().isEmpty()){
+            audienceJokerButton.disableProperty().set(true);
+        }
+        if (currentGameMode.getChatJokers().isEmpty()){
+            chatJokerButton.disableProperty().set(true);
+        }
+    }
+
     //Basic functions for UI
 
     public void useFiftyFiftyJoker() {
@@ -161,6 +173,7 @@ public class GameSessionController {
             currentGameMode.setJokerUsed(true);
 
             refreshAnswerView();
+            refreshJokerButtons();
         }
     }
 
@@ -171,13 +184,15 @@ public class GameSessionController {
             currentGameMode.setJokerUsed(true);
 
             XYChart.Series<String, Double> series = new XYChart.Series<>();
-            series.getData().add(new XYChart.Data<>(answerAButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(0).getVotingValue()));
-            series.getData().add(new XYChart.Data<>(answerBButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(1).getVotingValue()));
-            series.getData().add(new XYChart.Data<>(answerCButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(2).getVotingValue()));
-            series.getData().add(new XYChart.Data<>(answerDButton.getText(), currentGameMode.getCurrentQuestion().getSpecificAnswer(3).getVotingValue()));
-
+            for (Answer answer : currentGameMode.getCurrentQuestion().getAnswers()){
+                if (answer.isVisible()){
+                    series.getData().add(new XYChart.Data<>(answer.getAnswer(), answer.getVotingValue()));
+                }
+            }
             votingResultsChart.getData().add(series);
             votingResultsChart.setVisible(true);
+
+            refreshJokerButtons();
         }
     }
 
@@ -185,6 +200,7 @@ public class GameSessionController {
         if (!currentGameMode.getChatJokers().isEmpty()) {
             currentGameMode.getChatJokers().pop().use(currentGameMode.getCurrentQuestion());
             currentGameMode.setJokerUsed(true);
+            refreshJokerButtons();
         }
     }
 
@@ -374,10 +390,13 @@ public class GameSessionController {
         initialize();
     }
 
-    public void setJokersAvailability() {
-        audienceJokerButton.setVisible(currentGameMode.areJokersAvailable());
-        chatJokerButton.setVisible(currentGameMode.areJokersAvailable());
-        fiftyFiftyJokerButton.setVisible(currentGameMode.areJokersAvailable());
+    public void setJokersAvailability(boolean hasJokers) {
+        audienceJokerButton.setVisible(hasJokers);
+        chatJokerButton.setVisible(hasJokers);
+        fiftyFiftyJokerButton.setVisible(hasJokers);
+        if (hasJokers){
+            refreshJokerButtons();
+        }
     }
 
     public void setScoreLabelsVisible(boolean hasScoreLabels) {

@@ -212,9 +212,9 @@
             </GridPane>
          </children>
       </HBox>
-      <BarChart fx:id="votingResultsChart" prefHeight="381.0" prefWidth="640.0" GridPane.columnIndex="1">
+      <BarChart fx:id="votingResultsChart" legendVisible="false" prefHeight="381.0" prefWidth="640.0" style="-fx-region-background: blue;" GridPane.columnIndex="1">
         <xAxis>
-          <CategoryAxis prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
+          <CategoryAxis animated="false" prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
         </xAxis>
         <yAxis>
           <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
