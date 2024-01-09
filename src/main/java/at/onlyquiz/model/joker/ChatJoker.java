@@ -14,6 +14,7 @@ import java.util.List;
 public class ChatJoker extends Joker {
     private static final String API_URL = "https://api.openai.com/v1/engines/davinci/completions";
     private static final String API_KEY = "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";
+    // TODO 6 Strings:  1 for the bot message and 4 are the reply options, the conversation should be saved and showed with line breaks
 
     @Override
     public void use(GameQuestion question) {
