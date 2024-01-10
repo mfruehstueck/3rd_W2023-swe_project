@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      >
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<VBox fx:id="container" alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="background"
+      xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="at.onlyquiz.controller.QuestionnaireController">
+    <HBox alignment="CENTER" spacing="32.0">
+        <ListView fx:id="ui_questionnaire_listView" onMouseClicked="#onClick_ui_questionnaire_listView_listItem" HBox.hgrow="SOMETIMES"/>
+        <ListView fx:id="ui_question_listView" onMouseClicked="#onClick_ui_question_listView_listItem" HBox.hgrow="SOMETIMES"/>
+        <VBox.margin>
+            <Insets left="16.0" right="16.0"/>
+        </VBox.margin>
+    </HBox>
 
+    <stylesheets>
+        <URL value="@../styles/standard/general.css"/>
+        <URL value="@../styles/standard/menu.css"/>
+    </stylesheets>
 </VBox>
