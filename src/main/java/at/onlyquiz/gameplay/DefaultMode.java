@@ -26,9 +26,9 @@ public class DefaultMode extends GameMode {
 
         List<String> testQuestionnaire = new ArrayList<>();
         testQuestionnaire.add("test_testQuestions");
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.EASY, 5));
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.MEDIUM, 5));
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.HARD, 5));
+        setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
+        setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
+        setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
 
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();

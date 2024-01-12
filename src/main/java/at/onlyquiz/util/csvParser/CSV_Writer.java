@@ -16,13 +16,13 @@ import java.util.List;
 import static at.debugtools.DebugTools.debugLine;
 
 public class CSV_Writer {
-    static public void update_line(Path csvPath, int lineNumber, String[] entry) throws IOException, CsvException {
+    static public void update_line(Path csvPath, int lineIdx, String[] entry) throws IOException, CsvException {
         List<String[]> csvLines_all = CSV_Reader.get_csvLines_all(csvPath);
         String[] current_csvLine;
 
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvPath.toString()))) {
             for (int i = 0; i < csvLines_all.size(); i++) {
-                current_csvLine = (i == lineNumber) ? entry : csvLines_all.get(i);
+                current_csvLine = (i == lineIdx) ? entry : csvLines_all.get(i);
                 writer.writeNext(current_csvLine);
             }
         }
