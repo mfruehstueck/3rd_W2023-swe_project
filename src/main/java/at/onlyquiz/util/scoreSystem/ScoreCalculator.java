@@ -22,6 +22,7 @@ public class ScoreCalculator {
 
     //TODO Ibrahim we need another score system for Endless-Mode
     public static int calculateEndlessModeScore(Difficulty difficulty, int timeTaken, boolean jokerUsed, int totalQuestionsAnswered){
-        return ScoreConstants.MAX_SCORE - (ScoreConstants.MAX_SCORE / totalQuestionsAnswered);
+        double score = ScoreConstants.MAX_SCORE  * (Math.exp((double) totalQuestionsAnswered / ScoreConstants.MAX_SCORE ) - 1);
+        return (int) Math.min(score, ScoreConstants.MAX_SCORE );
     }
 }
