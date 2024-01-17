@@ -21,7 +21,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class GameSessionController {
+public class GameSessionController extends BaseController{
 
 
     private GameMode currentGameMode;
@@ -31,7 +31,7 @@ public class GameSessionController {
     private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel, questionLabel;
 
     @FXML
-    private GridPane baseContainer;
+    private GridPane ui_container;
 
     @FXML
     private TextField answerATextField, answerBTextField, answerCTextField, answerDTextField;
@@ -57,8 +57,8 @@ public class GameSessionController {
     private void initialize() {
         if (GeneralSettings.isColorBlind()){
             String colorBlindPath = String.valueOf(getClass().getResource("/at/onlyquiz/styles/colorBlind/colorBlindMode.css"));
-            baseContainer.getStylesheets().removeAll();
-            baseContainer.getStylesheets().add(colorBlindPath);
+            ui_container.getStylesheets().removeAll();
+            ui_container.getStylesheets().add(colorBlindPath);
         }
 
         setJokersAvailability(currentGameMode.areJokersAvailable());
@@ -134,7 +134,7 @@ public class GameSessionController {
 
     private void freshUpTextFields() {
         if (!currentGameMode.getCurrentQuestion().getQuestion().isEmpty()) {
-            questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
+            questionTextField = new TextFlow(new Text(currentGameMode.getCurrentQuestion().getQuestion()));
         }
         setUpTextField(answerATextField, 0);
         setUpTextField(answerBTextField, 1);
@@ -290,13 +290,7 @@ public class GameSessionController {
     }
 
     public void pressStopButton() {
-        try {
-            Stage currentStage = (Stage) answerAButton.getScene().getWindow();
-            currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
-            currentStage.sizeToScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        set_view(get_stage(ui_container), View.MENU_VIEW);
     }
 
     private void blinkSelectedAnswerButton(Button button) {

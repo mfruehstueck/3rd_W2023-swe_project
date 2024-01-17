@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
+<?import javafx.scene.text.TextFlow?>
 <GridPane fx:id="ui_container" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background"
           xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="at.onlyquiz.controller.GameSessionController">
@@ -112,11 +113,11 @@
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" percentHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="142.0" minHeight="10.0" percentHeight="50.0" prefHeight="142.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="45.0" minHeight="10.0" percentHeight="20.0" prefHeight="34.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <HBox fx:id="questionBox" alignment="CENTER" styleClass="question-box" GridPane.hgrow="SOMETIMES">
+                <VBox fx:id="questionBox" alignment="CENTER" styleClass="question-box" GridPane.hgrow="SOMETIMES">
                     <children>
                         <GridPane alignment="CENTER" HBox.hgrow="ALWAYS">
                             <columnConstraints>
@@ -127,11 +128,11 @@
                             </rowConstraints>
                             <children>
                                 <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="question-textField" text="QuestionLabel" GridPane.hgrow="ALWAYS" />
-                        <TextFlow fx:id="questionTextField" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <TextFlow fx:id="questionTextField" lineSpacing="5.0" maxHeight="800.0" prefHeight="200.0" prefWidth="200.0" textAlignment="CENTER" />
                             </children>
                         </GridPane>
                     </children>
-                </HBox>
+                </VBox>
                 <GridPane alignment="CENTER" GridPane.rowIndex="1">
                     <columnConstraints>
                         <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="50.0" />

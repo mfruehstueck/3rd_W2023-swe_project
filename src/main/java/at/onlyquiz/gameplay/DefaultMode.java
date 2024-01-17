@@ -11,14 +11,14 @@ import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-  public DefaultMode() {
-    editAble = false;
-    scoreVisible = true;
-    timerVisible = true;
-    answerSecondsRemaining = 5;
-    totalScore = 0;
-    questionCounter = 0;
-    jokersAvailable = true;
+    public DefaultMode() {
+        editAble = false;
+        scoreVisible = true;
+        timerVisible = true;
+        answerSecondsRemaining = 5;
+        totalScore = 0;
+        questionCounter = 0;
+        jokersAvailable = true;
 
     //set up jokers;
     fiftyFiftyJokers.add(new FiftyFiftyJoker());
