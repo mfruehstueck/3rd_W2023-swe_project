@@ -14,27 +14,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GeneralSettingsController implements Initializable {
-    @FXML
-    public CheckBox colorBlindCheckBox;
-    @FXML
-    public Button backButton;
+  @FXML
+  public CheckBox colorBlindCheckBox;
+  @FXML
+  public Button backButton;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        colorBlindCheckBox.setSelected(GeneralSettings.isColorBlind());
-    }
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    colorBlindCheckBox.setSelected(GeneralSettings.isColorBlind());
+  }
 
-    public void pressColorBlindCheckbox() {
-        GeneralSettings.setColorBlind(colorBlindCheckBox.isSelected());
-    }
+  public void pressColorBlindCheckbox() {
+    GeneralSettings.setColorBlind(colorBlindCheckBox.isSelected());
+  }
 
-    public void pressBackButton() {
-        try {
-            Stage currentStage = (Stage) colorBlindCheckBox.getScene().getWindow();
-            currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
-            currentStage.sizeToScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+  public void pressBackButton() {
+    try {
+      Stage currentStage = (Stage) colorBlindCheckBox.getScene().getWindow();
+      currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
+      currentStage.sizeToScene();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
+  }
 }
