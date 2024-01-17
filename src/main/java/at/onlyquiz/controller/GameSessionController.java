@@ -1,7 +1,6 @@
 package at.onlyquiz.controller;
 
-import at.onlyquiz.controller.factories.ControllerFactory;
-import at.onlyquiz.controller.factories.Controllers;
+import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.util.GeneralSettings;
@@ -21,7 +20,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.IOException;
 
 public class GameSessionController {
 
@@ -136,7 +134,7 @@ public class GameSessionController {
 
     private void freshUpTextFields() {
         if (!currentGameMode.getCurrentQuestion().getQuestion().isEmpty()) {
-            questionTextField = new TextFlow(new Text(currentGameMode.getCurrentQuestion().getQuestion()));
+            questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
         }
         setUpTextField(answerATextField, 0);
         setUpTextField(answerBTextField, 1);
