@@ -8,22 +8,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class BaseController {
-    protected Stage stage;
+  protected Stage stage;
 
-    public void set_view(Stage stage, View view) {
-        try {
-            if (view == View.QUIT) {
-                stage.close();
-            } else {
-                stage.setScene(ControllerFactory.get_scene(view));
-                stage.sizeToScene();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+  public void set_view(Stage stage, View view) {
+    try {
+      if (view == View.QUIT) {
+        stage.close();
+      } else {
+        stage.setScene(ControllerFactory.get_scene(view));
+        stage.sizeToScene();
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
     }
+  }
 
-    public Stage get_stage(GridPane ui_container) {
-        return (Stage) ui_container.getScene().getWindow();
-    }
+  public Stage get_stage(GridPane ui_container) {
+    return (Stage) ui_container.getScene().getWindow();
+  }
 }

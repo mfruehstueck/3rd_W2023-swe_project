@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<GridPane fx:id="ui_container" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.QuestionnaireController">
+<?import java.net.URL?>
+<GridPane fx:id="ui_container" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background"
+          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="at.onlyquiz.controller.QuestionnaireController">
     <columnConstraints>
-        <ColumnConstraints percentWidth="50.0" />
-        <ColumnConstraints percentWidth="50.0" />
+        <ColumnConstraints percentWidth="50.0"/>
+        <ColumnConstraints percentWidth="50.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints percentHeight="20.0" />
-        <RowConstraints percentHeight="60.0" />
-        <RowConstraints percentHeight="20.0" />
+        <RowConstraints percentHeight="20.0"/>
+        <RowConstraints percentHeight="60.0"/>
+        <RowConstraints percentHeight="20.0"/>
     </rowConstraints>
 
     <VBox alignment="BOTTOM_LEFT" GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestionnaire_button" prefHeight="52.0" prefWidth="386.0" styleClass="back-button" text="End" />
+        <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false"
+                onAction="#onClick_ui_editQuestionnaire_button" prefHeight="52.0" prefWidth="386.0"
+                styleClass="back-button" text="End"/>
     </VBox>
-    <ListView fx:id="ui_questionnaire_listView" onMouseClicked="#onClick_ui_questionnaire_listView_listItem" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <ListView fx:id="ui_questionnaire_listView" onMouseClicked="#onClick_ui_questionnaire_listView_listItem"
+              GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
     <VBox alignment="BOTTOM_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
-        <Button fx:id="ui_editQuestion_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestion_button" prefHeight="25.0" prefWidth="189.0" styleClass="back-button" text="End" />
+        <Button fx:id="ui_editQuestion_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestion_button"
+                prefHeight="25.0" prefWidth="189.0" styleClass="back-button" text="End"/>
     </VBox>
-    <ListView fx:id="ui_question_listView" onMouseClicked="#onClick_ui_question_listView_listItem" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <ListView fx:id="ui_question_listView" onMouseClicked="#onClick_ui_question_listView_listItem"
+              GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-    <Button fx:id="ui_back_button" mnemonicParsing="false" onAction="#onClick_ui_back_button" prefHeight="25.0" prefWidth="189.0" styleClass="back-button" text="End" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Button fx:id="ui_back_button" mnemonicParsing="false" onAction="#onClick_ui_back_button" prefHeight="25.0"
+            prefWidth="189.0" styleClass="back-button" text="End" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     <stylesheets>
-        <URL value="@../styles/standard/general.css" />
-        <URL value="@../styles/standard/menu.css" />
+        <URL value="@../styles/standard/general.css"/>
+        <URL value="@../styles/standard/menu.css"/>
     </stylesheets>
 </GridPane>

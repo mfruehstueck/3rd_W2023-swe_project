@@ -11,20 +11,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class OnlyQuizApplication extends Application {
-    @Override
-    public void start(Stage stage) throws IOException {
-        QuestionDictionary.init();
+  @Override
+  public void start(Stage stage) throws IOException {
+    QuestionDictionary.init();
 
-        System.out.println(DebugTools.debugLine(new Throwable()));
-        Scene scene = ControllerFactory.get_scene(View.MENU_VIEW);
-        stage.setTitle("OnlyQuiz");
-        stage.setWidth(1280);
-        stage.setHeight(720);
-        stage.setScene(scene);
-        stage.show();
-    }
+    System.out.println(DebugTools.debugLine(new Throwable()));
+    Scene scene = ControllerFactory.get_scene(View.MENU_VIEW);
+    stage.setTitle("OnlyQuiz");
+    stage.setWidth(1280);
+    stage.setHeight(720);
+    stage.setScene(scene);
+    stage.show();
+  }
 
-    public static void main(String[] args) {
-        launch();
-    }
+  public static void main(String[] args) {
+    launch();
+  }
 }
