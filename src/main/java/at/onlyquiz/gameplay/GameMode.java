@@ -20,6 +20,8 @@ public abstract class GameMode {
   boolean finished = false;
   boolean jokerUsed = false;
   int answerSecondsRemaining, readingSecondsRemaining;
+  int indexInQuestionnaire = 0;
+
 
   public abstract void confirmAnswer(boolean isCorrect);
   public abstract int calculateScore();
@@ -48,6 +50,21 @@ public abstract class GameMode {
     answerSecondsRemaining = TimeConstants.ANSWERING_TIME_SEC;
   }
 
+  public void nextIndex(){
+    indexInQuestionnaire += (indexInQuestionnaire+1 < setOfQuestions.size()) ? 1 : 0;
+  }
+
+  public void previousIndex(){
+    indexInQuestionnaire -= (indexInQuestionnaire-1 >= 0) ? 1 : 0;
+  }
+
+  public int getIndexInQuestionnaire() {
+    return indexInQuestionnaire;
+  }
+
+  public void setIndexInQuestionnaire(int indexInQuestionnaire) {
+    this.indexInQuestionnaire = indexInQuestionnaire;
+  }
 
   public boolean isScoreVisible() {
     return scoreVisible;
