@@ -5,6 +5,7 @@ import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.CreationMode;
 import at.onlyquiz.gameplay.DefaultMode;
 import at.onlyquiz.gameplay.GameMode;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,23 +24,20 @@ public class GameSessionSettingController extends BaseController {
 
   public GameSessionSettingController() { }
 
-  public void pressDefaultModeButton() {
-    startingGameSession(new DefaultMode());
-  }
+    public void pressDefaultModeButton() {
+        startingGameSession(new DefaultMode());
+    }
 
-  public void pressEndlessModeButton() {
-    startingGameSession(new CreationMode());
-  }
+    public void pressEndlessModeButton() {
+        startingGameSession(new CreationMode());
+    }
 
-  public void pressTrainingModeButton() {
-  }
+    public void pressTrainingModeButton() {
+    }
 
   public void pressBackButton() { set_view(get_stage(ui_container), View.MENU_VIEW); }
 
   public void startingGameSession(GameMode gameMode) {
-//        GameSessionController gameSessionController = ControllerFactory.get_controller(View.GAME_SESSION_VIEW);
-//        gameSessionController.setCurrentGameMode(gameMode);
-//        set_view(get_stage(ui_container), View.GAME_SESSION_VIEW);
     try {
       Stage currentStage = (Stage) defaultModeButton.getScene().getWindow();
 
@@ -48,11 +46,11 @@ public class GameSessionSettingController extends BaseController {
       GameSessionController gameSessionController = fxmlLoader.getController();
       gameSessionController.setCurrentGameMode(gameMode);
 
-      currentStage.setScene(new Scene(parent));
-      currentStage.sizeToScene();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
+        currentStage.setScene(new Scene(parent));
+        currentStage.sizeToScene();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-  }
 
 }

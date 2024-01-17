@@ -17,15 +17,15 @@ public class MenuController extends BaseController implements Initializable {
 
   public MenuController() { }
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         /*
         if (GeneralSettings.isColorBlind()){
             container.getStylesheets().add(String.valueOf(getClass().getResource("/at/onlyquiz/styles/gameSession.css")));
             container.getStylesheets().removeAll(String.valueOf(getClass().getResource("/at/onlyquiz/styles/general.css")));
         }
         */
-  }
+    }
 
   public void pressPlayButton() { set_view(get_stage(ui_container), View.GAME_SESSION_SETTINGS); }
   public void pressQuestionnairesButton() { set_view(get_stage(ui_container), View.QUESTIONNAIRE_VIEW); }

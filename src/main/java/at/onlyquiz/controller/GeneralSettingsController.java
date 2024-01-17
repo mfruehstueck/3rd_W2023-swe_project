@@ -20,14 +20,14 @@ public class GeneralSettingsController extends BaseController implements Initial
   public GridPane ui_container;
   public GeneralSettingsController() { }
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-    colorBlindCheckBox.setSelected(GeneralSettings.isColorBlind());
-  }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        colorBlindCheckBox.setSelected(GeneralSettings.isColorBlind());
+    }
 
-  public void pressColorBlindCheckbox() {
-    GeneralSettings.setColorBlind(colorBlindCheckBox.isSelected());
-  }
+    public void pressColorBlindCheckbox() {
+        GeneralSettings.setColorBlind(colorBlindCheckBox.isSelected());
+    }
 
   public void pressBackButton() { set_view(get_stage(ui_container), View.MENU_VIEW); }
 }
