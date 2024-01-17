@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameQuestion {
-    private final Integer lineNumber;
+    private final Integer lineIdx;
     private Integer timesSelected;
     private String question;
     private List<Answer> answers;
@@ -16,12 +16,12 @@ public class GameQuestion {
     private boolean editable;
 
     public GameQuestion() {
-        this.lineNumber = -1;
+        this.lineIdx = -1;
         this.editable = true;
     }
 
     public GameQuestion(String question, List<Answer> answers, Difficulty difficulty) {
-        this.lineNumber = -1;
+        this.lineIdx = -1;
         this.timesSelected = 0;
         this.question = question;
         this.answers = answers;
@@ -29,8 +29,8 @@ public class GameQuestion {
         this.editable = false;
     }
 
-    public GameQuestion(Integer lineNumber, String[] csvLine) {
-        this.lineNumber = lineNumber;
+    public GameQuestion(Integer lineIdx, String[] csvLine) {
+        this.lineIdx = lineIdx;
         this.timesSelected = Integer.parseInt(csvLine[CSV_Column.TIMES_SELECTED.ordinal()]);
         this.question = csvLine[CSV_Column.QUESTION.ordinal()];
         this.answers = new ArrayList<>() {{
@@ -56,7 +56,7 @@ public class GameQuestion {
 
 
     //NSEC: getter
-    public Integer getLineNumber() { return lineNumber; }
+    public Integer getLineIdx() { return lineIdx; }
     public Integer getTimesSelected() { return timesSelected; }
     public String getQuestion() { return question; }
     public List<Answer> getAnswers() { return answers; }

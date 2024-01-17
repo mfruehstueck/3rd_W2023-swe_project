@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="796af099-c857-469b-ae12-fdcaefc4643f" name="Changes" comment="implemented basic questionnaire-view and controller with 2 listviews" />
+    <list id="2fa86e87-c6d9-496e-82e0-5921c7ca58c5" name="Changes by Admin" comment="Changes by Admin" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="readWrite_to_CSV" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/at/onlyquiz/gameplay/GameMode.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2Zlk6HshrwnchVHePWg9GQqswxU" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.OnlyQuiz.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
+    &quot;database.data.extractors.current.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;readWrite__to__CSV&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mfruehstueck/OneDrive/FHCampusWien/2nd_S2023/prog2/exercise4&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.General&quot;,
+    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/mfruehstueck/OneDrive/FHCampusWien/3rd_W2023/swe/project/onlyQuiz/target/classes/at/onlyquiz/questionnaires/testQuestions.csv&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MBGamesStudios\OneDrive\FHCampusWien\3rd_W2023\swe\project\onlyQuiz\src\main\resources\at\onlyquiz\questionnaires" />
+      <recent name="C:\Users\MBGamesStudios\OneDrive\FHCampusWien\3rd_W2023\swe\project\onlyQuiz\src\main\resources\at\onlyquiz\views" />
+      <recent name="C:\Users\MBGamesStudios\OneDrive\FHCampusWien\3rd_W2023\swe\project\onlyQuiz\src\main\resources\at\onlyquiz" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MBGamesStudios\OneDrive\FHCampusWien\3rd_W2023\swe\project\onlyQuiz\src\main\resources\at\onlyquiz\views" />
+      <recent name="C:\Users\MBGamesStudios\OneDrive\FHCampusWien\3rd_W2023\swe\project\onlyQuiz\src\main\resources\at\onlyquiz" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="at.onlyquiz" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="at.onlyquiz" />
+      <recent name="at.onlyquiz.onlyquiz" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="OnlyQuiz" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="at.onlyquiz.OnlyQuizApplication" />
+      <module name="onlyQuiz" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="at.onlyquiz.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="796af099-c857-469b-ae12-fdcaefc4643f" name="Changes" comment="" />
+      <created>1703003881153</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703003881153</updated>
+      <workItem from="1703003882381" duration="13661000" />
+      <workItem from="1703089004413" duration="984000" />
+      <workItem from="1703174381947" duration="3533000" />
+      <workItem from="1703618757970" duration="7287000" />
+      <workItem from="1703690209773" duration="28159000" />
+      <workItem from="1704284590312" duration="14351000" />
+      <workItem from="1704389153785" duration="5835000" />
+      <workItem from="1704398789360" duration="3065000" />
+      <workItem from="1704466811884" duration="644000" />
+      <workItem from="1704470779351" duration="3138000" />
+      <workItem from="1704633502876" duration="10506000" />
+      <workItem from="1704912283143" duration="113000" />
+    </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1703004194756</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703004194756</updated>
+    </task>
+    <task id="LOCAL-00002" summary="nothing works">
+      <created>1703010441043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703010441043</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Changes by Admin">
+      <created>1703010448490</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703010448490</updated>
+    </task>
+    <task id="LOCAL-00004" summary="first draft for csvReader and basic concept for csvWriter">
+      <created>1703018303063</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703018303063</updated>
+    </task>
+    <task id="LOCAL-00005" summary="implemented question reading">
+      <created>1704288476200</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1704288476200</updated>
+    </task>
+    <task id="LOCAL-00006" summary="implemented question writing">
+      <option name="closed" value="true" />
+      <created>1704638624692</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704638624692</updated>
+    </task>
+    <task id="LOCAL-00007" summary="implemented basic questionnaire-view and controller with 2 listviews">
+      <created>1704912380431</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704912380431</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/readWrite_to_CSV" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <MESSAGE value="nothing works" />
+    <MESSAGE value="Changes by Admin" />
+    <MESSAGE value="first draft for csvReader and basic concept for csvWriter" />
+    <MESSAGE value="implemented question reading" />
+    <MESSAGE value="implemented question writing" />
+    <MESSAGE value="implemented basic questionnaire-view and controller with 2 listviews" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented basic questionnaire-view and controller with 2 listviews" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
+          <option name="timeStamp" value="7" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/at/onlyquiz/util/csvParser/CSV_Writer.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="lines_all" />
+        <watch expression="csvPath" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

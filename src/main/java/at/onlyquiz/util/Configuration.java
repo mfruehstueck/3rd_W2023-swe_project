@@ -21,4 +21,5 @@ public class Configuration {
 
     public static final int DEFAULT_CSV_HEADEREND_POSITION = 1;
     public static final Character DEFAULT_CSV_SEPERATOR = ',';
+    public static final int MAX_TIMESELECTED = 2;
 }

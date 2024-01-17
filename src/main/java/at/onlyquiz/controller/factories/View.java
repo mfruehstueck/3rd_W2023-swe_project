@@ -1,6 +1,6 @@
 package at.onlyquiz.controller.factories;
 
-public enum Controllers {
+public enum View {
 //    at/onlyquiz/views/menu-view.fxml
     MENU_VIEW("/at/onlyquiz/views/menu-view.fxml"),
     GENERAL_SETTINGS_VIEW("/at/onlyquiz/views/generalSettings-view.fxml"),
@@ -11,7 +11,7 @@ public enum Controllers {
 
     private final String path;
 
-    Controllers(String path) {
+    View(String path) {
         this.path = path;
     }
 

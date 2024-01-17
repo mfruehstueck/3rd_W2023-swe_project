@@ -28,7 +28,6 @@ public class CSV_Reader {
       return lines_bulk;
    }
 
-
    //N: HashMap<Integer, Integer>(lineNumbers_by_selectedCounter) = selectedCounter, numberOfLinesWithSelectedCounter
    static public HashMap<Integer, HashMap<Difficulty, List<Integer>>> get_mapOf_lineIdxs_byTimesSelected(Path csvPath) throws IOException, CsvException {
       HashMap<Integer, HashMap<Difficulty, List<Integer>>> out_lineIdxs_all_byTimesSelected = new HashMap<>();
@@ -53,7 +52,6 @@ public class CSV_Reader {
       return out_lineIdxs_all_byTimesSelected;
    }
 
-   //TODO Manuel -> the first two question in the question file get ignored. why?
    static public List<String[]> get_csvLines_all(Path csvPath) throws IOException, CsvException {
       try (CSVReader csvReader = new CSVReader(Files.newBufferedReader(csvPath))) { return csvReader.readAll(); }
    }

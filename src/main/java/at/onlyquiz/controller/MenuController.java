@@ -1,21 +1,22 @@
 package at.onlyquiz.controller;
 
-import at.onlyquiz.controller.factories.ControllerFactory;
-import at.onlyquiz.controller.factories.Controllers;
-import at.onlyquiz.util.GeneralSettings;
+import at.onlyquiz.controller.factories.View;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
+public class MenuController extends BaseController implements Initializable {
     @FXML
     public Button playButton, questionnaireButton, settingsButton, quitButton;
-    public VBox container;
+    @FXML
+    public GridPane ui_container;
+
+    public MenuController() { }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -27,33 +28,8 @@ public class MenuController implements Initializable {
         */
     }
 
-    public void pressPlayButton() {
-        changeScene(Controllers.GAME_SESSION_SETTINGS);
-    }
-
-    public void pressQuestionnairesButton() {
-        changeScene(Controllers.QUESTIONNAIRE_VIEW);
-    }
-
-    public void pressSettingsButton() {
-        changeScene(Controllers.GENERAL_SETTINGS_VIEW);
-    }
-
-    public void pressQuitButton() {
-        changeScene(Controllers.QUIT);
-    }
-
-    private void changeScene(Controllers controller){
-        try {
-            Stage currentStage = (Stage) playButton.getScene().getWindow();
-            if (controller == Controllers.QUIT){
-                currentStage.close();
-            } else {
-                currentStage.setScene(ControllerFactory.getScene(controller));
-                currentStage.sizeToScene();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public void pressPlayButton() { set_view(get_stage(ui_container), View.GAME_SESSION_SETTINGS); }
+    public void pressQuestionnairesButton() { set_view(get_stage(ui_container), View.QUESTIONNAIRE_VIEW); }
+    public void pressSettingsButton() { set_view(get_stage(ui_container), View.GENERAL_SETTINGS_VIEW); }
+    public void pressQuitButton() { set_view(get_stage(ui_container), View.QUIT); }
 }
