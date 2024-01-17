@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 
 import static at.debugtools.DebugColors.*;
 
+@SuppressWarnings("ALL")
 public class DebugTools {
   public static String getFile(Throwable th, String color) { return color + th.getStackTrace()[0].getFileName() + ANSI_RESET; }
   public static String getClass(Throwable th, String color) { return color + th.getStackTrace()[0].getClassName() + ANSI_RESET; }

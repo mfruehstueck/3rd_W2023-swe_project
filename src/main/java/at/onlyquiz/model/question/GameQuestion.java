@@ -43,6 +43,8 @@ public class GameQuestion {
     this.editable = false;
   }
 
+  @SuppressWarnings("ALL")
+  //TODO(MFR): check if needed or delete
   public String[] getMemberNames() {
     Field[] members = this.getClass().getDeclaredFields();
     List<String> out = new ArrayList<>();

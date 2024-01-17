@@ -23,7 +23,5 @@ public class BaseController {
     }
   }
 
-  public Stage get_stage(GridPane ui_container) {
-    return (Stage) ui_container.getScene().getWindow();
-  }
+  public Stage get_stage(GridPane ui_container) { return stage = (Stage) ui_container.getScene().getWindow(); }
 }

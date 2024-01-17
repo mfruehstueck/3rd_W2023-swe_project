@@ -117,7 +117,6 @@ public class QuestionDictionary {
 
   //NSEC: instance getter
   public static HashMap<String, Path> get_QuestionnaireFiles() { return questionnaireFiles; }
-  private static Path get_pathOfQuestionnaireFile_byID(int position) { return questionnaireFiles.get(position); }
   public static HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> get_dictionary() { return dictionary; }
 
   private static HashMap<String, Path> get_ListOfQuestionnaireFiles() {

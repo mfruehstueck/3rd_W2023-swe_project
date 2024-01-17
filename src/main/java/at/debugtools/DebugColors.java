@@ -1,5 +1,6 @@
 package at.debugtools;
 
+@SuppressWarnings("ALL")
 public abstract class DebugColors {
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_BLACK = "\u001B[30m";
