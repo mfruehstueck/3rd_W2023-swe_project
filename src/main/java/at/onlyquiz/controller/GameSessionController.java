@@ -55,8 +55,8 @@ public class GameSessionController extends BaseController {
 
         if (GeneralSettings.isColorBlind()){
             String colorBlindPath = String.valueOf(getClass().getResource("/at/onlyquiz/styles/colorBlind/colorBlindMode.css"));
-            baseContainer.getStylesheets().removeAll();
-            baseContainer.getStylesheets().add(colorBlindPath);
+          ui_container.getStylesheets().removeAll();
+          ui_container.getStylesheets().add(colorBlindPath);
         }
 
         setJokersAvailability(currentGameMode.areJokersAvailable());
