@@ -27,7 +27,7 @@ public class QuestionDictionary {
     questionnaireFiles = get_ListOfQuestionnaireFiles();
     dictionary = read_questionnaireFiles();
   }
-  public static List<String> get_questions(Path csvPath) {
+  public static List<String> get_questionNames(Path csvPath) {
     List<String> out_questions = new ArrayList<>();
     try {
       List<String[]> csvLines = CSV_Reader.get_csvLines_all(csvPath);
@@ -39,6 +39,22 @@ public class QuestionDictionary {
 
     return out_questions;
   }
+
+  public static List<GameQuestion> get_allQuestions(Path csvPath){
+    List<GameQuestion> out_gameQuestions = new ArrayList<>();
+    List<String[]> csvLines;
+
+    try {
+      csvLines = CSV_Reader.get_csvLines_all(csvPath);
+    } catch (IOException | CsvException e) {
+      throw new RuntimeException(e);
+    }
+
+    for (int i = DEFAULT_CSV_HEADEREND_POSITION; i < csvLines.size(); i++) { out_gameQuestions.add(new GameQuestion(i, csvLines.get(i))); }
+
+    return out_gameQuestions;
+  }
+
   public static List<GameQuestion> get_randomQuestions(List<String> questionnaireFileNames, Difficulty difficulty, int amount) {
     List<GameQuestion> out_questions = new ArrayList<>();
     List<Integer> current_listOf_lineIdx = new ArrayList<>();

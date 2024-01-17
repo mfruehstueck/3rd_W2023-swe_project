@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.ResourceBundle;
 
 public class QuestionnaireController extends BaseController implements Initializable {
@@ -51,25 +52,13 @@ public class QuestionnaireController extends BaseController implements Initializ
   //NSEC: instance fields
   private ObservableList<String> questionnaire_list;
   private ObservableList<String> question_list;
-  private String ui_questionnaire_listView_selected;
-  private String ui_question_listView_selected;
+  private String questionnaire_listView_selected;
+  private Integer question_listView_selectedIdx;
 
   //NSEC: private methods
   private void fill_questionnaire_list() { questionnaire_list.setAll(QuestionDictionary.get_QuestionnaireFiles().keySet()); }
   private void fill_question_listView() {
 
-  }
-
-  //NSEC: event handlers
-  @FXML
-  public void onClick_ui_questionnaire_listView_listItem(MouseEvent mouseEvent) {
-    ui_questionnaire_listView_selected = ui_questionnaire_listView.getSelectionModel().getSelectedItem();
-    if (ui_questionnaire_listView_selected == null) return;
-    var a = QuestionDictionary.get_QuestionnaireFiles().get(ui_questionnaire_listView_selected);
-    question_list.setAll(QuestionDictionary.get_questions(a));
-  }
-  @FXML
-  public void onClick_ui_question_listView_listItem(MouseEvent mouseEvent) {
   }
 
   @FXML
