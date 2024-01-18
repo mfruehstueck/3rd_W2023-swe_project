@@ -66,7 +66,7 @@ public abstract class ChatJokerPerson {
         switch (gameQuestion.getDifficulty()){
             case EASY -> possibility = 1;
             case MEDIUM -> possibility = 2;
-            case HARD -> possibility = 4;
+            case HARD -> possibility = 3;
         }
         //TODO Mind that after 50/50 there are only 2 answers possible / visible
         String possibleAnswer = tmp.get(random.nextInt(0, possibility)).getAnswer();

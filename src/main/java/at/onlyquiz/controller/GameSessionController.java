@@ -3,6 +3,7 @@ package at.onlyquiz.controller;
 import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
+import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
@@ -31,6 +32,10 @@ public class GameSessionController extends BaseController{
 
 
     public CheckBox easyCheckBox, mediumCheckBox, hardCheckBox;
+    @FXML
+    public TextFlow chatJokerTextFlow;
+    @FXML
+    public Button chatInput1, chatInput2, chatInput3, chatInput4;
     private GameMode currentGameMode;
     private Answer selectedAnswer;
     private Button selectedAnswerButton;
@@ -57,6 +62,8 @@ public class GameSessionController extends BaseController{
     private Timeline timer, achievableScore;
     private boolean nextState;
     private ScaleTransition blinkTransition;
+
+    private ChatJoker activeChatJoker;
 
     public GameSessionController() {
     }
@@ -105,6 +112,8 @@ public class GameSessionController extends BaseController{
 
     public void freshUpQuestionLabels() {
         votingResultsChart.setVisible(false);
+        chatJokerTextFlow.setVisible(false);
+        chatInput1.setVisible(false); chatInput2.setVisible(false); chatInput3.setVisible(false); chatInput4.setVisible(false);
         questionCounterLabel.setText("Question number: " + currentGameMode.getQuestionCounter());
         questionLabel.setText(currentGameMode.getCurrentQuestion().getQuestion());
         setUpAnswerButtonText(answerAButton, 0);
@@ -134,6 +143,8 @@ public class GameSessionController extends BaseController{
         endButton.setVisible(false);
         nextButton.setVisible(false);
         votingResultsChart.setVisible(false);
+        chatJokerTextFlow.setVisible(false);
+        chatInput1.setVisible(false); chatInput2.setVisible(false); chatInput3.setVisible(false); chatInput4.setVisible(false);
         answerAButton.setVisible(false);
         answerBButton.setVisible(false);
         answerCButton.setVisible(false);
@@ -218,9 +229,79 @@ public class GameSessionController extends BaseController{
 
     public void useChatJoker() {
         if (!currentGameMode.getChatJokers().isEmpty()) {
-            currentGameMode.getChatJokers().pop().use(currentGameMode.getCurrentQuestion());
-            currentGameMode.setJokerUsed(true);
+            activeChatJoker = (ChatJoker) currentGameMode.getChatJokers().pop();
+
+            chatJokerTextFlow.setVisible(true);
+            chatInput2.setVisible(true); chatInput3.setVisible(true);
+
+            activeChatJoker.use(currentGameMode.getCurrentQuestion());
+
+            chatJokerTextFlow.getChildren().add(new Text("\n \n"));
+            chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.getNextResponse()));
+
+            refreshChatInputs();
+
+            chatJokerTextFlow.setVisible(true);
+
             refreshJokerButtons();
+        }
+    }
+
+    public void pressChatInput1() {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
+        refreshChatInputs();
+
+    }
+    public void pressChatInput2() {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput2.getText())));
+        refreshChatInputs();
+
+    }
+    public void pressChatInput3() {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput3.getText())));
+        refreshChatInputs();
+
+    }
+    public void pressChatInput4() {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput4.getText())));
+        refreshChatInputs();
+    }
+
+    private void refreshChatInputs(){
+        if (!activeChatJoker.getInputText1().isEmpty()){
+            chatInput1.setText(activeChatJoker.getInputText1());
+            chatInput1.setVisible(true);
+        }
+        else {
+            chatInput1.setText("");
+            chatInput1.setVisible(false);
+        }
+
+        if (!activeChatJoker.getInputText2().isEmpty()){
+            chatInput2.setText(activeChatJoker.getInputText2());
+            chatInput2.setVisible(true);
+        }
+        else {
+            chatInput2.setText("");
+            chatInput2.setVisible(false);
+        }
+
+        if (!activeChatJoker.getInputText3().isEmpty()){
+            chatInput3.setText(activeChatJoker.getInputText3());
+            chatInput3.setVisible(true);
+        }
+        else {
+            chatInput3.setText("");
+            chatInput3.setVisible(false);
+        }
+
+        if (!activeChatJoker.getInputText4().isEmpty()){
+            chatInput4.setText(activeChatJoker.getInputText4());
+            chatInput4.setVisible(true);
+        }
+        else {
+            chatInput4.setText("");
+            chatInput4.setVisible(false);
         }
     }
 
@@ -472,6 +553,4 @@ public class GameSessionController extends BaseController{
         hardCheckBox.setSelected(true);
         currentGameMode.getCurrentQuestion().setDifficulty(Difficulty.HARD);
     }
-
-
 }

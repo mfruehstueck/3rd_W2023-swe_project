@@ -11,8 +11,13 @@ public class ScoreCalculator {
       case MEDIUM -> ScoreConstants.MEDIUM_POINTS;
       case HARD -> ScoreConstants.HARD_POINTS;
     };
+    int timeToAnswerMax = switch (difficulty) {
+      case EASY -> TimeConstants.EASY_TIME_TO_ANSWER;
+      case MEDIUM -> TimeConstants.MEDIUM_TIME_TO_ANSWER;
+      case HARD -> TimeConstants.HARD_TIME_TO_ANSWER;
+    };
 
-    int score = basePoints - (basePoints / TimeConstants.ANSWERING_TIME_SEC) * (TimeConstants.ANSWERING_TIME_SEC - timeRemaining);
+    int score = basePoints - (basePoints / timeToAnswerMax) * (timeToAnswerMax - timeRemaining);
     if (jokerUsed) {
       score -= ScoreConstants.JOKER_COST;
     }

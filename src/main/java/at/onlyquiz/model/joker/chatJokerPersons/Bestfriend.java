@@ -10,8 +10,8 @@ public class Bestfriend extends ChatJokerPerson{
 
     public Bestfriend(){
         greetingLines.add("Hello Buddy, whats up? How can I help you?");
-        greetingLines.add("Wassaaapp?");
-        greetingLines.add("Hey my BFF! How was your Date yesterday? Did you have \"the seks\"?");
+        greetingLines.add("Wassaaapp? How are you?");
+        greetingLines.add("Hey my BFF! How was your Date yesterday? How are you?");
         greetingLines.add("Hi there! it's been a minute, whats new with you?");
 
         greetingBackLines.add("I'm pretty well, thanks. How can I help you?");

@@ -47,7 +47,11 @@ public abstract class GameMode {
   }
 
   private void resetAnswerSecondsRemaining() {
-    answerSecondsRemaining = TimeConstants.ANSWERING_TIME_SEC;
+    switch (currentQuestion.getDifficulty()) {
+      case EASY -> answerSecondsRemaining = TimeConstants.EASY_TIME_TO_ANSWER;
+      case MEDIUM -> answerSecondsRemaining = TimeConstants.MEDIUM_TIME_TO_ANSWER;
+      case HARD -> answerSecondsRemaining = TimeConstants.HARD_TIME_TO_ANSWER;
+    }
   }
 
   public boolean nextIndex(){
