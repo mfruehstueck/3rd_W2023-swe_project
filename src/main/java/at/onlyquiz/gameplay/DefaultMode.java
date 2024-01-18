@@ -20,40 +20,42 @@ public class DefaultMode extends GameMode {
         questionCounter = 0;
         jokersAvailable = true;
 
-        //set up jokers;
-        fiftyFiftyJokers.add(new FiftyFiftyJoker());
-        audienceJokers.add(new AudienceJoker());
+    //set up jokers;
+    fiftyFiftyJokers.add(new FiftyFiftyJoker());
+    audienceJokers.add(new AudienceJoker());
 
-        List<String> testQuestionnaire = new ArrayList<>();
-        testQuestionnaire.add("test_testQuestions");
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.EASY, 5));
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.MEDIUM, 5));
-        setOfQuestions.addAll(QuestionDictionary.get_Questions(testQuestionnaire, Difficulty.HARD, 5));
+    List<String> testQuestionnaire = new ArrayList<>() {{
+      add("test_testQuestions");
+      add("testQuestions");
+    }};
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
 
+    currentQuestion = popQuestionOutOfSet();
+    currentQuestion.shuffleAnswers();
+  }
+
+  @Override
+  public void confirmAnswer(boolean isCorrect) {
+    if (isCorrect) {
+      totalScore += calculateScore();
+      jokerUsed = false;
+      if (setOfQuestions.isEmpty()) {
+        //TODO something when player finished
+        finished = true;
+      } else {
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();
+        questionCounter += 1;
+      }
+    } else {
+      finished = true;
     }
+  }
 
-    @Override
-    public void confirmAnswer(boolean isCorrect) {
-        if (isCorrect){
-            totalScore += calculateScore();
-            jokerUsed = false;
-            if (setOfQuestions.isEmpty()) {
-                //TODO something when player finished
-                finished = true;
-            } else {
-                currentQuestion = popQuestionOutOfSet();
-                currentQuestion.shuffleAnswers();
-                questionCounter += 1;
-            }
-        } else {
-            finished = true;
-        }
-    }
-
-    @Override
-    public int calculateScore() {
-        return ScoreCalculator.calculateDefaultModeScore(currentQuestion.getDifficulty(), answerSecondsRemaining, jokerUsed);
-    }
+  @Override
+  public int calculateScore() {
+    return ScoreCalculator.calculateDefaultModeScore(currentQuestion.getDifficulty(), answerSecondsRemaining, jokerUsed);
+  }
 }

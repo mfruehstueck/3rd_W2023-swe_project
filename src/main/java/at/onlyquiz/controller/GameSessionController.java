@@ -1,9 +1,11 @@
 package at.onlyquiz.controller;
 
-import at.onlyquiz.controller.factories.ControllerFactory;
-import at.onlyquiz.controller.factories.Controllers;
+import at.debugtools.DebugTools;
+import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
+import at.onlyquiz.model.question.Difficulty;
+import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.GeneralSettings;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
@@ -14,16 +16,21 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import java.io.IOException;
 
-public class GameSessionController {
+import java.util.List;
+
+public class GameSessionController extends BaseController{
 
 
+    public CheckBox easyCheckBox, mediumCheckBox, hardCheckBox;
     private GameMode currentGameMode;
     private Answer selectedAnswer;
     private Button selectedAnswerButton;
@@ -31,10 +38,12 @@ public class GameSessionController {
     private Label totalScoreLabel, achievableScoreLabel, timeLabel, questionCounterLabel, questionLabel;
 
     @FXML
-    private GridPane baseContainer;
+    private GridPane ui_container;
 
     @FXML
-    private TextField questionTextField, answerATextField, answerBTextField, answerCTextField, answerDTextField;
+    private TextField answerATextField, answerBTextField, answerCTextField, answerDTextField;
+    @FXML
+    private TextField questionTextField;
 
     @FXML
     private Button fiftyFiftyJokerButton, audienceJokerButton, chatJokerButton;
@@ -55,8 +64,8 @@ public class GameSessionController {
     private void initialize() {
         if (GeneralSettings.isColorBlind()){
             String colorBlindPath = String.valueOf(getClass().getResource("/at/onlyquiz/styles/colorBlind/colorBlindMode.css"));
-            baseContainer.getStylesheets().removeAll();
-            baseContainer.getStylesheets().add(colorBlindPath);
+            ui_container.getStylesheets().removeAll();
+            ui_container.getStylesheets().add(colorBlindPath);
         }
 
         setJokersAvailability(currentGameMode.areJokersAvailable());
@@ -87,6 +96,9 @@ public class GameSessionController {
         commitButton.disableProperty().set(true);
         nextButton.setVisible(false);
         endButton.setVisible(false);
+        easyCheckBox.setVisible(false);
+        mediumCheckBox.setVisible(false);
+        hardCheckBox.setVisible(false);
 
         freshUpQuestionLabels();
     }
@@ -117,8 +129,9 @@ public class GameSessionController {
     }
 
     public void setUpEditMode() {
-        commitButton.setVisible(false);
-        commitButton.disableProperty().set(true);
+        commitButton.setVisible(true);
+        commitButton.disableProperty().set(false);
+        endButton.setVisible(false);
         nextButton.setVisible(false);
         votingResultsChart.setVisible(false);
         answerAButton.setVisible(false);
@@ -126,7 +139,6 @@ public class GameSessionController {
         answerCButton.setVisible(false);
         answerDButton.setVisible(false);
         questionLabel.setVisible(false);
-
         freshUpTextFields();
     }
 
@@ -138,6 +150,14 @@ public class GameSessionController {
         setUpTextField(answerBTextField, 1);
         setUpTextField(answerCTextField, 2);
         setUpTextField(answerDTextField, 3);
+
+        switch (currentGameMode.getCurrentQuestion().getDifficulty()) {
+            case EASY -> selectEasyDifficulty();
+            case MEDIUM -> selectMediumDifficulty();
+            case HARD -> selectHardDifficulty();
+        }
+
+        questionCounterLabel.setText("Question number: " + (currentGameMode.getIndexInQuestionnaire()+1) + " / " + currentGameMode.getSetOfQuestions().size());
     }
 
     private void setUpTextField(TextField textField, int index) {
@@ -249,6 +269,7 @@ public class GameSessionController {
                     selectedAnswerButton.getStyleClass().add("answer-button-wrong");
                 }
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
+                System.out.println(DebugTools.debugLine(new Throwable()));;
                 commitButton.setVisible(false);
 
                 if (currentGameMode.isFinished()) {
@@ -262,7 +283,16 @@ public class GameSessionController {
         }
         // When Question is editable, the input text will be saved
         else {
+            GameQuestion question = currentGameMode.getCurrentQuestion();
+            question.setQuestion(questionTextField.getText());
+            List<Answer> answers = currentGameMode.getCurrentQuestion().getAnswers();
+            answers.get(0).setAnswer(answerATextField.getText());
+            answers.get(1).setAnswer(answerBTextField.getText());
+            answers.get(2).setAnswer(answerCTextField.getText());
+            answers.get(3).setAnswer(answerDTextField.getText());
 
+            currentGameMode.confirmAnswer(true);
+            freshUpTextFields();
         }
     }
 
@@ -287,14 +317,29 @@ public class GameSessionController {
 
     }
 
-    public void pressStopButton() {
-        try {
-            Stage currentStage = (Stage) answerAButton.getScene().getWindow();
-            currentStage.setScene(ControllerFactory.getScene(Controllers.MENU_VIEW));
-            currentStage.sizeToScene();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void pressDeleteButton() {
+        questionTextField.setText("");
+        answerATextField.setText("");
+        answerBTextField.setText("");
+        answerCTextField.setText("");
+        answerDTextField.setText("");
+    }
+
+    public void pressPrevQuestionButton() {
+        boolean firstQuestion = currentGameMode.previousIndex();
+        freshUpTextFields();
+    }
+
+    public void pressNextQuestionButton() {
+        boolean reachedEnd = currentGameMode.nextIndex();
+        if (reachedEnd && currentGameMode.isEditAble()) {
+            currentGameMode.setCurrentQuestion(new GameQuestion());
         }
+        freshUpTextFields();
+    }
+
+    public void pressStopButton() {
+        set_view(get_stage(ui_container), View.MENU_VIEW);
     }
 
     private void blinkSelectedAnswerButton(Button button) {
@@ -405,6 +450,27 @@ public class GameSessionController {
             if (hasScoreLabels) {
                 startAchievableScoreCountDown();
             }
+    }
+
+    public void selectEasyDifficulty(){
+        easyCheckBox.setSelected(true);
+        mediumCheckBox.setSelected(false);
+        hardCheckBox.setSelected(false);
+        currentGameMode.getCurrentQuestion().setDifficulty(Difficulty.EASY);
+    }
+
+    public void selectMediumDifficulty(){
+        easyCheckBox.setSelected(false);
+        mediumCheckBox.setSelected(true);
+        hardCheckBox.setSelected(false);
+        currentGameMode.getCurrentQuestion().setDifficulty(Difficulty.MEDIUM);
+    }
+
+    public void selectHardDifficulty(){
+        easyCheckBox.setSelected(false);
+        mediumCheckBox.setSelected(false);
+        hardCheckBox.setSelected(true);
+        currentGameMode.getCurrentQuestion().setDifficulty(Difficulty.HARD);
     }
 
 
