@@ -13,11 +13,17 @@ public class GameQuestion {
   private String question;
   private List<Answer> answers;
   private Difficulty difficulty;
-  private boolean editable;
 
   public GameQuestion() {
     this.lineIdx = -1;
-    this.editable = true;
+    this.timesSelected = 0;
+    question = "New Question - write me!";
+    answers = new ArrayList<>();
+    answers.add(new Answer("right", true));
+    for (int i = 0; i < 3; i++) {
+      answers.add(new Answer("wrong", false));
+    }
+    difficulty = Difficulty.EASY;
   }
 
   public GameQuestion(String question, List<Answer> answers, Difficulty difficulty) {
@@ -26,7 +32,6 @@ public class GameQuestion {
     this.question = question;
     this.answers = answers;
     this.difficulty = difficulty;
-    this.editable = false;
   }
 
   public GameQuestion(Integer lineIdx, String[] csvLine) {
@@ -40,7 +45,6 @@ public class GameQuestion {
       add(new Answer(csvLine[CSV_Column.WRONG_ANSWER_3.ordinal()], false));
     }};
     this.difficulty = Difficulty.valueOf(csvLine[CSV_Column.DIFFICULTY.ordinal()]);
-    this.editable = false;
   }
 
   @SuppressWarnings("ALL")
@@ -64,7 +68,6 @@ public class GameQuestion {
   public List<Answer> getAnswers() { return answers; }
   public Answer getSpecificAnswer(int index) { return answers.get(index); }
   public Difficulty getDifficulty() { return difficulty; }
-  public boolean isEditable() { return editable; }
   public String[] getCsvLine() {
     return new String[]{
             timesSelected.toString(),
@@ -83,5 +86,4 @@ public class GameQuestion {
   public void setQuestion(String question) { this.question = question; }
   public void setAnswers(List<Answer> answers) { this.answers = answers; }
   public void setDifficulty(Difficulty difficulty) { this.difficulty = difficulty; }
-  public void setEditable(boolean editable) { this.editable = editable; }
 }

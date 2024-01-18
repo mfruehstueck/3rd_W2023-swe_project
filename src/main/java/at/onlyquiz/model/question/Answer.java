@@ -1,7 +1,7 @@
 package at.onlyquiz.model.question;
 
 public class Answer {
-  private final String answer;
+  private String answer;
   private final boolean correct;
   private boolean visible;
   private double votingValue;
@@ -23,6 +23,10 @@ public class Answer {
 
   public String getAnswer() {
     return answer;
+  }
+
+  public void setAnswer(String answer) {
+    this.answer = answer;
   }
 
   public boolean isCorrect() {

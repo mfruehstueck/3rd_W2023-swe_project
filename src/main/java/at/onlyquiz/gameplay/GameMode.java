@@ -50,12 +50,25 @@ public abstract class GameMode {
     answerSecondsRemaining = TimeConstants.ANSWERING_TIME_SEC;
   }
 
-  public void nextIndex(){
-    indexInQuestionnaire += (indexInQuestionnaire+1 < setOfQuestions.size()) ? 1 : 0;
+  public boolean nextIndex(){
+    if (indexInQuestionnaire + 1 < setOfQuestions.size()){
+      indexInQuestionnaire++;
+      currentQuestion = setOfQuestions.get(indexInQuestionnaire);
+      return false;
+    }
+    if (indexInQuestionnaire + 1 == setOfQuestions.size()) {
+      indexInQuestionnaire++;
+    }
+    return true;
   }
 
-  public void previousIndex(){
-    indexInQuestionnaire -= (indexInQuestionnaire-1 >= 0) ? 1 : 0;
+  public boolean previousIndex(){
+    if (indexInQuestionnaire - 1 >= 0){
+      indexInQuestionnaire--;
+      currentQuestion = setOfQuestions.get(indexInQuestionnaire);
+      return false;
+    }
+    return true;
   }
 
   public int getIndexInQuestionnaire() {
@@ -140,5 +153,9 @@ public abstract class GameMode {
 
   public void setJokerUsed(boolean jokerUsed) {
     this.jokerUsed = jokerUsed;
+  }
+
+  public void setCurrentQuestion(GameQuestion currentQuestion) {
+    this.currentQuestion = currentQuestion;
   }
 }
