@@ -10,7 +10,8 @@ import java.util.Random;
 
 public class AudienceJoker extends Joker {
   private Random random = new Random();
-  public AudienceJoker() {
+
+  public AudienceJoker(boolean isOnline) {
     super();
   }
 
