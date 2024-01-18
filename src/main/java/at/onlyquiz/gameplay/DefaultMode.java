@@ -1,6 +1,7 @@
 package at.onlyquiz.gameplay;
 
 import at.onlyquiz.model.joker.AudienceJoker;
+import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.util.QuestionDictionary;
@@ -22,7 +23,8 @@ public class DefaultMode extends GameMode {
 
     //set up jokers;
     fiftyFiftyJokers.add(new FiftyFiftyJoker());
-    audienceJokers.add(new AudienceJoker());
+    audienceJokers.add(new AudienceJoker(false));
+    chatJokers.add(new ChatJoker(false));
 
     List<String> testQuestionnaire = new ArrayList<>() {{
       add("test_testQuestions");
