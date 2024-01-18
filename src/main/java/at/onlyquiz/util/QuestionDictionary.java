@@ -41,7 +41,7 @@ public class QuestionDictionary {
   }
 
   public static List<GameQuestion> get_allQuestions(String nameOfQuestionnaire){
-    Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + "\\" + nameOfQuestionnaire + ".csv");
+    Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + File.separator + nameOfQuestionnaire + ".csv");
 
     List<GameQuestion> out_gameQuestions = new ArrayList<>();
     List<String[]> csvLines;
