@@ -1,11 +1,8 @@
 package at.onlyquiz.gameplay;
 
-import at.onlyquiz.model.question.Answer;
-import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class EditMode extends GameMode {

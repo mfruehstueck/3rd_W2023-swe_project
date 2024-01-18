@@ -21,8 +21,9 @@ public class CSV_Writer {
     String[] current_csvLine;
 
     try (CSVWriter writer = new CSVWriter(new FileWriter(csvPath.toString()))) {
+      if(entry == null) csvLines_all.remove(lineIdx);
       for (int i = 0; i < csvLines_all.size(); i++) {
-        current_csvLine = (i == lineIdx) ? entry : csvLines_all.get(i);
+        current_csvLine = (i == lineIdx && entry != null) ? entry : csvLines_all.get(i);
         writer.writeNext(current_csvLine);
       }
     }
@@ -56,10 +57,10 @@ public class CSV_Writer {
 //        }
 //    }
 
-  static public void append_lines(Path csvPath, List<String[]> lines) throws IOException, CsvException {
+  static public void append_line(Path csvPath, String[] line) throws IOException, CsvException {
     List<String[]> csvLines_all = CSV_Reader.get_csvLines_all(csvPath);
-    csvLines_all.addAll(lines);
-    System.out.println(DebugTools.debugLine(new Throwable()));
+    csvLines_all.add(line);
+    System.out.println(DebugTools.debugLine(new Throwable()) + Arrays.toString(line));
 
     try (CSVWriter writer = new CSVWriter(Files.newBufferedWriter(csvPath, StandardOpenOption.WRITE))) {
       for (String[] csvLine : csvLines_all) { writer.writeNext(csvLine); }

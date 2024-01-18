@@ -67,12 +67,11 @@ public class QuestionnaireController extends BaseController implements Initializ
   public void onClick_ui_editQuestionnaire_button(ActionEvent actionEvent) {
     if (questionnaire_listView_selected == null) return;
 
-    Path csvPath = QuestionDictionary.get_QuestionnaireFiles().get(questionnaire_listView_selected);
     if (question_listView_selectedIdx != null){
-      EditMode editMode = new EditMode(QuestionDictionary.get_allQuestions(csvPath), question_listView_selectedIdx);
+      EditMode editMode = new EditMode(QuestionDictionary.get_allQuestions(questionnaire_listView_selected), question_listView_selectedIdx, questionnaire_listView_selected);
       startingGameSession(editMode, get_stage(ui_container));
     } else {
-      EditMode editMode = new EditMode(QuestionDictionary.get_allQuestions(csvPath),0);
+      EditMode editMode = new EditMode(QuestionDictionary.get_allQuestions(questionnaire_listView_selected),0, questionnaire_listView_selected);
       startingGameSession(editMode, get_stage(ui_container));
     }
   }

@@ -1,5 +1,6 @@
 package at.onlyquiz.controller;
 
+import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.question.Answer;
@@ -143,7 +144,7 @@ public class GameSessionController extends BaseController{
 
     private void freshUpTextFields() {
         if (!currentGameMode.getCurrentQuestion().getQuestion().isEmpty()) {
-            questionTextField = new TextFlow(new Text(currentGameMode.getCurrentQuestion().getQuestion()));
+            questionTextField.setText(currentGameMode.getCurrentQuestion().getQuestion());
         }
         setUpTextField(answerATextField, 0);
         setUpTextField(answerBTextField, 1);
@@ -268,6 +269,7 @@ public class GameSessionController extends BaseController{
                     selectedAnswerButton.getStyleClass().add("answer-button-wrong");
                 }
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
+                System.out.println(DebugTools.debugLine(new Throwable()));;
                 commitButton.setVisible(false);
 
                 if (currentGameMode.isFinished()) {

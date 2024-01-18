@@ -70,7 +70,7 @@ public class GameQuestion {
   public Difficulty getDifficulty() { return difficulty; }
   public String[] getCsvLine() {
     return new String[]{
-            timesSelected.toString(),
+            Integer.toString(timesSelected),
             question,
             difficulty.toString(),
             answers.get(0).getAnswer(),

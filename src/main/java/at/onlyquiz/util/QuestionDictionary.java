@@ -40,7 +40,9 @@ public class QuestionDictionary {
     return out_questions;
   }
 
-  public static List<GameQuestion> get_allQuestions(Path csvPath){
+  public static List<GameQuestion> get_allQuestions(String nameOfQuestionnaire){
+    Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + "\\" + nameOfQuestionnaire + ".csv");
+
     List<GameQuestion> out_gameQuestions = new ArrayList<>();
     List<String[]> csvLines;
 
@@ -153,9 +155,22 @@ public class QuestionDictionary {
     }
   }
 
-  public static void create_questionnaire(String nameOfQuestionnaire, List<GameQuestion> gameQuestions) {
+  public static void delete_gameQuestion(String nameOfQuestionnaire, int lineIdx) {
     Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + "\\" + nameOfQuestionnaire + ".csv");
-    List<String[]> csvLines = new ArrayList<>();
+
+    if(lineIdx < 0) return;
+
+    try {
+      CSV_Writer.update_line(csvPath, lineIdx, null);
+    } catch (IOException | CsvException e) {
+      throw new RuntimeException(e);
+    } finally {
+      init();
+    }
+  }
+
+  public static void update_gameQuestion(String nameOfQuestionnaire, GameQuestion gameQuestions) {
+    Path csvPath = Path.of(DEFAULT_BASEPATH_QUESTIONNARES + "\\" + nameOfQuestionnaire + ".csv");
 
     if (!Files.exists(csvPath)) {
       try {
@@ -166,10 +181,14 @@ public class QuestionDictionary {
       }
     }
 
-    for (GameQuestion gameQuestion : gameQuestions) { csvLines.add(gameQuestion.getCsvLine()); }
 
     try {
-      CSV_Writer.append_lines(csvPath, csvLines);
+      if(gameQuestions.getLineIdx() < 0) {
+        System.out.println(Arrays.toString(gameQuestions.getCsvLine()));
+        CSV_Writer.append_line(csvPath, gameQuestions.getCsvLine());
+      } else {
+        CSV_Writer.update_line(csvPath, gameQuestions.getLineIdx(), gameQuestions.getCsvLine());
+      }
     } catch (IOException | CsvException e) {
       throw new RuntimeException(e);
     } finally {
