@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersistScore {
     private static final String savedScorePath = PersistScore.class.getResource("/at/onlyquiz/scores/savedScores.json").getPath();
@@ -69,6 +71,23 @@ public class PersistScore {
                     mapper.getTypeFactory().constructCollectionType(List.class, PersistScore.class)
             );
         } catch (IOException e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<PersistScore> getTop10fromAllGameModes(){
+
+        List<PersistScore> allScores;
+        try {
+            allScores = mapper.readValue(
+                    new File(savedScorePath),
+                    mapper.getTypeFactory().constructCollectionType(List.class, PersistScore.class));
+
+            allScores.sort((score1, score2) -> Integer.compare(score2.getScore(), score1.getScore()));
+
+            return allScores.stream().limit(10).collect(Collectors.toList());
+        } catch (IOException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }

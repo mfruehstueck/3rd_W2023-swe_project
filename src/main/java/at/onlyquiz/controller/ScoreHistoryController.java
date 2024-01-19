@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
-import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -29,11 +28,9 @@ public class ScoreHistoryController extends BaseController implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Lade und sortiere die Daten hier
         List<PersistScore> allScores = PersistScore.getSavedScores();
         ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
 
-        // Binde die Daten an die TableView
         gameHistoryTable.setItems(sortedScores);
         gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
         playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));

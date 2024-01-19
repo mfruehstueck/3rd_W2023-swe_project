@@ -1,1 +1,10 @@
-[]
+[{"gameMode":"DefaultMode","playerName":"Armin","score":76000},
+  {"gameMode":"DefaultMode","playerName":"Ibrahim","score":56562},
+  {"gameMode":"EndlessMode","playerName":"Manuel","score":889},
+  {"gameMode":"DefaultMode","playerName":"Lisa","score":21732},
+  {"gameMode":"DefaultMode","playerName":"Marko","score":21732},
+  {"gameMode":"EndlessMode","playerName":"Marc","score":328584},
+  {"gameMode":"DefaultMode","playerName":"Elias","score":100021},
+  {"gameMode":"EndlessMode","playerName":"Max","score":322561},
+  {"gameMode":"DefaultMode","playerName":"Ahmed","score":89632},
+  {"gameMode":"DefaultMode","playerName":"Trixi","score":789522}]
