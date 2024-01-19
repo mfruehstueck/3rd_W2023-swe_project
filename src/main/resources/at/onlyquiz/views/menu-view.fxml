@@ -12,7 +12,7 @@
         <Button fx:id="playButton" onAction="#pressPlayButton" styleClass="menu-button" text="Play"/>
         <Button fx:id="questionnaireButton" onAction="#pressQuestionnairesButton" styleClass="menu-button"
                 text="Questionnaires"/>
-        <Button fx:id="settingsButton" onAction="#pressSettingsButton" styleClass="menu-button" text="Settings"/>
+        <Button fx:id="settingsButton" onAction="#pressSettingsButton" styleClass="menu-button" text="ScoreHistory"/>
         <Button fx:id="quitButton" onAction="#pressQuitButton" styleClass="menu-button" text="Quit"/>
     </VBox>
     <stylesheets>

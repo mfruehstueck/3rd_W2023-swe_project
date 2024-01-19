@@ -18,9 +18,6 @@ public class PersistScore {
     private String playerName;
     private Integer score;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm")
-    private ZonedDateTime date;
-
 
     static {
         File file = new File(savedScorePath);
@@ -33,11 +30,10 @@ public class PersistScore {
         }
     }
 
-    public PersistScore(String gameMode, String playerName, Integer score, ZonedDateTime date) {
+    public PersistScore(String gameMode, String playerName, Integer score) {
         this.gameMode = gameMode;
         this.playerName = playerName;
         this.score = score;
-        this.date = date;
     }
 
     public PersistScore() {
@@ -48,8 +44,7 @@ public class PersistScore {
             PersistScore newScore = new PersistScore(
                     gameMode.getClass().getSimpleName(),
                     playerName,
-                    achievedScore,
-                    ZonedDateTime.now()
+                    achievedScore
             );
 
             try {
@@ -102,12 +97,5 @@ public class PersistScore {
     public void setScore(int score) {
         this.score = score;
     }
-
-    public ZonedDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(ZonedDateTime date) {
-        this.date = date;
-    }
 }
+

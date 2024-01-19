@@ -29,6 +29,6 @@ public class MenuController extends BaseController implements Initializable {
 
   public void pressPlayButton() { set_view(get_stage(ui_container), View.GAME_SESSION_SETTINGS); }
   public void pressQuestionnairesButton() { set_view(get_stage(ui_container), View.QUESTIONNAIRE_VIEW); }
-  public void pressSettingsButton() { set_view(get_stage(ui_container), View.GENERAL_SETTINGS_VIEW); }
+  public void pressSettingsButton() { set_view(get_stage(ui_container), View.SCORE_HISTORY_VIEW); }
   public void pressQuitButton() { set_view(get_stage(ui_container), View.QUIT); }
 }
