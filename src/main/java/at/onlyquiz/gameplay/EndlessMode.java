@@ -11,7 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class EndlessMode extends GameMode {
-    public EndlessMode() {
+    public EndlessMode(String playername) {
+        super(playername);
         editAble = false;
         scoreVisible = false;
         timerVisible = false;

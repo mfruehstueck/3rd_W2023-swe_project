@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.ScoreHistoryController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="635.0" minWidth="10.0" prefWidth="344.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1200.9999389648438" minWidth="10.0" prefWidth="1073.9999389648438" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="936.0" minWidth="10.0" prefWidth="174.00006103515625" />
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints fillHeight="false" maxHeight="545.6" minHeight="10.0" prefHeight="103.39999809265137" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="620.800015258789" minHeight="10.0" prefHeight="485.00000190734863" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="355.4" minHeight="10.0" prefHeight="191.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <stylesheets>
+        <URL value="@../styles/standard/general.css" />
+        <URL value="@../styles/standard/generalSettings.css" />
+    </stylesheets>
+    <children>
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <children>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#pressBackButton" styleClass="back-button" text="Back" />
+            </children>
+        </HBox>
+      <TableView fx:id="gameHistoryTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="250.0" prefWidth="430.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="1" GridPane.vgrow="SOMETIMES">
+          <columns>
+              <TableColumn fx:id="gameModeColumn" text="Game Mode" />
+              <TableColumn fx:id="playerNameColumn" text="Player Name" />
+              <TableColumn fx:id="scoreColumn" text="Score" />
+          </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+       </TableView>
+      <Label text="Score History" textFill="#113381" GridPane.columnIndex="1">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+    </children>
+</GridPane>
