@@ -4,51 +4,49 @@
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.lang.String?>
-<?import java.net.URL?>
-<GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-          prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea"
-          xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionSettingController">
+
+<GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionSettingController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="1">
             <children>
-                <Button fx:id="defaultModeButton" mnemonicParsing="false" onAction="#pressDefaultModeButton"
-                        text="Default Mode">
+                <Button fx:id="defaultModeButton" mnemonicParsing="false" onAction="#pressDefaultModeButton" text="Default Mode">
                     <styleClass>
-                        <String fx:value="mode-button"/>
-                        <String fx:value="button"/>
+                        <String fx:value="mode-button" />
+                        <String fx:value="button" />
                     </styleClass>
                 </Button>
-                <Button fx:id="endlessModeButton" mnemonicParsing="false" onAction="#pressEndlessModeButton"
-                        styleClass="mode-button" text="Endless Mode"/>
-                <Button fx:id="trainingModeButton" mnemonicParsing="false" onAction="#pressTrainingModeButton"
-                        styleClass="mode-button" text="Training Mode"/>
+                <Button fx:id="endlessModeButton" mnemonicParsing="false" onAction="#pressEndlessModeButton" styleClass="mode-button" text="Endless Mode" />
+                <Button fx:id="trainingModeButton" mnemonicParsing="false" onAction="#pressTrainingModeButton" styleClass="mode-button" text="Training Mode" />
             </children>
         </VBox>
         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <ListView prefHeight="200.0" prefWidth="200.0"/>
-                <Label text="above ListView Placeholder for Questionares to Select"/>
+                <ListView prefHeight="200.0" prefWidth="200.0" />
+                <Label text="above ListView Placeholder for Questionares to Select" />
             </children>
         </VBox>
         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
             <children>
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#pressBackButton" styleClass="back-button"
-                        text="Back"/>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#pressBackButton" styleClass="back-button" text="Back" />
             </children>
         </HBox>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+         <children>
+            <TextField fx:id="playerNameTextField" alignment="BOTTOM_CENTER" prefWidth="200.0" promptText="Your Name" />
+         </children>
+      </HBox>
     </children>
     <stylesheets>
-        <URL value="@../styles/standard/general.css"/>
-        <URL value="@../styles/standard/gameSessionSettings.css"/>
+        <URL value="@../styles/standard/general.css" />
+        <URL value="@../styles/standard/gameSessionSettings.css" />
     </stylesheets>
 </GridPane>
