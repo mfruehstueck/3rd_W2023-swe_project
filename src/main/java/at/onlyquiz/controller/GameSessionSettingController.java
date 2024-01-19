@@ -1,19 +1,11 @@
 package at.onlyquiz.controller;
 
-import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.View;
-import at.onlyquiz.gameplay.EditMode;
 import at.onlyquiz.gameplay.DefaultMode;
-import at.onlyquiz.gameplay.GameMode;
+import at.onlyquiz.gameplay.EndlessMode;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class GameSessionSettingController extends BaseController {
   @FXML
@@ -28,13 +20,12 @@ public class GameSessionSettingController extends BaseController {
     }
 
     public void pressEndlessModeButton() {
+      startingGameSession(new EndlessMode(), get_stage(ui_container));
     }
 
     public void pressTrainingModeButton() {
     }
 
   public void pressBackButton() { set_view(get_stage(ui_container), View.MENU_VIEW); }
-
-
 
 }
