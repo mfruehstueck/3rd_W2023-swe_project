@@ -6,6 +6,7 @@ import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.util.QuestionDictionary;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
+import at.onlyquiz.util.scoreSystem.savedScoresJSON.PersistScore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,7 @@ public class DefaultMode extends GameMode {
   public void confirmAnswer(boolean isCorrect) {
     if (isCorrect) {
       totalScore += calculateScore();
+      if (questionCounter%5==0) achievedScore = totalScore;
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
         //TODO something when player Wins!
@@ -52,6 +54,7 @@ public class DefaultMode extends GameMode {
         questionCounter += 1;
       }
     } else {
+        PersistScore.saveScore(this);
       finished = true;
     }
   }

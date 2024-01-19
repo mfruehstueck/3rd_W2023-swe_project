@@ -3,7 +3,6 @@ package at.onlyquiz.gameplay;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.JokerQueue;
 import at.onlyquiz.util.timeSystem.TimeConstants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +10,7 @@ public abstract class GameMode {
   List<GameQuestion> setOfQuestions = new ArrayList<>();
   GameQuestion currentQuestion;
   Integer totalScore, achievableScore, questionCounter;
+  Integer achievedScore = 0;
   JokerQueue audienceJokers = new JokerQueue();
   JokerQueue fiftyFiftyJokers = new JokerQueue();
   JokerQueue chatJokers = new JokerQueue();
@@ -21,6 +21,7 @@ public abstract class GameMode {
   boolean jokerUsed = false;
   int answerSecondsRemaining, readingSecondsRemaining;
   int indexInQuestionnaire = 0;
+  String playername;
 
 
   public abstract void confirmAnswer(boolean isCorrect);
@@ -77,10 +78,6 @@ public abstract class GameMode {
 
   public int getIndexInQuestionnaire() {
     return indexInQuestionnaire;
-  }
-
-  public void setIndexInQuestionnaire(int indexInQuestionnaire) {
-    this.indexInQuestionnaire = indexInQuestionnaire;
   }
 
   public boolean isScoreVisible() {
@@ -161,5 +158,21 @@ public abstract class GameMode {
 
   public void setCurrentQuestion(GameQuestion currentQuestion) {
     this.currentQuestion = currentQuestion;
+  }
+
+  public String getPlayername() {
+    return playername;
+  }
+
+  public void setPlayername(String playername) {
+    this.playername = playername;
+  }
+
+  public Integer getAchievedScore() {
+    return achievedScore;
+  }
+
+  public void setAchievedScore(Integer achievedScore) {
+    this.achievedScore = achievedScore;
   }
 }
