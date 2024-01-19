@@ -30,9 +30,9 @@ public class DefaultMode extends GameMode {
       add("test_testQuestions");
       add("testQuestions");
     }};
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 1));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 1));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 1));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
 
     currentQuestion = popQuestionOutOfSet();
     currentQuestion.shuffleAnswers();
@@ -44,7 +44,7 @@ public class DefaultMode extends GameMode {
       totalScore += calculateScore();
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
-        //TODO something when player finished
+        //TODO something when player Wins!
         finished = true;
       } else {
         currentQuestion = popQuestionOutOfSet();

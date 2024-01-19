@@ -338,8 +338,8 @@ public class GameSessionController extends BaseController{
     public void pressCommitButton() {
         // When Question is not editable the answer will be committed
         if (!currentGameMode.isEditAble()) {
-            timer.stop();
-            achievableScore.stop();
+            if (currentGameMode.isTimerVisible())timer.stop();
+            if (currentGameMode.isScoreVisible())achievableScore.stop();
             if (selectedAnswer != null && selectedAnswerButton != null) {
                 if (selectedAnswer.isCorrect()) {
                     selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
