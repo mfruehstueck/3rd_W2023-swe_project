@@ -23,6 +23,9 @@ public abstract class GameMode {
   int indexInQuestionnaire = 0;
   String playername;
 
+  public GameMode(String playername) {
+    this.playername = playername;
+  }
 
   public abstract void confirmAnswer(boolean isCorrect);
   public abstract int calculateScore();

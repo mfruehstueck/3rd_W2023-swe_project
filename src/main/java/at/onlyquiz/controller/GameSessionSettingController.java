@@ -16,11 +16,13 @@ public class GameSessionSettingController extends BaseController {
   public GameSessionSettingController() { }
 
     public void pressDefaultModeButton() {
-        startingGameSession(new DefaultMode(), get_stage(ui_container));
+    //TODO add playername
+        startingGameSession(new DefaultMode("p1"), get_stage(ui_container));
     }
 
     public void pressEndlessModeButton() {
-      startingGameSession(new EndlessMode(), get_stage(ui_container));
+    //TODO add playername
+        startingGameSession(new EndlessMode("p2"), get_stage(ui_container));
     }
 
     public void pressTrainingModeButton() {

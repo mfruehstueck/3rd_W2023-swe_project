@@ -4,6 +4,7 @@ module at.onlyquiz.onlyquiz {
   requires com.opencsv;
   requires com.fasterxml.jackson.annotation;
   requires com.fasterxml.jackson.databind;
+  requires com.fasterxml.jackson.datatype.jsr310;
 
 
   opens at.onlyquiz to javafx.fxml;

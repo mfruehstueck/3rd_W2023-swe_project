@@ -13,7 +13,8 @@ import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-    public DefaultMode() {
+    public DefaultMode(String playername) {
+        super(playername);
         editAble = false;
         scoreVisible = true;
         timerVisible = true;
@@ -42,8 +43,11 @@ public class DefaultMode extends GameMode {
   @Override
   public void confirmAnswer(boolean isCorrect) {
     if (isCorrect) {
-      totalScore += calculateScore();
-      if (questionCounter%5==0) achievedScore = totalScore;
+        questionCounter += 1;
+        totalScore += calculateScore();
+      if (questionCounter != 0 && questionCounter % 5 == 0){
+          achievedScore = totalScore;
+      }
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
         //TODO something when player Wins!
@@ -51,10 +55,9 @@ public class DefaultMode extends GameMode {
       } else {
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();
-        questionCounter += 1;
       }
     } else {
-        PersistScore.saveScore(this);
+        PersistScore.saveScore(this, playername, achievedScore);
       finished = true;
     }
   }
