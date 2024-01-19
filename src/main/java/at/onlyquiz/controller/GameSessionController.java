@@ -36,6 +36,7 @@ public class GameSessionController extends BaseController{
     public TextFlow chatJokerTextFlow;
     @FXML
     public Button chatInput1, chatInput2, chatInput3, chatInput4;
+    public Button deleteButton, nextQuestionButton, prevQuestionButton;
     private GameMode currentGameMode;
     private Answer selectedAnswer;
     private Button selectedAnswerButton;
@@ -91,10 +92,6 @@ public class GameSessionController extends BaseController{
     // Setup for answering questions
 
     private void startAnswerView() {
-        setUpQuestionLabels();
-    }
-
-    private void setUpQuestionLabels() {
         answerATextField.setVisible(false);
         answerBTextField.setVisible(false);
         answerCTextField.setVisible(false);
@@ -106,7 +103,9 @@ public class GameSessionController extends BaseController{
         easyCheckBox.setVisible(false);
         mediumCheckBox.setVisible(false);
         hardCheckBox.setVisible(false);
-
+        deleteButton.setVisible(false);
+        prevQuestionButton.setVisible(false);
+        nextQuestionButton.setVisible(false);
         freshUpQuestionLabels();
     }
 
