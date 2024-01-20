@@ -26,7 +26,7 @@ public class VotingServer {
     public static void startServers(List<Answer> answers) throws IOException {
         httpServer = HttpServer.create(new InetSocketAddress(8080), 0);
 
-        httpServer.createContext("/onlyQuizLiveVoting", new HttpHandler() {
+        httpServer.createContext("/vote", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 String resourcePath = "/at/onlyquiz/liveVoting/votingPage.html";
@@ -58,7 +58,7 @@ public class VotingServer {
             }
         });
 
-        httpServer.createContext("/countButtonClick", new HttpHandler() {
+        httpServer.createContext("/click", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 InputStream requestBody = exchange.getRequestBody();
@@ -78,7 +78,7 @@ public class VotingServer {
             }
         });
 
-        httpServer.createContext("/thankYouPage", new HttpHandler() {
+        httpServer.createContext("/thanks", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
                 String resourcePath = "/at/onlyquiz/liveVoting/thankYouPage.html";
@@ -124,6 +124,28 @@ public class VotingServer {
         Map<Integer, Integer> tmp = buttonClickCount;
         setUpDefaultButtonHashMap();
         return tmp;
+    }
+
+    public static Map<Integer, Double> getResults(Map<Integer, Integer> votingValues) {
+        Map<Integer, Integer> filledMap = new HashMap<>();
+        for (int i = 1; i <= 4; i++) {
+            filledMap.put(i, votingValues.getOrDefault(i, 0));
+        }
+
+        int sum = 0;
+        for (int value : filledMap.values()) {
+            sum += value;
+        }
+
+        Map<Integer, Double> percentagesMap = new HashMap<>();
+        for (Map.Entry<Integer, Integer> entry : filledMap.entrySet()) {
+            int key = entry.getKey();
+            int value = entry.getValue();
+            double percentage = (value * 100.0) / sum;
+            percentagesMap.put(key, percentage);
+        }
+
+        return percentagesMap;
     }
 
     private static void setUpDefaultButtonHashMap(){

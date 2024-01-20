@@ -254,7 +254,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <ImageView fx:id="qrCodeImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowSpan="2" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <ImageView fx:id="qrCodeImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <Label fx:id="liveAudienceTimer" text="Label" GridPane.rowIndex="2">
+               <font>
+                  <Font size="34.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">

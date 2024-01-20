@@ -26,14 +26,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.List;
 
 public class GameSessionController extends BaseController{
@@ -46,6 +43,7 @@ public class GameSessionController extends BaseController{
     public Button chatInput1, chatInput2, chatInput3, chatInput4;
     public Button deleteButton, nextQuestionButton, prevQuestionButton;
     public ImageView qrCodeImageView;
+    public Label liveAudienceTimer;
     private GameMode currentGameMode;
     private Answer selectedAnswer;
     private Button selectedAnswerButton;
@@ -69,7 +67,7 @@ public class GameSessionController extends BaseController{
     private Button commitButton, nextButton, endButton;
     @FXML
     public BarChart<String, Double> votingResultsChart;
-    private Timeline timer, achievableScore;
+    private Timeline timer, achievableScore, audienceTimer;
     private boolean nextState;
     private ScaleTransition blinkTransition;
 
@@ -89,6 +87,9 @@ public class GameSessionController extends BaseController{
         setJokersAvailability(currentGameMode.areJokersAvailable());
         setScoreLabelsVisible(currentGameMode.isScoreVisible());
         setTimeVisible(currentGameMode.isTimerVisible());
+
+        qrCodeImageView.setVisible(false);
+        liveAudienceTimer.setVisible(false);
 
         if (currentGameMode.isEditAble()) {
             startEditView();
@@ -223,27 +224,57 @@ public class GameSessionController extends BaseController{
             currentAudienceJoker = (AudienceJoker) currentGameMode.getAudienceJokers().pop();
 
             if (currentAudienceJoker.isOnline()){
-                byte[] qrBytes = QRCode.from(currentAudienceJoker.generateQrURL()).to(ImageType.PNG).stream().toByteArray();
-                Image qrCode = new Image(new ByteArrayInputStream(qrBytes));
-                qrCodeImageView.setImage(qrCode);
-                currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
+                startLiveVoting();
             }
             else {
-            currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
+                currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
                 currentGameMode.setJokerUsed(true);
-
-                XYChart.Series<String, Double> series = new XYChart.Series<>();
-                for (Answer answer : currentGameMode.getCurrentQuestion().getAnswers()) {
-                    if (answer.isVisible()) {
-                        series.getData().add(new XYChart.Data<>(answer.getAnswer(), answer.getVotingValue()));
-                    }
-                }
-                votingResultsChart.getData().add(series);
-                votingResultsChart.setVisible(true);
+                showLiveVotingResults();
             }
             refreshJokerButtons();
 
         }
+    }
+
+    private void startLiveVoting(){
+        byte[] qrBytes = QRCode.from(currentAudienceJoker.generateQrURL()).to(ImageType.PNG).stream().toByteArray();
+        Image qrCode = new Image(new ByteArrayInputStream(qrBytes));
+        qrCodeImageView.setVisible(true);
+        qrCodeImageView.setImage(qrCode);
+        currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
+        liveAudienceTimer.setText(String.valueOf(currentAudienceJoker.getSecondsRemaining()));
+        liveAudienceTimer.setVisible(true);
+        timer.pause();
+
+        audienceTimer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (currentAudienceJoker.getSecondsRemaining() != 0){
+                    currentAudienceJoker.setSecondsRemaining(currentAudienceJoker.getSecondsRemaining() - 1);
+                    liveAudienceTimer.setText(String.valueOf(currentAudienceJoker.getSecondsRemaining()));
+                } else {
+                    audienceTimer.stop();
+                    currentAudienceJoker.stopVoting(currentGameMode.getCurrentQuestion().getAnswers());
+                    liveAudienceTimer.setVisible(false);
+                    showLiveVotingResults();
+                    timer.play();
+                }
+            }
+        }));
+        audienceTimer.setCycleCount(Timeline.INDEFINITE);
+        audienceTimer.play();
+    }
+
+    private void showLiveVotingResults(){
+        qrCodeImageView.setVisible(false);
+        XYChart.Series<String, Double> series = new XYChart.Series<>();
+        for (Answer answer : currentGameMode.getCurrentQuestion().getAnswers()) {
+            if (answer.isVisible()) {
+                series.getData().add(new XYChart.Data<>(answer.getAnswer(), answer.getVotingValue()));
+            }
+        }
+        votingResultsChart.getData().add(series);
+        votingResultsChart.setVisible(true);
     }
 
     public void useChatJoker() {

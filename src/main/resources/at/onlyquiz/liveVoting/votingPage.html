@@ -44,13 +44,13 @@
 
 <script>
     function redirectToThankYou() {
-        window.location.href = "/thankYouPage.html"
+        window.location.href = "/thanks"
     }
     // Funktion, um auf Button-Klicks zu reagieren
     function handleButtonClick(buttonId) {
         // Sende AJAX-Anfrage an den Server, um den Klick zu zählen
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/countButtonClick", true);
+        xhr.open("POST", "/click", true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {

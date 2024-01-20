@@ -9,5 +9,6 @@ public class TimeConstants {
     public static final int EASY_TIME_TO_ANSWER = 20;
     public static final int MEDIUM_TIME_TO_ANSWER = 40;
     public static final int HARD_TIME_TO_ANSWER = 60;
+    public static final int LIVE_AUDIENCE_TIMER = 45;
 
 }
