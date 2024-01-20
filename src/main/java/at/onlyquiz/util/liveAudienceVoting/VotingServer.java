@@ -36,10 +36,10 @@ public class VotingServer {
                     String htmlTemplate = readFromInputStream(resourceStream);
 
                     String htmlResponse = htmlTemplate
-                            .replace("$BUTTON_TEXT_1$", answers.get(0).getAnswer())
-                            .replace("$BUTTON_TEXT_2$", answers.get(1).getAnswer())
-                            .replace("$BUTTON_TEXT_3$", answers.get(2).getAnswer())
-                            .replace("$BUTTON_TEXT_4$", answers.get(3).getAnswer());
+                            .replace(">$BUTTON_TEXT_1$", answers.get(0).isVisible() ? ">" + answers.get(0).getAnswer() : "style=\"display: none\"" + ">")
+                            .replace(">$BUTTON_TEXT_2$", answers.get(1).isVisible() ? ">" + answers.get(1).getAnswer() : "style=\"display: none\"" + ">")
+                            .replace(">$BUTTON_TEXT_3$", answers.get(2).isVisible() ? ">" + answers.get(2).getAnswer() : "style=\"display: none\"" + ">")
+                            .replace(">$BUTTON_TEXT_4$", answers.get(3).isVisible() ? ">" + answers.get(3).getAnswer() : "style=\"display: none\"" + ">");
 
                     exchange.sendResponseHeaders(200, htmlResponse.getBytes(StandardCharsets.UTF_8).length);
 
