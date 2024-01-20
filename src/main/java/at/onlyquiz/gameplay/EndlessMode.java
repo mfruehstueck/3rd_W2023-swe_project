@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class EndlessMode extends GameMode {
-    public EndlessMode(String playername) {
-        super(playername);
+    public EndlessMode(List<String> selectedQuestionnaires, String playername) {
+        super(selectedQuestionnaires, playername);
         editAble = false;
         scoreVisible = false;
         timerVisible = false;
@@ -25,11 +25,6 @@ public class EndlessMode extends GameMode {
         audienceJokers.add(new AudienceJoker(false));
         chatJokers.add(new ChatJoker(false));
 
-
-        //TODO REMOVE the following list - do it with selected from GameSession Settings (manuel did this).
-        List<String> testQuestionnaire = new ArrayList<>() {{
-            add("test_testQuestions");
-        }};
         getNewQuestions();
         Collections.shuffle(setOfQuestions);
         currentQuestion = popQuestionOutOfSet();
@@ -56,15 +51,9 @@ public class EndlessMode extends GameMode {
 
     private void getNewQuestions() {
         if (setOfQuestions.size() < 2) {
-
-            //TODO REMOVE the following list - do it with selected from GameSession Settings (manuel did this).
-            List<String> testQuestionnaire = new ArrayList<>() {{
-                add("test_testQuestions");
-            }};
-
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
+            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
+            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
+            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
         }
     }
 }

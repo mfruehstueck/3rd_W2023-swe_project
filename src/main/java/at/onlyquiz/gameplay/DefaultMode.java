@@ -13,28 +13,24 @@ import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-    public DefaultMode(String playername) {
-        super(playername);
-        editAble = false;
-        scoreVisible = true;
-        timerVisible = true;
-        answerSecondsRemaining = 5;
-        totalScore = 0;
-        questionCounter = 0;
-        jokersAvailable = true;
+  public DefaultMode(List<String> selectedQuestionnaires, String playername) {
+    super(selectedQuestionnaires, playername);
+    editAble = false;
+    scoreVisible = true;
+    timerVisible = true;
+    answerSecondsRemaining = 5;
+    totalScore = 0;
+    questionCounter = 0;
+    jokersAvailable = true;
 
     //set up jokers;
     fiftyFiftyJokers.add(new FiftyFiftyJoker());
     audienceJokers.add(new AudienceJoker(true));
     chatJokers.add(new ChatJoker(false));
 
-    List<String> testQuestionnaire = new ArrayList<>() {{
-      add("test_testQuestions");
-      add("testQuestions");
-    }};
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
 
     currentQuestion = popQuestionOutOfSet();
     currentQuestion.shuffleAnswers();
