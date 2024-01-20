@@ -4,6 +4,7 @@ import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.util.QuestionDictionary;
+import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -22,6 +23,7 @@ public class OnlyQuizApplication extends Application {
     stage.setHeight(720);
     stage.setScene(scene);
     stage.show();
+
   }
 
   public static void main(String[] args) {

@@ -1,0 +1,85 @@
+<!-- votingPage.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: lightblue;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .blue-button {
+            margin: 10px;
+            padding: 15px;
+            width: 300px;
+            height: 150px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="button-container">
+    <button class="blue-button" id="button1">$BUTTON_TEXT_1$</button>
+    <button class="blue-button" id="button2">$BUTTON_TEXT_2$</button>
+    <button class="blue-button" id="button3">$BUTTON_TEXT_3$</button>
+    <button class="blue-button" id="button4">$BUTTON_TEXT_4$</button>
+</div>
+
+<script>
+    function redirectToThankYou() {
+        window.location.href = "/thankYouPage.html"
+    }
+    // Funktion, um auf Button-Klicks zu reagieren
+    function handleButtonClick(buttonId) {
+        // Sende AJAX-Anfrage an den Server, um den Klick zu zählen
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/countButtonClick", true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Bei erfolgreichem Klick weiterleiten
+                redirectToThankYou();
+            }
+        };
+
+        // Sende Button-ID als JSON-Daten im Request-Body
+        xhr.send(JSON.stringify({ buttonId: buttonId }));
+    }
+
+    // Füge einen Event-Listener für jeden Button hinzu
+    document.getElementById("button1").addEventListener("click", function () {
+        handleButtonClick(1);
+    });
+
+    document.getElementById("button2").addEventListener("click", function () {
+        handleButtonClick(2);
+    });
+
+    document.getElementById("button3").addEventListener("click", function () {
+        handleButtonClick(3);
+    });
+
+    document.getElementById("button4").addEventListener("click", function () {
+        handleButtonClick(4);
+    });
+</script>
+
+</body>
+</html>

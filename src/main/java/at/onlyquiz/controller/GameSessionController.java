@@ -8,6 +8,7 @@ import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.GeneralSettings;
+import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -26,6 +27,7 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.List;
 
 public class GameSessionController extends BaseController{

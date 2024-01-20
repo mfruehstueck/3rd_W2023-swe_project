@@ -3,7 +3,9 @@ package at.onlyquiz.model.joker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
+import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +21,12 @@ public class AudienceJoker extends Joker {
   @Override
   public void use(GameQuestion gameQuestion) {
     if (online){
-      // QRcode voting
+      try {
+        VotingServer.startServers(gameQuestion.getAnswers());
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+
     }
     else {
       List<Answer> answers = new ArrayList<>(gameQuestion.getAnswers());
