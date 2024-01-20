@@ -10,16 +10,16 @@ public class EditMode extends GameMode {
   private final String nameOfQuestionnaire;
 
   public EditMode(List<GameQuestion> setOfQuestions, int indexInQuestionnaire, String questionnairePath) {
-    editAble = true;
-    timerVisible = false;
-    scoreVisible = false;
-    jokersAvailable = false;
-
+    super();
+    this.editAble = true;
+    this.timerVisible = false;
+    this.scoreVisible = false;
+    this.jokersAvailable = false;
 
     this.nameOfQuestionnaire = questionnairePath;
     this.setOfQuestions = setOfQuestions;
     this.indexInQuestionnaire = indexInQuestionnaire;
-    currentQuestion = setOfQuestions.get(indexInQuestionnaire);
+    this.currentQuestion = setOfQuestions.get(indexInQuestionnaire);
   }
 
   @Override
@@ -27,16 +27,15 @@ public class EditMode extends GameMode {
     //check if delete or createNew operation
     if (currentQuestion.getQuestion().isEmpty() && currentQuestion.getAnswers().get(0).getAnswer().isEmpty() &&
             currentQuestion.getAnswers().get(1).getAnswer().isEmpty() && currentQuestion.getAnswers().get(2).getAnswer().isEmpty() &&
-            currentQuestion.getAnswers().get(3).getAnswer().isEmpty()){
-            QuestionDictionary.delete_gameQuestion(nameOfQuestionnaire, currentQuestion.getLineIdx());
-            setOfQuestions = QuestionDictionary.get_allQuestions(nameOfQuestionnaire);
-            previousIndex();
-    }
-    else {
-            if (!setOfQuestions.contains(currentQuestion)) setOfQuestions.add(currentQuestion);
-            QuestionDictionary.update_gameQuestion(nameOfQuestionnaire, currentQuestion);
-            boolean reachedEnd = nextIndex();
-            if (reachedEnd) currentQuestion = new GameQuestion();
+            currentQuestion.getAnswers().get(3).getAnswer().isEmpty()) {
+      QuestionDictionary.delete_gameQuestion(nameOfQuestionnaire, currentQuestion.getLineIdx());
+      setOfQuestions = QuestionDictionary.get_allQuestions(nameOfQuestionnaire);
+      previousIndex();
+    } else {
+      if (!setOfQuestions.contains(currentQuestion)) setOfQuestions.add(currentQuestion);
+      QuestionDictionary.update_gameQuestion(nameOfQuestionnaire, currentQuestion);
+      boolean reachedEnd = nextIndex();
+      if (reachedEnd) currentQuestion = new GameQuestion();
     }
   }
 

@@ -36,7 +36,7 @@
         </VBox>
         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <ListView prefHeight="200.0" prefWidth="200.0"/>
+                <ListView fx:id="ui_questionnaireSelection_listView" prefHeight="200.0" prefWidth="200.0"/>
                 <Label text="above ListView Placeholder for Questionares to Select"/>
             </children>
         </VBox>
