@@ -10,11 +10,12 @@ public class EditMode extends GameMode {
   private final String nameOfQuestionnaire;
 
   public EditMode(List<GameQuestion> setOfQuestions, int indexInQuestionnaire, String questionnairePath) {
-    super();
-    this.editAble = true;
-    this.timerVisible = false;
-    this.scoreVisible = false;
-    this.jokersAvailable = false;
+      super(null);
+    editAble = true;
+    timerVisible = false;
+    scoreVisible = false;
+    jokersAvailable = false;
+
 
     this.nameOfQuestionnaire = questionnairePath;
     this.setOfQuestions = setOfQuestions;

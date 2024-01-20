@@ -1,18 +1,20 @@
 package at.onlyquiz.gameplay;
 
 import at.onlyquiz.model.joker.AudienceJoker;
+import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.util.QuestionDictionary;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
+import at.onlyquiz.util.scoreSystem.savedScoresJSON.PersistScore;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-  public DefaultMode(List<String> selectedQuestionnaires) {
-    super();
+  public DefaultMode(List<String> selectedQuestionnaires, playername) {
+    super(playername);
     editAble = false;
     scoreVisible = true;
     timerVisible = true;
@@ -23,7 +25,8 @@ public class DefaultMode extends GameMode {
 
     //set up jokers;
     fiftyFiftyJokers.add(new FiftyFiftyJoker());
-    audienceJokers.add(new AudienceJoker());
+    audienceJokers.add(new AudienceJoker(false));
+    chatJokers.add(new ChatJoker(false));
 
     setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
     setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
@@ -36,17 +39,21 @@ public class DefaultMode extends GameMode {
   @Override
   public void confirmAnswer(boolean isCorrect) {
     if (isCorrect) {
-      totalScore += calculateScore();
+        questionCounter += 1;
+        totalScore += calculateScore();
+      if (questionCounter != 0 && questionCounter % 5 == 0){
+          achievedScore = totalScore;
+      }
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
-        //TODO something when player finished
+        //TODO something when player Wins!
         finished = true;
       } else {
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();
-        questionCounter += 1;
       }
     } else {
+        PersistScore.saveScore(this, playername, achievedScore);
       finished = true;
     }
   }
