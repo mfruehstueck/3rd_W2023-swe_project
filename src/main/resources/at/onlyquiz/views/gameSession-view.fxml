@@ -239,7 +239,7 @@
                   </NumberAxis>
               </yAxis>
             </BarChart>
-            <TextFlow fx:id="chatJokerTextFlow" lineSpacing="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-: ;" textAlignment="CENTER" GridPane.rowIndex="1">
+            <TextFlow fx:id="chatJokerTextFlow" lineSpacing="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextFlow>
