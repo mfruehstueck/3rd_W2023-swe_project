@@ -15,4 +15,5 @@ module at.onlyquiz.onlyquiz {
   opens at.onlyquiz.util.scoreSystem.savedScoresJSON to com.fasterxml.jackson.annotation;
   exports at.onlyquiz;
   exports at.onlyquiz.util.scoreSystem.savedScoresJSON;
+  exports at.onlyquiz.gameplay;
 }

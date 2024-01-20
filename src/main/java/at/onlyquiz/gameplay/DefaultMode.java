@@ -53,7 +53,7 @@ public class DefaultMode extends GameMode {
         currentQuestion.shuffleAnswers();
       }
     } else {
-        PersistScore.saveScore(this, playername, achievedScore);
+        PersistScore.saveScore(this);
       finished = true;
     }
   }
