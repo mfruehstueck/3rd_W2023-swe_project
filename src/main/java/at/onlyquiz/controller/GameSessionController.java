@@ -3,12 +3,12 @@ package at.onlyquiz.controller;
 import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
+import at.onlyquiz.model.joker.AudienceJoker;
 import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.GeneralSettings;
-import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
@@ -21,12 +21,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -39,6 +45,7 @@ public class GameSessionController extends BaseController{
     @FXML
     public Button chatInput1, chatInput2, chatInput3, chatInput4;
     public Button deleteButton, nextQuestionButton, prevQuestionButton;
+    public ImageView qrCodeImageView;
     private GameMode currentGameMode;
     private Answer selectedAnswer;
     private Button selectedAnswerButton;
@@ -67,6 +74,7 @@ public class GameSessionController extends BaseController{
     private ScaleTransition blinkTransition;
 
     private ChatJoker activeChatJoker;
+    private AudienceJoker currentAudienceJoker;
 
     public GameSessionController() {
     }
@@ -212,19 +220,29 @@ public class GameSessionController extends BaseController{
 
     public void useAudienceJoker() {
         if (!currentGameMode.getAudienceJokers().isEmpty()) {
-            currentGameMode.getAudienceJokers().pop().use(currentGameMode.getCurrentQuestion());
-            currentGameMode.setJokerUsed(true);
+            currentAudienceJoker = (AudienceJoker) currentGameMode.getAudienceJokers().pop();
 
-            XYChart.Series<String, Double> series = new XYChart.Series<>();
-            for (Answer answer : currentGameMode.getCurrentQuestion().getAnswers()){
-                if (answer.isVisible()){
-                    series.getData().add(new XYChart.Data<>(answer.getAnswer(), answer.getVotingValue()));
-                }
+            if (currentAudienceJoker.isOnline()){
+                byte[] qrBytes = QRCode.from(currentAudienceJoker.generateQrURL()).to(ImageType.PNG).stream().toByteArray();
+                Image qrCode = new Image(new ByteArrayInputStream(qrBytes));
+                qrCodeImageView.setImage(qrCode);
+                currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
             }
-            votingResultsChart.getData().add(series);
-            votingResultsChart.setVisible(true);
+            else {
+            currentAudienceJoker.use(currentGameMode.getCurrentQuestion());
+                currentGameMode.setJokerUsed(true);
 
+                XYChart.Series<String, Double> series = new XYChart.Series<>();
+                for (Answer answer : currentGameMode.getCurrentQuestion().getAnswers()) {
+                    if (answer.isVisible()) {
+                        series.getData().add(new XYChart.Data<>(answer.getAnswer(), answer.getVotingValue()));
+                    }
+                }
+                votingResultsChart.getData().add(series);
+                votingResultsChart.setVisible(true);
+            }
             refreshJokerButtons();
+
         }
     }
 

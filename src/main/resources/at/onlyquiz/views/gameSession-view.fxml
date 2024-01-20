@@ -5,6 +5,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -216,13 +217,13 @@
                 <Button fx:id="stopButton" mnemonicParsing="false" onAction="#pressStopButton" styleClass="stop-button" text="Stop" />
             </children>
         </VBox>
-      <GridPane GridPane.columnIndex="1">
+      <GridPane alignment="CENTER" GridPane.columnIndex="1">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="31.400005722045876" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="293.6" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="293.6" valignment="CENTER" vgrow="ALWAYS" />
             <RowConstraints maxHeight="175.4" minHeight="10.0" prefHeight="47.19999999999999" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -253,6 +254,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
+            <ImageView fx:id="qrCodeImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowSpan="2" />
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">

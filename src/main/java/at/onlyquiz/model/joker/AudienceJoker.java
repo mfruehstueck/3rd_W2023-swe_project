@@ -6,7 +6,12 @@ import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Random;
 
@@ -65,8 +70,31 @@ public class AudienceJoker extends Joker {
     }
   }
 
-  public String getSurveyResult(Difficulty difficulty) {
-    // Implementation of survey result logic
-    return "Survey Result Based on Difficulty";
+  public String generateQrURL(){
+      return "http://" + getLocalIPAddress() + ":8080/onlyQuizLiveVoting";
+  }
+
+  public String getLocalIPAddress() {
+    try {
+      Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
+
+      while (networkInterfaces.hasMoreElements()) {
+        NetworkInterface networkInterface = networkInterfaces.nextElement();
+        Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
+
+        while (inetAddresses.hasMoreElements()) {
+          InetAddress inetAddress = inetAddresses.nextElement();
+
+          // Filtere IPv4-Adressen und lokale Adressen
+          if (!inetAddress.isLoopbackAddress() && inetAddress.isSiteLocalAddress()) {
+            return inetAddress.getHostAddress();
+          }
+        }
+      }
+    } catch (SocketException e) {
+      e.printStackTrace();
+    }
+
+    return "127.0.0.1"; // Fallback auf localhost
   }
 }

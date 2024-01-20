@@ -6,6 +6,8 @@ module at.onlyquiz.onlyquiz {
   requires com.fasterxml.jackson.databind;
   requires com.fasterxml.jackson.datatype.jsr310;
   requires jdk.httpserver;
+  requires com.google.zxing;
+  requires qrgen;
 
 
   opens at.onlyquiz to javafx.fxml;
