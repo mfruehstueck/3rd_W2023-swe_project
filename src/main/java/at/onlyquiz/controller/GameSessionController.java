@@ -386,6 +386,34 @@ public class GameSessionController extends BaseController{
         }
     }
 
+    private void revealRightAnswer() {
+        Button rightAnswerButton = null;
+        for (int i = 0; i < 4; i++) {
+            if (currentGameMode.getCurrentQuestion().getAnswers().get(i).isCorrect()) {
+                switch (i) {
+                    case 0 -> {
+                        answerAButton.getStyleClass().add("answer-button-right");
+                        blinkSelectedAnswerButton(answerAButton);
+                    }
+
+                    case 1 -> {
+                        answerBButton.getStyleClass().add("answer-button-right");
+                        blinkSelectedAnswerButton(answerBButton);
+                    }
+
+                    case 2 -> {
+                        answerCButton.getStyleClass().add("answer-button-right");
+                        blinkSelectedAnswerButton(answerCButton);
+                    }
+
+                    case 3 -> {
+                        answerDButton.getStyleClass().add("answer-button-right");
+                        blinkSelectedAnswerButton(answerDButton);
+                    }
+                }
+            }
+        }
+    }
     public void pressCommitButton() {
         // When Question is not editable the answer will be committed
         if (!currentGameMode.isEditAble()) {
@@ -398,6 +426,7 @@ public class GameSessionController extends BaseController{
                 } else {
                     selectedAnswerButton.getStyleClass().removeAll("answer-button-selected");
                     selectedAnswerButton.getStyleClass().add("answer-button-wrong");
+                    revealRightAnswer();
                 }
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
                 System.out.println(DebugTools.debugLine(new Throwable()));;
@@ -445,7 +474,7 @@ public class GameSessionController extends BaseController{
     }
 
     public void pressEndButton(){
-
+        showResultScreen(currentGameMode, get_stage(ui_container));
     }
 
     public void pressDeleteButton() {

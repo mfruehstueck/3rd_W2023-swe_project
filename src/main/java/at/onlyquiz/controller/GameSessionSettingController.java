@@ -65,6 +65,8 @@ public class GameSessionSettingController extends BaseController {
   }
 
   public void pressEndlessModeButton() {
+    if (get_selectedQuestionnairs().isEmpty()) return;
+    startingGameSession(new EndlessMode(get_selectedQuestionnairs(), playerNameTextField.getText()), get_stage(ui_container));
   }
 
   public void pressTrainingModeButton() {

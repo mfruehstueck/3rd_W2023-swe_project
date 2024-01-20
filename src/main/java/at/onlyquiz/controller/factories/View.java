@@ -8,6 +8,7 @@ public enum View {
   GAME_SESSION_SETTINGS("/at/onlyquiz/views/gameSessionSettings-view.fxml"),
   QUESTIONNAIRE_VIEW("/at/onlyquiz/views/questionnaire-view.fxml"),
   SCORE_HISTORY_VIEW("/at/onlyquiz/views/scoreHistory-view.fxml"),
+  RESULT_SCREEN_VIES("/at/onlyquiz/views/resultScreen-view.fxml"),
   QUIT("no path necessary");
 
   private final String path;

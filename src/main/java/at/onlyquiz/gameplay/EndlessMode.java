@@ -41,6 +41,7 @@ public class EndlessMode extends GameMode {
             questionCounter += 1;
         } else {
             finished = true;
+
         }
     }
 

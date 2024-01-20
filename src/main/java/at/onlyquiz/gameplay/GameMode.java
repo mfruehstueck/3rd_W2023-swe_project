@@ -18,6 +18,7 @@ public abstract class GameMode {
   boolean jokersAvailable;
   boolean editAble;
   boolean finished = false;
+  boolean won = false;
   boolean jokerUsed = false;
   int answerSecondsRemaining, readingSecondsRemaining;
   int indexInQuestionnaire = 0;
@@ -181,5 +182,13 @@ public abstract class GameMode {
 
   public void setAchievedScore(Integer achievedScore) {
     this.achievedScore = achievedScore;
+  }
+
+  public boolean hasWon() {
+    return won;
+  }
+
+  public void setWon(boolean won) {
+    this.won = won;
   }
 }
