@@ -28,13 +28,9 @@ public class DefaultMode extends GameMode {
     audienceJokers.add(new AudienceJoker(false));
     chatJokers.add(new ChatJoker(false));
 
-    List<String> testQuestionnaire = new ArrayList<>() {{
-      add("test_testQuestions");
-      add("testQuestions");
-    }};
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.EASY, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.MEDIUM, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(testQuestionnaire, Difficulty.HARD, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
+    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
 
     currentQuestion = popQuestionOutOfSet();
     currentQuestion.shuffleAnswers();

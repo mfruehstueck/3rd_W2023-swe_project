@@ -21,11 +21,11 @@ public abstract class GameMode {
   boolean jokerUsed = false;
   int answerSecondsRemaining, readingSecondsRemaining;
   int indexInQuestionnaire = 0;
-  String playername;
+  protected List<String> selectedQuestionnaires;
 
-  public GameMode(String playername) {
-    this.playername = playername;
-  }
+  public GameMode() { super(); }
+
+  public GameMode(List<String> selectedQuestionnaires) { this.selectedQuestionnaires = selectedQuestionnaires; }
 
   public abstract void confirmAnswer(boolean isCorrect);
   public abstract int calculateScore();
@@ -58,8 +58,8 @@ public abstract class GameMode {
     }
   }
 
-  public boolean nextIndex(){
-    if (indexInQuestionnaire + 1 < setOfQuestions.size()){
+  public boolean nextIndex() {
+    if (indexInQuestionnaire + 1 < setOfQuestions.size()) {
       indexInQuestionnaire++;
       currentQuestion = setOfQuestions.get(indexInQuestionnaire);
       return false;
@@ -70,8 +70,8 @@ public abstract class GameMode {
     return true;
   }
 
-  public boolean previousIndex(){
-    if (indexInQuestionnaire - 1 >= 0){
+  public boolean previousIndex() {
+    if (indexInQuestionnaire - 1 >= 0) {
       indexInQuestionnaire--;
       currentQuestion = setOfQuestions.get(indexInQuestionnaire);
       return false;

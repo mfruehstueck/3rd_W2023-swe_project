@@ -4,15 +4,21 @@ import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class BaseController {
+public class BaseController implements Initializable {
   protected Stage stage;
+
+  @Override
+  public void initialize(URL location, ResourceBundle resources) { }
 
   public void set_view(Stage stage, View view) {
     try {
@@ -42,5 +48,4 @@ public class BaseController {
       throw new RuntimeException(e);
     }
   }
-
 }
