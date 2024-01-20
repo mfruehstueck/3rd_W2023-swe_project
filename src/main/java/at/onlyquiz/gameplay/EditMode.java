@@ -10,7 +10,7 @@ public class EditMode extends GameMode {
   private final String nameOfQuestionnaire;
 
   public EditMode(List<GameQuestion> setOfQuestions, int indexInQuestionnaire, String questionnairePath) {
-      super(null);
+    super(null, null);
     editAble = true;
     timerVisible = false;
     scoreVisible = false;

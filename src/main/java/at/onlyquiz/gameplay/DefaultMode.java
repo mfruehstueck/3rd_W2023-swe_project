@@ -13,8 +13,8 @@ import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-  public DefaultMode(List<String> selectedQuestionnaires, playername) {
-    super(playername);
+  public DefaultMode(List<String> selectedQuestionnaires, String playername) {
+    super(selectedQuestionnaires, playername);
     editAble = false;
     scoreVisible = true;
     timerVisible = true;
