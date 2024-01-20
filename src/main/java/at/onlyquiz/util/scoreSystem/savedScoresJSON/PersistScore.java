@@ -41,10 +41,14 @@ public class PersistScore {
     public PersistScore() {
     }
 
-    public static void saveScore(GameMode gameMode, String playerName, int achievedScore){
+    public static void saveScore(GameMode gameMode){
+        String gameModeName = gameMode.getClass().getSimpleName();
+        String playerName = gameMode.getPlayername();
+        int achievedScore = gameMode.getAchievedScore();
+
         if (achievedScore != 0 && !playerName.isEmpty()) {
             PersistScore newScore = new PersistScore(
-                    gameMode.getClass().getSimpleName(),
+                    gameModeName,
                     playerName,
                     achievedScore
             );
