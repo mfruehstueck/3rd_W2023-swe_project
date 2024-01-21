@@ -43,18 +43,18 @@ public class ChatJoker extends Joker {
           }
           case "Father" -> {
             inputText1 = "All good, Dad. how is it going?";
-            inputText2 = "Hey Dad, got a tricky quiz question here.";
-            inputText3 = "Doing fine, Dad. Need some advice on a question.";
+            inputText2 = "Hey Dad, I'm fine and you?";
+            inputText3 = "Doing fine, Dad. how about you?";
           }
           case "Bestfriend" -> {
-            inputText1 = "Hey! All good. Need help with a quiz.";
-            inputText2 = "What's up! Stuck on a quiz question.";
-            inputText3 = "Just hanging out. Got a question for you.";
+            inputText1 = "Hey! All good. what's up?";
+            inputText2 = "What's up! I'm doing great! you?";
+            inputText3 = "Just hanging out. how's it going?";
           }
           case "Aunt" -> {
-            inputText1 = "Hello Auntie, I need your wisdom on something.";
-            inputText2 = "Hi Aunt, got a moment to help with a quiz?";
-            inputText3 = "Hey there, Auntie! Struggling with a quiz question here.";
+            inputText1 = "Hello Auntie, how are you?";
+            inputText2 = "Hi Aunt, how's it going";
+            inputText3 = "Hey there, Auntie! I'm good and you?";
           }
         }
         return person.greetingPerson() + "\n";

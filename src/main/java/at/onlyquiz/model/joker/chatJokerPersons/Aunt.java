@@ -6,9 +6,9 @@ public class Aunt extends ChatJokerPerson {
     public Aunt() {
         super();
         greetingLines.add("Hello dear, how are you today?");
-        greetingLines.add("Hey sweetie, all set for the quiz?");
+        greetingLines.add("Hey sweetie, how's it going?");
 
-        greetingBackLines.add("I'm great, thanks! Ready to assist you.");
+        greetingBackLines.add("I'm great, thanks! What's up?");
 
         tellIsInShowLines.add("Let's see if your auntie can lend a hand.");
 
