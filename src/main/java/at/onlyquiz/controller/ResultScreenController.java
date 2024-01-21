@@ -14,14 +14,14 @@ public class ResultScreenController extends BaseController {
     private GameMode currentGameMode;
 
     public void initialize() {
-        if (currentGameMode.getCurrent_user() != null){
+        if (currentGameMode.getCurrent_user() != null) {
             playerNameLabel.setText("Player: " + currentGameMode.getCurrent_user().getUserName());
         }
-        if (currentGameMode.getAchievedScore() != null){
+        if (currentGameMode.getAchievedScore() != null) {
             achievedScoreLabel.setText("Achieved Score: " + currentGameMode.getAchievedScore());
         }
 
-        if (currentGameMode.hasWon()){
+        if (currentGameMode.hasWon()) {
             statusMassage.setText("Congratulations, you won!");
         } else {
             statusMassage.setText("Sorry, you lost..");
@@ -30,10 +30,6 @@ public class ResultScreenController extends BaseController {
 
     public void pressMenuButton() {
         set_view(get_stage(ui_container), View.MENU_VIEW);
-    }
-
-    public GameMode getCurrentGameMode() {
-        return currentGameMode;
     }
 
     public void setCurrentGameMode(GameMode currentGameMode) {

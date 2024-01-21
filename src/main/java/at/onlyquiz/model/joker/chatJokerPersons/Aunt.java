@@ -15,10 +15,6 @@ public class Aunt extends ChatJokerPerson {
         askQuestionsLines.add("Interesting question, let me ponder for a moment.");
         askQuestionsLines.add("Let's think this through...");
         askQuestionsLines.add("I remember discussing something like this at book club...");
-
-        //concludingLines.add("Best of luck, you're going to do great!");
-        //concludingLines.add("No matter the outcome, you're doing wonderfully.");
-        //concludingLines.add("Take a deep breath and trust yourself.");
     }
 
     @Override

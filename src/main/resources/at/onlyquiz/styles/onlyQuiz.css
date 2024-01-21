@@ -102,7 +102,7 @@
     -fx-background-radius: 20;
 }
 
-.top10Label{
+.top10Label {
     -fx-min-width: 350px;
 }
 
@@ -133,14 +133,14 @@
     -fx-background-color: green;
 }
 
-.list-view{
+.list-view {
     -fx-border-color: #3270ce;
     -fx-border-width: 3px;
     -fx-border-radius: 5;
 }
 
 /* Score History View */
-.scoreHistoryLabel{
+.scoreHistoryLabel {
     -fx-min-width: 1000px;
 }
 

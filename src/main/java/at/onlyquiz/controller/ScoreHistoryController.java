@@ -17,32 +17,32 @@ import java.util.ResourceBundle;
 
 public class ScoreHistoryController extends BaseController implements Initializable {
 
-  @FXML
-  public GridPane ui_container;
-  @FXML
-  public TableView<PersistScore> gameHistoryTable;
-  @FXML
-  private TableColumn<PersistScore, String> playerNameColumn, scoreColumn, gameModeColumn;
+    @FXML
+    public GridPane ui_container;
+    @FXML
+    public TableView<PersistScore> gameHistoryTable;
+    @FXML
+    private TableColumn<PersistScore, String> playerNameColumn, scoreColumn, gameModeColumn;
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-    super.initialize(url, resourceBundle);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
 
-    List<PersistScore> allScores = PersistScore.getSavedScores();
-    ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
+        List<PersistScore> allScores = PersistScore.getSavedScores();
+        ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
 
-    gameHistoryTable.setItems(sortedScores);
-    gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
-    playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));
-    scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+        gameHistoryTable.setItems(sortedScores);
+        gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
+        playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));
+        scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
 
-    gameHistoryTable.getSortOrder().addAll(gameModeColumn, scoreColumn, playerNameColumn);
-    gameHistoryTable.sort();
+        gameHistoryTable.getSortOrder().addAll(gameModeColumn, scoreColumn, playerNameColumn);
+        gameHistoryTable.sort();
 
-  }
+    }
 
 
-  public void pressBackButton() {
-    set_view(get_stage(ui_container), View.MENU_VIEW);
-  }
+    public void pressBackButton() {
+        set_view(get_stage(ui_container), View.MENU_VIEW);
+    }
 }

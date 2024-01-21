@@ -6,7 +6,7 @@ import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
-import at.onlyquiz.util.UserManagement;
+import at.onlyquiz.util.userManagement.UserManagement;
 import at.onlyquiz.util.jsonParser.models.PersistScore;
 import at.onlyquiz.util.jsonParser.models.User;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
@@ -49,7 +49,6 @@ public class DefaultMode extends GameMode {
       }
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
-        //TODO something when player Wins!
         finished = true;
         won = true;
       } else {
@@ -57,7 +56,7 @@ public class DefaultMode extends GameMode {
         currentQuestion.shuffleAnswers();
       }
     } else {
-      if (achievedScore != 0 && UserManagement.get_currentUser() != null) {
+      if (achievedScore != 0 && !UserManagement.get_currentUser().equals("Guest")) {
         PersistScore.saveScore(this);
       }
       finished = true;

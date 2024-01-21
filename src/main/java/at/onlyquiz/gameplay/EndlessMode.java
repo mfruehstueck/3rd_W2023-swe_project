@@ -5,10 +5,13 @@ import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
+import at.onlyquiz.util.Configuration;
 import at.onlyquiz.util.QuestionDictionary;
+import at.onlyquiz.util.userManagement.UserManagement;
+import at.onlyquiz.util.jsonParser.models.PersistScore;
 import at.onlyquiz.util.jsonParser.models.User;
+import at.onlyquiz.util.scoreSystem.ScoreCalculator;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,7 +19,7 @@ public class EndlessMode extends GameMode {
     public EndlessMode(List<String> selectedQuestionnaires, User current_user, boolean hasLiveAudience) {
         super(selectedQuestionnaires, current_user);
         editAble = false;
-        scoreVisible = false;
+        scoreVisible = true;
         timerVisible = false;
         answerSecondsRemaining = 0;
         totalScore = 0;
@@ -36,18 +39,24 @@ public class EndlessMode extends GameMode {
   @Override
   public void confirmAnswer(boolean isCorrect) {
     if (isCorrect) {
-      jokerUsed = false;
+        questionCounter += 1;
+        jokerUsed = false;
       getNewQuestions();
       currentQuestion = popQuestionOutOfSet();
       currentQuestion.shuffleAnswers();
-      questionCounter += 1;
+      totalScore += calculateScore();
+      achievedScore += totalScore;
     } else {
+        if (achievedScore != 0 && !UserManagement.get_currentUser().getUserName().equals(Configuration.DEFAULT_GUEST)) {
+            PersistScore.saveScore(this);
+        }
       finished = true;
     }
   }
 
   @Override
-  public int calculateScore() { return 0; }
+  public int calculateScore() {
+        return ScoreCalculator.calculateEndlessModeScore(currentQuestion.getDifficulty()); }
 
   private void getNewQuestions() {
     if (setOfQuestions.size() < 2) {

@@ -9,43 +9,67 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PersistScore {
-  private String gameMode;
-  private String playerName;
-  private Integer score;
+    private String gameMode;
+    private String playerName;
+    private Integer score;
 
-  public PersistScore() { }
-  public PersistScore(String gameMode, String playerName, Integer score) {
-    this.gameMode = gameMode;
-    this.playerName = playerName;
-    this.score = score;
-  }
-  public PersistScore(GameMode gameMode) {
-    String gameModeName = gameMode.getClass().getSimpleName();
-    String playerName = gameMode.getCurrent_user().getUserName();
-    int achievedScore = gameMode.getAchievedScore();
+    public PersistScore() {
+    }
 
-    this.gameMode = gameModeName;
-    this.playerName = playerName;
-    this.score = achievedScore;
-  }
+    public PersistScore(String gameMode, String playerName, Integer score) {
+        this.gameMode = gameMode;
+        this.playerName = playerName;
+        this.score = score;
+    }
 
-  public static void saveScore(GameMode gameMode) { JSON_Parser.write(Configuration.SAVEDSCORE_FILE, new PersistScore(gameMode)); }
+    public PersistScore(GameMode gameMode) {
+        String gameModeName = gameMode.getClass().getSimpleName();
+        String playerName = gameMode.getCurrent_user().getUserName();
+        int achievedScore = gameMode.getAchievedScore();
 
-  public static List<PersistScore> getSavedScores() { return JSON_Parser.read(Configuration.SAVEDSCORE_FILE, PersistScore.class); }
+        this.gameMode = gameModeName;
+        this.playerName = playerName;
+        this.score = achievedScore;
+    }
 
-  public static List<PersistScore> getTop10fromAllGameModes() {
-    List<PersistScore> output = getSavedScores();
+    public static void saveScore(GameMode gameMode) {
+        JSON_Parser.write(Configuration.SAVEDSCORE_FILE, new PersistScore(gameMode));
+    }
 
-    output.sort(Comparator.comparingInt(PersistScore::getScore));
+    public static List<PersistScore> getSavedScores() {
+        return JSON_Parser.read(Configuration.SAVEDSCORE_FILE, PersistScore.class);
+    }
 
-    return output.stream().limit(10).collect(Collectors.toList());
-  }
+    public static List<PersistScore> getTop10fromAllGameModes() {
+        List<PersistScore> output = getSavedScores();
 
-  public String getGameMode() { return gameMode; }
-  public void setGameMode(String gameMode) { this.gameMode = gameMode; }
-  public String getPlayerName() { return playerName; }
-  public void setPlayerName(String playerName) { this.playerName = playerName; }
-  public int getScore() { return score; }
-  public void setScore(int score) { this.score = score; }
+        output.sort(Comparator.comparingInt(PersistScore::getScore));
+
+        return output.stream().limit(10).collect(Collectors.toList());
+    }
+
+    public String getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(String gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }
 

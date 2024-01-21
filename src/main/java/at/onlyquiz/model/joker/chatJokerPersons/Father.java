@@ -14,10 +14,6 @@ public class Father extends ChatJokerPerson {
         askQuestionsLines.add("That's a tough one, but let's work it out together.");
         askQuestionsLines.add("Hmm, let me think...");
         askQuestionsLines.add("You know, when I was your age, we often faced similar problems...");
-
-        //concludingLines.add("You got this! Trust your instincts.");
-        //concludingLines.add("Whatever happens, I'm proud of you.");
-        //concludingLines.add("Take your time and make the best choice.");
     }
 
     @Override

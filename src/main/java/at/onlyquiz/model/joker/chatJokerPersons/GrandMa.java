@@ -16,10 +16,6 @@ public class GrandMa extends ChatJokerPerson {
         askQuestionsLines.add("Oh, that is a really good question...");
         askQuestionsLines.add("Hmm... let me think about that.");
         askQuestionsLines.add("Well, back in my day, we used to say...");
-
-        //concludingLines.add("Good luck, my dear!");
-        //concludingLines.add("Remember, win or lose, you're always my special one.");
-        //concludingLines.add("Be careful and think it through, sweetie.");
     }
 
     @Override

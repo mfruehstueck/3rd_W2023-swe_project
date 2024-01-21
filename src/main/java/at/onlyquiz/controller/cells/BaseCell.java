@@ -4,19 +4,18 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.Region;
 
 public class BaseCell<T> extends ListCell<T> {
-  protected final Region blank = new Region();
-  public BaseCell() { super(); }
+    protected final Region blank = new Region();
 
-  protected void listViewUpdate() {
-
-  }
-
-  protected boolean isEmptyItem(Object item, boolean empty) {
-    if (empty || item == null) {
-      setText(null);
-      setGraphic(null);
-      return true;
+    public BaseCell() {
+        super();
     }
-    return false;
-  }
+
+    protected boolean isEmptyItem(Object item, boolean empty) {
+        if (empty || item == null) {
+            setText(null);
+            setGraphic(null);
+            return true;
+        }
+        return false;
+    }
 }

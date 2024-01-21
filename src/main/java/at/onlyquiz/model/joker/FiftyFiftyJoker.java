@@ -8,21 +8,21 @@ import java.util.Random;
 
 public class FiftyFiftyJoker extends Joker {
 
-  public FiftyFiftyJoker() {
-    super();
-  }
-
-  @Override
-  public void use(GameQuestion gameQuestion) {
-    List<Answer> answers = gameQuestion.getAnswers();
-    Integer counter = 0;
-    while (counter < 2) {
-      Integer random_number = new Random().nextInt(0, 4);
-      if (answers.get(random_number).isCorrect() == false && answers.get(random_number).isVisible()) {
-        answers.get(random_number).setVisible(false);
-        counter++;
-      }
+    public FiftyFiftyJoker() {
+        super();
     }
-    used = true;
-  }
+
+    @Override
+    public void use(GameQuestion gameQuestion) {
+        List<Answer> answers = gameQuestion.getAnswers();
+        Integer counter = 0;
+        while (counter < 2) {
+            Integer random_number = new Random().nextInt(0, 4);
+            if (answers.get(random_number).isCorrect() == false && answers.get(random_number).isVisible()) {
+                answers.get(random_number).setVisible(false);
+                counter++;
+            }
+        }
+        used = true;
+    }
 }

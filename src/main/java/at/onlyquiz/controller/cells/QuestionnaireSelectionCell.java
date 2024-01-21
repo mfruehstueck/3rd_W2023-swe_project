@@ -8,30 +8,30 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
 public class QuestionnaireSelectionCell extends BaseCell<QuestionnaireSelection> {
-  private final Label ui_questionnaireName;
-  private final CheckBox ui_isSelected;
-  private final HBox ui_layout;
+    private final Label ui_questionnaireName;
+    private final CheckBox ui_isSelected;
+    private final HBox ui_layout;
 
-  public QuestionnaireSelectionCell(OnClickEventHandler<QuestionnaireSelection> onClick_ui_isSelected) {
-    super();
+    public QuestionnaireSelectionCell(OnClickEventHandler<QuestionnaireSelection> onClick_ui_isSelected) {
+        super();
 
-    this.ui_questionnaireName = new Label();
-    this.ui_isSelected = new CheckBox();
-    this.ui_layout = new HBox(ui_isSelected, blank, ui_questionnaireName);
+        this.ui_questionnaireName = new Label();
+        this.ui_isSelected = new CheckBox();
+        this.ui_layout = new HBox(ui_isSelected, blank, ui_questionnaireName);
 
-    this.ui_isSelected.setOnAction(actionEvent -> onClick_ui_isSelected.onCLick(getItem()));
-  }
+        this.ui_isSelected.setOnAction(actionEvent -> onClick_ui_isSelected.onCLick(getItem()));
+    }
 
-  @Override
-  protected void updateItem(QuestionnaireSelection item, boolean empty) {
-    super.updateItem(item, empty);
+    @Override
+    protected void updateItem(QuestionnaireSelection item, boolean empty) {
+        super.updateItem(item, empty);
 
-    if (isEmptyItem(item, empty)) return;
+        if (isEmptyItem(item, empty)) return;
 
-    ui_questionnaireName.setText(item.get_questionnaireName());
-    ui_isSelected.setSelected(item.isSelected());
+        ui_questionnaireName.setText(item.get_questionnaireName());
+        ui_isSelected.setSelected(item.isSelected());
 
-    HBox.setHgrow(blank, Priority.ALWAYS);
-    setGraphic(ui_layout);
-  }
+        HBox.setHgrow(blank, Priority.ALWAYS);
+        setGraphic(ui_layout);
+    }
 }

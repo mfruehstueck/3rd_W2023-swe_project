@@ -38,7 +38,7 @@ public class LoginController extends BaseController {
 
     UserManagement.init();
 
-    current_loginType = LoginType.GUEST;
+    current_loginType = LoginType.USER;
 
     ui_loginGuest_nickname.textProperty().addListener((observable, oldValue, newValue) -> {
       System.out.println(DebugTools.debugLine(new Throwable()) + "nickname changed to " + newValue);
