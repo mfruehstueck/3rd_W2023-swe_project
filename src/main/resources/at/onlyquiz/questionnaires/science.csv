@@ -1,13 +1,13 @@
 TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
 0,What is the chemical symbol for gold?,EASY,Au,Ag,Fe,Cu
-0,In physics, what is the SI unit of force?,EASY,Newton,Watt,Joule,Pascal
+0,In physics what is the SI unit of force?,EASY,Newton,Watt,Joule,Pascal
 0,Which planet is known as the "Red Planet"?,EASY,Mars,Venus,Jupiter,Saturn
 0,What is the process by which plants make their own food using sunlight?,EASY,Photosynthesis,Respiration,Transpiration,Digestion
 0,Who developed the theory of relativity?,EASY,Albert Einstein,Isaac Newton,Nikola Tesla,Galileo Galilei
 0,What is the chemical symbol for water?,MEDIUM,H2O,CO2,N2,O2
 0,Which gas makes up the majority of Earth's atmosphere?,MEDIUM,Nitrogen (N2),Oxygen (O2),Carbon Dioxide (CO2),Argon (Ar)
 0,What is the smallest unit of matter?,MEDIUM,Atom,Molecule,Element,Particle
-0,In chemistry, what does the pH scale measure?,MEDIUM,Acidity or Alkalinity,Pressure,Concentration,Viscosity
+0,In chemistry what does the pH scale measure?,MEDIUM,Acidity or Alkalinity,Pressure,Concentration,Viscosity
 0,What is the speed of light in a vacuum?,MEDIUM,299,792 kilometers per second,100,000 miles per second,150,000 miles per second,200,000 kilometers per second
 0,Which scientist is known for his laws of motion?,HARD,Isaac Newton,Galileo Galilei,Nikola Tesla,Albert Einstein
 0,What is the largest planet in our solar system?,HARD,Jupiter,Saturn,Mars,Neptune
@@ -15,14 +15,14 @@ TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,
 0,What is the process by which a liquid turns into a gas at its boiling point?,HARD,Vaporization,Condensation,Melting,Freezing
 0,What is the main component of Earth's inner core?,HARD,Iron (Fe),Nickel (Ni),Gold (Au),Platinum (Pt)
 0,What is the chemical symbol for the element with atomic number 1?,EASY,H,He,O,C
-0,In astronomy, what is the name of the closest star to Earth?,EASY,Sun,Alpha Centauri,Betelgeuse,Sirius
+0,In astronomy what is the name of the closest star to Earth?,EASY,Sun,Alpha Centauri,Betelgeuse,Sirius
 0,What is the study of fossils called?,EASY,Paleontology,Archaeology,Geology,Biology
 0,Which gas is responsible for the Earth's greenhouse effect?,EASY,Carbon Dioxide (CO2),Methane (CH4),Oxygen (O2),Nitrogen (N2)
 0,What is the process by which plants release water vapor into the atmosphere?,EASY,Transpiration,Photosynthesis,Respiration,Evaporation
 0,What is the chemical symbol for sodium?,MEDIUM,Na,Ne,Cl,Ca
 0,Which element is essential for the process of photosynthesis in plants?,MEDIUM,Carbon (C),Oxygen (O),Hydrogen (H),Chlorine (Cl)
 0,What is the smallest bone in the human body?,MEDIUM,Stapes,Incus,Malleus,Femur
-0,In physics, what is the law of conservation of energy?,MEDIUM,Energy cannot be created or destroyed,Energy can be created but not destroyed,Energy can be destroyed but not created,Energy is not conserved
+0,In physics what is the law of conservation of energy?,MEDIUM,Energy cannot be created or destroyed,Energy can be created but not destroyed,Energy can be destroyed but not created,Energy is not conserved
 0,What is the chemical formula for glucose?,MEDIUM,C6H12O6,H2O,CO2,O2
 0,Who discovered penicillin?,HARD,Alexander Fleming,Marie Curie,Louis Pasteur,Robert Koch
 0,What is the freezing point of water in Celsius?,HARD,0 degrees Celsius,100 degrees Celsius,-273 degrees Celsius,37 degrees Celsius
