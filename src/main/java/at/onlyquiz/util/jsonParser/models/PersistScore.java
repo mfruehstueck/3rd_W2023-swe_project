@@ -21,7 +21,7 @@ public class PersistScore {
   }
   public PersistScore(GameMode gameMode) {
     String gameModeName = gameMode.getClass().getSimpleName();
-    String playerName = gameMode.getPlayerName();
+    String playerName = gameMode.getCurrent_user().getUserName();
     int achievedScore = gameMode.getAchievedScore();
 
     this.gameMode = gameModeName;

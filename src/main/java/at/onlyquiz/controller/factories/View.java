@@ -2,6 +2,7 @@ package at.onlyquiz.controller.factories;
 
 public enum View {
   //    at/onlyquiz/views/menu-view.fxml
+  LOGIN_VIEW("/at/onlyquiz/views/login-view.fxml"),
   MENU_VIEW("/at/onlyquiz/views/menu-view.fxml"),
   GENERAL_SETTINGS_VIEW("/at/onlyquiz/views/generalSettings-view.fxml"),
   GAME_SESSION_VIEW("/at/onlyquiz/views/gameSession-view.fxml"),

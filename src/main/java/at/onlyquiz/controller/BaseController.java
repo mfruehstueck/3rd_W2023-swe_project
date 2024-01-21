@@ -7,11 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BaseController implements Initializable {
@@ -49,7 +52,7 @@ public class BaseController implements Initializable {
     }
   }
 
-  public void showResultScreen(GameMode gameMode, Stage stage){
+  public void showResultScreen(GameMode gameMode, Stage stage) {
     try {
       FXMLLoader fxmlLoader = new FXMLLoader(ControllerFactory.class.getResource(View.RESULT_SCREEN_VIES.getPath()));
       Parent parent = fxmlLoader.load();
@@ -60,5 +63,20 @@ public class BaseController implements Initializable {
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public static Optional<ButtonType> showAlert(String title, String content, Alert.AlertType alertType) {
+    Alert alert = new Alert(alertType);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(content);
+
+    if (alertType == Alert.AlertType.CONFIRMATION) {
+      alert.getButtonTypes().setAll(ButtonType.YES, ButtonType.NO);
+    } else if (alertType == Alert.AlertType.INFORMATION) {
+      alert.getButtonTypes().setAll(ButtonType.OK);
+    }
+
+    return alert.showAndWait();
   }
 }

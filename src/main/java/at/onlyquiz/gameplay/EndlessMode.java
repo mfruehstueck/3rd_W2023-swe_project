@@ -6,13 +6,14 @@ import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
+import at.onlyquiz.util.jsonParser.models.User;
 
 import java.util.Collections;
 import java.util.List;
 
 public class EndlessMode extends GameMode {
-  public EndlessMode(List<String> selectedQuestionnaires, String playername) {
-    super(selectedQuestionnaires, playername);
+  public EndlessMode(List<String> selectedQuestionnaires, User current_user) {
+    super(selectedQuestionnaires, current_user);
     editAble = false;
     scoreVisible = false;
     timerVisible = false;

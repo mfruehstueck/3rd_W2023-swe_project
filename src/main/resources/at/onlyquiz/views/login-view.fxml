@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:id="ui_container" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.LoginController">
+    <columnConstraints>
+        <ColumnConstraints percentWidth="33.3"/>
+        <ColumnConstraints halignment="CENTER" percentWidth="33.3"/>
+        <ColumnConstraints minWidth="10.0" percentWidth="33.3" prefWidth="100.0"/>
+        <ColumnConstraints maxWidth="1.7976931348623157E308"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="242.0" minHeight="10.0" percentHeight="20.0" prefHeight="242.0"/>
+        <RowConstraints maxHeight="268.0" minHeight="238.0" percentHeight="53.3" prefHeight="238.0"/>
+        <RowConstraints minHeight="10.0" percentHeight="33.3" prefHeight="30.0"/>
+    </rowConstraints>
+
+
+    <stylesheets>
+        <URL value="@../styles/standard/general.css"/>
+        <URL value="@../styles/standard/login.css"/>
+    </stylesheets>
+    <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <Label text="Login"/>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <RadioButton fx:id="ui_loginGuest_radioButton" mnemonicParsing="false" selected="true"
+                         text="as Guest">
+                <toggleGroup>
+                    <ToggleGroup fx:id="ui_loginGroup"/>
+                </toggleGroup>
+            </RadioButton>
+            <TextField fx:id="ui_loginGuest_nickname" promptText="Nickname"/>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                <Label fx:id="ui_loginGuest_info" text="* scores will not be saved"/>
+            </VBox>
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <RadioButton fx:id="ui_loginUser_radioButton" mnemonicParsing="false" text="as User"
+                         toggleGroup="$ui_loginGroup"/>
+            <TextField fx:id="ui_loginUser_username" promptText="Username"/>
+            <PasswordField fx:id="ui_loginUser_password" promptText="Password"/>
+        </VBox>
+        <Button fx:id="ui_login_button" mnemonicParsing="false" onAction="#onClick_login_button" text="Login"/>
+    </VBox>
+</GridPane>

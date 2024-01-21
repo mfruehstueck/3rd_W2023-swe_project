@@ -2,13 +2,9 @@ package at.onlyquiz.controller;
 
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class ResultScreenController extends BaseController {
 
@@ -18,8 +14,8 @@ public class ResultScreenController extends BaseController {
     private GameMode currentGameMode;
 
     public void initialize() {
-        if (currentGameMode.getPlayerName() != null){
-            playerNameLabel.setText("Player: " + currentGameMode.getPlayerName());
+        if (currentGameMode.getCurrent_user() != null){
+            playerNameLabel.setText("Player: " + currentGameMode.getCurrent_user().getUserName());
         }
         if (currentGameMode.getAchievedScore() != null){
             achievedScoreLabel.setText("Achieved Score: " + currentGameMode.getAchievedScore());

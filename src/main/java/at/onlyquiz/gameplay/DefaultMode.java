@@ -6,15 +6,17 @@ import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
+import at.onlyquiz.util.UserManagement;
 import at.onlyquiz.util.jsonParser.models.PersistScore;
+import at.onlyquiz.util.jsonParser.models.User;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
 
 import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-  public DefaultMode(List<String> selectedQuestionnaires, String playername) {
-    super(selectedQuestionnaires, playername);
+  public DefaultMode(List<String> selectedQuestionnaires, User current_user) {
+    super(selectedQuestionnaires, current_user);
     editAble = false;
     scoreVisible = true;
     timerVisible = true;
@@ -55,7 +57,7 @@ public class DefaultMode extends GameMode {
         currentQuestion.shuffleAnswers();
       }
     } else {
-      if (achievedScore != 0 && !playerName.isEmpty()) {
+      if (achievedScore != 0 && UserManagement.get_currentUser() != null) {
         PersistScore.saveScore(this);
       }
       finished = true;

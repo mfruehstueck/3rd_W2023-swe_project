@@ -15,14 +15,12 @@ public class OnlyQuizApplication extends Application {
   public void start(Stage stage) throws IOException {
     QuestionDictionary.init();
 
-    System.out.println(DebugTools.debugLine(new Throwable()));
-    Scene scene = ControllerFactory.get_scene(View.MENU_VIEW);
+    Scene scene = ControllerFactory.get_scene(View.LOGIN_VIEW);
     stage.setTitle("OnlyQuiz");
     stage.setWidth(1280);
     stage.setHeight(720);
     stage.setScene(scene);
     stage.show();
-
   }
 
   public static void main(String[] args) {
