@@ -48,4 +48,17 @@ public class BaseController implements Initializable {
       throw new RuntimeException(e);
     }
   }
+
+  public void showResultScreen(GameMode gameMode, Stage stage){
+    try {
+      FXMLLoader fxmlLoader = new FXMLLoader(ControllerFactory.class.getResource(View.RESULT_SCREEN_VIES.getPath()));
+      Parent parent = fxmlLoader.load();
+      ResultScreenController resultScreenController = fxmlLoader.getController();
+      resultScreenController.setCurrentGameMode(gameMode);
+      stage.setScene(new Scene(parent));
+      stage.sizeToScene();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
 }

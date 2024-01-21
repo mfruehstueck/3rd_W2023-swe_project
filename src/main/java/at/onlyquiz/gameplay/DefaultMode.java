@@ -49,6 +49,7 @@ public class DefaultMode extends GameMode {
       if (setOfQuestions.isEmpty()) {
         //TODO something when player Wins!
         finished = true;
+        won = true;
       } else {
         currentQuestion = popQuestionOutOfSet();
         currentQuestion.shuffleAnswers();

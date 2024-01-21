@@ -4,6 +4,7 @@ import at.onlyquiz.model.joker.AudienceJoker;
 import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
+import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
 
 import java.util.Collections;
@@ -44,15 +45,14 @@ public class EndlessMode extends GameMode {
   }
 
   @Override
-  public int calculateScore() {
-    return 0;
-  }
+  public int calculateScore() { return 0; }
 
   private void getNewQuestions() {
     if (setOfQuestions.size() < 2) {
-      setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
-      setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
-      setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
+      for (Difficulty d : Difficulty.values()) {
+        List<GameQuestion> current_gameQuestions = QuestionDictionary.get_randomQuestions(selectedQuestionnaires, d, 5);
+        if (current_gameQuestions != null) setOfQuestions.addAll(current_gameQuestions);
+      }
     }
   }
 }
