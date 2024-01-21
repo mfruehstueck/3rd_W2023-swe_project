@@ -1,5 +1,6 @@
 package at.onlyquiz.util;
 
+import at.debugtools.DebugTools;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.csvParser.CSV_Column;
@@ -34,7 +35,7 @@ public class QuestionDictionary {
     try {
       List<String[]> csvLines = CSV_Reader.get_csvLines_all(csvPath);
       for (String[] line : csvLines) { out_questions.add(line[CSV_Column.QUESTION.ordinal()]); }
-      if(csvLines.size() > DEFAULT_CSV_HEADEREND_POSITION) out_questions.subList(0, DEFAULT_CSV_HEADEREND_POSITION).clear();
+      if (csvLines.size() > DEFAULT_CSV_HEADEREND_POSITION) out_questions.subList(0, DEFAULT_CSV_HEADEREND_POSITION).clear();
     } catch (IOException | CsvException e) {
       throw new RuntimeException(e);
     }
@@ -72,6 +73,7 @@ public class QuestionDictionary {
     HashMap<Integer, HashMap<Difficulty, List<Integer>>> current_mapOf_timesSelected;
 
     for (int i = 0; i < amount; i++) {
+      if(questionnaireFileNames.isEmpty()) return null;
       randomFileID = random.nextInt(0, questionnaireFileNames.size());
       pathOfQuestionnaireFile = questionnaireFilePaths.get(questionnaireFileNames.get(randomFileID));
       current_mapOf_timesSelected = dictionary.get(pathOfQuestionnaireFile);
@@ -87,7 +89,7 @@ public class QuestionDictionary {
       }
       if (current_mapOf_difficulty == null || current_mapOf_difficulty.isEmpty() || current_listOf_lineIdx == null) {
         questionnaireFileNames.remove(questionnaireFileNames.get(randomFileID));
-        if (questionnaireFileNames.isEmpty()) throw new RuntimeException();
+        if (questionnaireFileNames.isEmpty()) System.out.println(DebugTools.debugLine(new Throwable()) + "failed questionnaireFileNames is empty");
         i--;
         continue;
       }
@@ -207,7 +209,7 @@ public class QuestionDictionary {
     }
   }
 
-  private static HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> read_questionnaireFiles() {
+  public static HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> read_questionnaireFiles() {
     HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> out_dictionary = new HashMap<>();
     HashMap<Integer, HashMap<Difficulty, List<Integer>>> current_mapOf_lineNumbers_byTimesSelected;
 

@@ -5,15 +5,13 @@ import at.onlyquiz.controller.cells.models.QuestionnaireSelection;
 import at.onlyquiz.controller.eventHandlers.OnClickEventHandler;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.DefaultMode;
-import at.onlyquiz.gameplay.EditMode;
-import at.onlyquiz.gameplay.EndlessMode;
 import at.onlyquiz.util.QuestionDictionary;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -20,13 +19,17 @@
     <ListView fx:id="ui_question_listView" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
     <Button fx:id="ui_back_button" mnemonicParsing="false" onAction="#onClick_ui_back_button" styleClass="back-button" text="End" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestionnaire_button" styleClass="back-button" text="Add Questionnaire" GridPane.columnIndex="0" GridPane.rowIndex="0" />
     <Button fx:id="ui_editQuestion_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestion_button" styleClass="back-button" text="Edit Question" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-   <TextField fx:id="ui_newQuestionnaire_textField" alignment="CENTER_RIGHT" promptText="name of new questionnaire">
-      <GridPane.margin>
-         <Insets left="256.0" />
-      </GridPane.margin>
-   </TextField>
+    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false"
+                    onAction="#onClick_ui_editQuestionnaire_button" styleClass="back-button"
+                    text="Add Questionnaire"/>
+            <TextField fx:id="ui_newQuestionnaire_textField" alignment="CENTER_RIGHT"
+                       promptText="name of new questionnaire"/>
+        </HBox>
+        <Button fx:id="ui_importQuestionnaire_button" onAction="#onClick_ui_importQuestionnaire_button" mnemonicParsing="false" text="Import Questionnaire"/>
+    </VBox>
     <stylesheets>
         <URL value="@../styles/standard/general.css" />
         <URL value="@../styles/standard/menu.css" />

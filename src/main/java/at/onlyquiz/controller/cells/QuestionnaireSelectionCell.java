@@ -17,9 +17,9 @@ public class QuestionnaireSelectionCell extends BaseCell<QuestionnaireSelection>
 
     this.ui_questionnaireName = new Label();
     this.ui_isSelected = new CheckBox();
-    this.ui_layout = new HBox(ui_questionnaireName, blank, ui_isSelected);
+    this.ui_layout = new HBox(ui_isSelected, blank, ui_questionnaireName);
 
-    this.ui_isSelected.setOnMouseClicked(mouseEvent -> onClick_ui_isSelected.onCLick(getItem()));
+    this.ui_isSelected.setOnAction(actionEvent -> onClick_ui_isSelected.onCLick(getItem()));
   }
 
   @Override

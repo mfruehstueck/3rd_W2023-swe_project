@@ -4,7 +4,6 @@ import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.ControllerFactory;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.util.QuestionDictionary;
-import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
