@@ -65,7 +65,7 @@
     -fx-min-width: 250px;
 }
 
-
+/* GameSetting View */
 .mode-button {
     -fx-pref-width: 200;
     -fx-font-size: 25;

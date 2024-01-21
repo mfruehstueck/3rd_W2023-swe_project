@@ -5,10 +5,11 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionSettingController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
@@ -26,7 +27,6 @@
                     </styleClass>
                 </Button>
                 <Button fx:id="endlessModeButton" mnemonicParsing="false" onAction="#pressEndlessModeButton" styleClass="mode-button" text="Endless Mode" />
-                <Button fx:id="trainingModeButton" mnemonicParsing="false" onAction="#pressTrainingModeButton" styleClass="mode-button" text="Training Mode" />
             </children>
         </VBox>
         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -41,7 +41,6 @@
         </HBox>
       <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
          <children>
-            <TextField fx:id="playerNameTextField" alignment="BOTTOM_CENTER" prefWidth="200.0" promptText="Your Name" />
             <CheckBox fx:id="liveAudienceCheckBox" mnemonicParsing="false" text="Live Audience">
                <HBox.margin>
                   <Insets bottom="5.0" left="20.0" />
@@ -49,6 +48,17 @@
             </CheckBox>
          </children>
       </HBox>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Label text="Your Name" />
+            <TextField fx:id="playerNameTextField" alignment="BOTTOM_CENTER" maxWidth="250.0" promptText="Playername">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label text="*without name the score will NOT be saved" />
+         </children>
+      </VBox>
     </children>
     <stylesheets>
         <URL value="@../styles/onlyQuiz.css" />
