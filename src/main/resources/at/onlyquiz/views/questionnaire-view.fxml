@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -14,24 +15,51 @@
         <RowConstraints percentHeight="60.0" />
         <RowConstraints percentHeight="20.0" />
     </rowConstraints>
-
-    <ListView fx:id="ui_questionnaire_listView" editable="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <ListView fx:id="ui_question_listView" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-    <Button fx:id="ui_back_button" mnemonicParsing="false" onAction="#onClick_ui_back_button" styleClass="back-button" text="End" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-    <Button fx:id="ui_editQuestion_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestion_button" styleClass="back-button" text="Edit Question" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <HBox prefHeight="100.0" prefWidth="200.0">
-            <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false"
-                    onAction="#onClick_ui_editQuestionnaire_button" styleClass="back-button"
-                    text="Add Questionnaire"/>
-            <TextField fx:id="ui_newQuestionnaire_textField" alignment="CENTER_RIGHT"
-                       promptText="name of new questionnaire"/>
+    <VBox alignment="BOTTOM_CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
+      <Label alignment="CENTER" styleClass="headerLabels" text="Add Questionnaire">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Label>
+        <HBox alignment="CENTER" maxWidth="400.0" minWidth="400.0">
+            <TextField fx:id="ui_newQuestionnaire_textField" alignment="CENTER" maxWidth="200.0" minWidth="180.0" promptText="Questionnaire Name" />
+            <Button fx:id="ui_editQuestionnaire_button" mnemonicParsing="false" onAction="#onClick_ui_editQuestionnaire_button" styleClass="action-buttons" text="Add">
+            <HBox.margin>
+               <Insets left="10.0" />
+            </HBox.margin></Button>
+           <Button fx:id="ui_importQuestionnaire_button" mnemonicParsing="false" onAction="#onClick_ui_importQuestionnaire_button" styleClass="import-button" text="Import Questionnaire">
+            <HBox.margin>
+               <Insets left="30.0" />
+            </HBox.margin>
+         </Button>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
         </HBox>
-        <Button fx:id="ui_importQuestionnaire_button" onAction="#onClick_ui_importQuestionnaire_button" mnemonicParsing="false" text="Import Questionnaire"/>
+      <GridPane.margin>
+         <Insets bottom="10.0" />
+      </GridPane.margin>
     </VBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+      <children>
+
+          <Button fx:id="ui_back_button" mnemonicParsing="false" onAction="#onClick_ui_back_button" styleClass="back-button" text="Back to Menu" />
+      </children>
+      <GridPane.margin>
+         <Insets bottom="50.0" right="250.0" />
+      </GridPane.margin>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <children>
+
+          <ListView fx:id="ui_questionnaire_listView" editable="true" minWidth="400.0" styleClass="listView" />
+      </children>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <children>
+          <ListView fx:id="ui_question_listView" minWidth="500.0" />
+      </children></HBox>
     <stylesheets>
-        <URL value="@../styles/standard/general.css" />
-        <URL value="@../styles/standard/menu.css" />
+        <URL value="@../styles/onlyQuiz.css" />
     </stylesheets>
 </GridPane>

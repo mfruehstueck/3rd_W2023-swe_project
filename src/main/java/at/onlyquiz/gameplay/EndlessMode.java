@@ -8,23 +8,24 @@ import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
 import at.onlyquiz.util.jsonParser.models.User;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class EndlessMode extends GameMode {
-  public EndlessMode(List<String> selectedQuestionnaires, User current_user) {
-    super(selectedQuestionnaires, current_user);
-    editAble = false;
-    scoreVisible = false;
-    timerVisible = false;
-    answerSecondsRemaining = 0;
-    totalScore = 0;
-    questionCounter = 0;
-    jokersAvailable = true;
+    public EndlessMode(List<String> selectedQuestionnaires, User current_user, boolean hasLiveAudience) {
+        super(selectedQuestionnaires, current_user);
+        editAble = false;
+        scoreVisible = false;
+        timerVisible = false;
+        answerSecondsRemaining = 0;
+        totalScore = 0;
+        questionCounter = 0;
+        jokersAvailable = true;
 
-    fiftyFiftyJokers.add(new FiftyFiftyJoker());
-    audienceJokers.add(new AudienceJoker(false));
-    chatJokers.add(new ChatJoker(false));
+        fiftyFiftyJokers.add(new FiftyFiftyJoker());
+        audienceJokers.add(new AudienceJoker(hasLiveAudience));
+        chatJokers.add(new ChatJoker(false));
 
     getNewQuestions();
     Collections.shuffle(setOfQuestions);

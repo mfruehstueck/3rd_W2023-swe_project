@@ -68,4 +68,12 @@ public class FileManagement {
       System.out.println(DebugTools.debugLine(new Throwable()) + "failed to copy_file");
     }
   }
+
+  public static void delete_file(File file){
+    try {
+      Files.delete(file.toPath());
+    } catch (IOException e) {
+      System.out.println(DebugTools.debugLine(new Throwable()) + "failed to delete_file");
+    }
+  }
 }

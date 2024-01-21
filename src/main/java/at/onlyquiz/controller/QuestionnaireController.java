@@ -29,11 +29,16 @@ public class QuestionnaireController extends BaseController implements Initializ
   @FXML
   public ListView<QuestionnaireEdit> ui_questionnaire_listView;
   @FXML
-  public ListView<QuestionEdit> ui_question_listView;
+  public ListView<GameQuestion> ui_question_listView;
   @FXML
   public GridPane ui_container;
   @FXML
   public TextField ui_newQuestionnaire_textField;
+
+  private ObservableList<QuestionnaireEdit> questionnaire_obstList;
+  private ObservableList<GameQuestion> question_obstList;
+  private QuestionnaireEdit questionnaire_listView_selected;
+  private Integer question_listView_selectedIdx;
 
   //NSEC: instance members
   public QuestionnaireController() { super(); }
@@ -48,16 +53,15 @@ public class QuestionnaireController extends BaseController implements Initializ
     fill_questionnaire_obstList();
 
     ui_questionnaire_listView.setItems(questionnaire_obstList);
-    ui_questionnaire_listView.setCellFactory(listView -> new QuestionnaireEditCell(onClick_update));
+    ui_questionnaire_listView.setCellFactory(listView -> new QuestionnaireEditCell(onClick_Export, onClick_editQuestionnaire, onClick_deleteQuestionnaire));
 
     ui_question_listView.setItems(question_obstList);
-    ui_question_listView.setCellFactory(listView -> new QuestionEditCell());
+    ui_question_listView.setCellFactory(listView -> new QuestionEditCell(onClick_editQuestion, onClick_deleteQuestion));
 
     ui_questionnaire_listView.getSelectionModel().selectedItemProperty().addListener((observable -> {
       questionnaire_listView_selected = ui_questionnaire_listView.getSelectionModel().getSelectedItem();
       if (questionnaire_listView_selected == null) return;
-      question_obstList.clear();
-      for (var item : QuestionDictionary.get_questionNames(questionnaire_listView_selected.getQuestionnaireName())) { question_obstList.add(new QuestionEdit(item)); }
+      question_obstList.setAll(QuestionDictionary.get_allQuestions(questionnaire_listView_selected.getQuestionnaireName()));
     }));
 
     ui_question_listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -66,7 +70,7 @@ public class QuestionnaireController extends BaseController implements Initializ
   }
 
   //NSEC: eventHandlers
-  private final OnClickEventHandler<QuestionnaireEdit> onClick_update = (item) -> {
+  private final OnClickEventHandler<QuestionnaireEdit> onClick_Export = (item) -> {
     File destionationQuestionnaire = FileManagement.save_file("Export Questionnaire", new String[]{"csv Files", "*.csv"});
 
     if (destionationQuestionnaire == null) return;
@@ -75,11 +79,33 @@ public class QuestionnaireController extends BaseController implements Initializ
     FileManagement.copy_file(sourceQuestionnaire, destionationQuestionnaire);
   };
 
+  private final OnClickEventHandler<QuestionnaireEdit> onClick_editQuestionnaire = (item) -> {
+    questionnaire_listView_selected = item;
+    open_editMode(0);
+  };
+
+  private final OnClickEventHandler<QuestionnaireEdit> onClick_deleteQuestionnaire = (item) -> {
+    File questionnaire = QuestionDictionary.get_QuestionnaireFiles().get(item.getQuestionnaireName()).toFile();
+    FileManagement.delete_file(questionnaire);
+    ui_questionnaire_listView.getItems().remove(item);
+    QuestionDictionary.init();
+  };
+
+  private final OnClickEventHandler<GameQuestion> onClick_editQuestion = (item) -> {
+    question_listView_selectedIdx = ui_question_listView.getItems().indexOf(item);
+    open_editMode(question_listView_selectedIdx);
+  };
+
+  private final OnClickEventHandler<GameQuestion> onClick_deleteQuestion = (item) -> {
+    String selected_questionnaireName = questionnaire_listView_selected.getQuestionnaireName();
+    question_listView_selectedIdx = ui_question_listView.getItems().indexOf(item);
+    ui_question_listView.getItems().remove(item);
+
+    QuestionDictionary.delete_gameQuestion(selected_questionnaireName, item.getLineIdx());
+  };
+
   //NSEC: instance fields
-  private ObservableList<QuestionnaireEdit> questionnaire_obstList;
-  private ObservableList<QuestionEdit> question_obstList;
-  private QuestionnaireEdit questionnaire_listView_selected;
-  private Integer question_listView_selectedIdx;
+
 
   //NSEC: private methods
   private void fill_questionnaire_obstList() {
@@ -88,8 +114,16 @@ public class QuestionnaireController extends BaseController implements Initializ
       questionnaire_obstList.add(new QuestionnaireEdit(k));
     }
   }
-  private void fill_question_listView() {
+  private void open_editMode(int idx) {
+    String selected_questionnaireName = questionnaire_listView_selected.getQuestionnaireName();
+    List<GameQuestion> gameQuestions = QuestionDictionary.get_allQuestions(selected_questionnaireName);
 
+    //if file empty because of previous edit mode deleted all, create new question
+    if (gameQuestions.isEmpty()) { gameQuestions.add(new GameQuestion()); }
+
+    EditMode editMode = new EditMode(gameQuestions, idx, selected_questionnaireName);
+
+    startingGameSession(editMode, get_stage(ui_container));
   }
 
   @FXML
