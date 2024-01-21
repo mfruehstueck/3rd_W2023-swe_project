@@ -48,19 +48,20 @@
 
 .table-view {
     -fx-text-fill: white;
+    -fx-background-radius: 10;
     -fx-padding: 0;
-    -fx-border-width: 5;
+    -fx-border-width: 8;
     -fx-border-radius: 5;
     -fx-border-color: #3232ce;
 }
 
 .table-row-cell {
-    -fx-background-color: #3232ce; /* Hintergrundfarbe der Tabellenzeilen */
+    -fx-background-color: #3232ce;
 }
 
 .table-view .column-header,
 .table-view .table-cell {
-    -fx-background-color: white; /* Hintergrundfarbe des Column Headers und der Zellen */
+    -fx-background-color: white;
     -fx-border-width: 0;
     -fx-font-size: 15;
     -fx-alignment: CENTER;
