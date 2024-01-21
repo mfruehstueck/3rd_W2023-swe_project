@@ -29,12 +29,21 @@
     -fx-background-color: darkred;
 }
 
+.back-button:hover {
+    -fx-background-color: #a40303;
+}
+
+
 .delete-button {
     -fx-background-color: darkred;
     -fx-min-height: 25;
     -fx-min-width: 25;
     -fx-max-height: 25;
     -fx-max-width: 25;
+}
+
+.delete-button:hover {
+    -fx-background-color: #a40303;
 }
 
 .table-view {
@@ -134,60 +143,21 @@
     -fx-min-width: 1000px;
 }
 
+/* GameSession View */
+
+/* Play Mode */
 .question-box {
     -fx-background-color: #3232ce;
     -fx-padding: 20;
     -fx-spacing: 10;
-}
-
-.question-textField {
-    -fx-prompt-text-fill: white;
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 18;
-    -fx-background-color: #3232ce;
-}
-
-.ui-label {
-    -fx-font-size: 18;
-    -fx-text-fill: #b75e05;
-    -fx-font-weight: bold;
+    -fx-background-radius: 10;
 }
 
 .answer-button {
     -fx-min-width: 200;
+    -fx-max-width: 200;
     -fx-font-size: 16;
-}
-
-.commit-button {
-    -fx-min-width: 200;
-    -fx-font-size: 16;
-}
-
-.answer-textField-right {
-    -fx-text-fill: white;
-    -fx-prompt-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-color: green;
-    -fx-min-width: 200;
-    -fx-font-size: 16;
-}
-
-.answer-textField-wrong {
-    -fx-text-fill: white;
-    -fx-prompt-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-background-color: darkred;
-    -fx-min-width: 200;
-    -fx-font-size: 16;
-}
-
-.chart-bar {
-    -fx-bar-fill: #3232ce;
-}
-
-.chart {
-    -fx-font-size: 20;
+    -fx-background-radius: 10;
 }
 
 .answer-button-right {
@@ -198,24 +168,89 @@
     -fx-background-color: darkred;
 }
 
+.actionButton {
+    -fx-min-width: 100;
+    -fx-font-size: 16;
+}
+
+.question-textField {
+    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-background-color: #3232ce;
+}
+
 .joker {
-    -fx-background-color: #ecb406;
-    -fx-background-radius: 50%;
-    -fx-border-radius: 50%;
-    -fx-min-width: 40;
+    -fx-background-color: #ce7602;
+    -fx-background-radius: 10;
+    -fx-min-width: 200;
+    -fx-max-width: 200;
+    -fx-max-height: 40;
     -fx-min-height: 40;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
 }
 
 .joker:hover {
     -fx-background-color: #f5e021;
 }
 
-.stop-button {
-    -fx-background-color: darkred;
-    -fx-pref-width: 200;
-    -fx-font-size: 25;
+/* InformationBox */
+.informationBox {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-color: #3270ce;
+    -fx-border-width: 5;
+    -fx-border-radius: 10;
 }
 
-.stop-button:hover {
-    -fx-background-color: #8c2121;
+.informationLabels {
+    -fx-font-size: 18;
+    -fx-text-fill: #3270ce;
+    -fx-font-weight: bold;
+}
+
+/* Chat Joker */
+.chatButtons {
+    -fx-background-radius: 10;
+    -fx-min-width: 500;
+    -fx-max-width: 500;
+    -fx-max-height: 25;
+    -fx-min-height: 25;
+    -fx-font-size: 12;
+    -fx-font-weight: bold;
+}
+
+/*Audience Joker */
+.chart-bar {
+    -fx-bar-fill: #3232ce;
+}
+
+.chart {
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+}
+
+/* Edit Mode */
+.answer-textField-right {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: green;
+    -fx-min-width: 200;
+    -fx-max-width: 200;
+    -fx-font-size: 16;
+    -fx-background-radius: 10;
+}
+
+.answer-textField-wrong {
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: darkred;
+    -fx-min-width: 200;
+    -fx-max-width: 200;
+    -fx-font-size: 16;
+    -fx-background-radius: 10;
 }

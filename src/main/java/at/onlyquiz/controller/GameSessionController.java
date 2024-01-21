@@ -498,8 +498,8 @@ public class GameSessionController extends BaseController{
         freshUpTextFields();
     }
 
-    public void pressStopButton() {
-        set_view(get_stage(ui_container), View.MENU_VIEW);
+    public void pressExitButton() {
+        set_view(get_stage(ui_container), View.GAME_SESSION_SETTINGS);
     }
 
     private void blinkSelectedAnswerButton(Button button) {
@@ -572,7 +572,7 @@ public class GameSessionController extends BaseController{
     }
 
     private void handleTimerEnd() {
-        timeLabel.setText("Time over. No additional points.");
+        timeLabel.setText("No additional points.");
     }
 
     //achievable score
