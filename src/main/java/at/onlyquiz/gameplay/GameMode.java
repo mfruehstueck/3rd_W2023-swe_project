@@ -3,6 +3,7 @@ package at.onlyquiz.gameplay;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.JokerQueue;
 import at.onlyquiz.util.timeSystem.TimeConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +24,13 @@ public abstract class GameMode {
   int answerSecondsRemaining, readingSecondsRemaining;
   int indexInQuestionnaire = 0;
   protected List<String> selectedQuestionnaires;
-  String playername;
+  String playerName;
 
   public GameMode() { super(); }
 
   public GameMode(List<String> selectedQuestionnaires, String playername) {
-      this.selectedQuestionnaires = selectedQuestionnaires;
-      this.playername = playername;
+    this.selectedQuestionnaires = selectedQuestionnaires;
+    this.playerName = playername;
   }
 
   public abstract void confirmAnswer(boolean isCorrect);
@@ -168,12 +169,12 @@ public abstract class GameMode {
     this.currentQuestion = currentQuestion;
   }
 
-  public String getPlayername() {
-    return playername;
+  public String getPlayerName() {
+    return playerName;
   }
 
-  public void setPlayername(String playername) {
-    this.playername = playername;
+  public void setPlayerName(String playerName) {
+    this.playerName = playerName;
   }
 
   public Integer getAchievedScore() {

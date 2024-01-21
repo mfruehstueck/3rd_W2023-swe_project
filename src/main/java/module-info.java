@@ -12,8 +12,11 @@ module at.onlyquiz.onlyquiz {
 
   opens at.onlyquiz to javafx.fxml;
   opens at.onlyquiz.controller to javafx.fxml;
-  opens at.onlyquiz.util.scoreSystem.savedScoresJSON to com.fasterxml.jackson.annotation;
+  opens at.onlyquiz.util.jsonParser to com.fasterxml.jackson.annotation;
+//  opens at.onlyquiz.util.scoreSystem.savedScoresJSON to com.fasterxml.jackson.annotation;
   exports at.onlyquiz;
-  exports at.onlyquiz.util.scoreSystem.savedScoresJSON;
+  exports at.onlyquiz.util.jsonParser;
   exports at.onlyquiz.gameplay;
+  exports at.onlyquiz.util.jsonParser.models;
+//  opens at.onlyquiz.util.jsonParser.models to com.fasterxml.jackson.annotation;
 }

@@ -21,22 +21,22 @@ public class ChatJoker extends Joker {
 
   @Override
   public void use(GameQuestion question) {
-    if(!online){
+    if (!online) {
       chatHistory = person.greetingPerson();
       currentQuestion = question;
     }
   }
 
 
-  public String getNextResponse(){
-    switch (responseCounter){
+  public String getNextResponse() {
+    switch (responseCounter) {
       case 0 -> {
         //Options after he greets you - you have to answer the person back how he / she is.
         inputText1 = "";
         inputText2 = "Hello, im fine - how are you?";
         inputText3 = "";
         inputText4 = "";
-        return person.greetingPerson()+"\n";
+        return person.greetingPerson() + "\n";
       }
       case 1 -> {
         //after you greets him back
@@ -44,7 +44,7 @@ public class ChatJoker extends Joker {
         inputText2 = "I am playing \"OnlyQuiz\" and I have a question I need your help with";
         inputText3 = "";
         inputText4 = "";
-        return person.greetingBack()+"\n";
+        return person.greetingBack() + "\n";
       }
       case 2 -> {
         //after you tell him that you playing onlyQuiz
@@ -52,7 +52,7 @@ public class ChatJoker extends Joker {
         inputText2 = "";
         inputText3 = currentQuestion.getQuestion();
         inputText4 = "";
-        return person.tellIsInShow()+"\n";
+        return person.tellIsInShow() + "\n";
       }
       case 3 -> {
         //after you ask the Question.
@@ -60,16 +60,16 @@ public class ChatJoker extends Joker {
         inputText2 = "It could be " + currentQuestion.getAnswers().get(0).getAnswer();
         inputText3 = "I am complete lost. Hopefully you can help me...";
         inputText4 = "";
-        return person.askQuestion()+"\n";
+        return person.askQuestion() + "\n";
       }
       case 4 -> {
         // values must be empty - cause the joker ends here
-          inputText1 = "";
-          inputText2 = "";
-          inputText3 = "";
-          inputText4 = "";
-          return person.getSolution(currentQuestion);
-        }
+        inputText1 = "";
+        inputText2 = "";
+        inputText3 = "";
+        inputText4 = "";
+        return person.getSolution(currentQuestion);
+      }
     }
     return "";
   }

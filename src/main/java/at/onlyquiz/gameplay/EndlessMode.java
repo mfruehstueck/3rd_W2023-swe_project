@@ -4,6 +4,7 @@ import at.onlyquiz.model.joker.AudienceJoker;
 import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
+import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
 
 import java.util.ArrayList;
@@ -25,36 +26,34 @@ public class EndlessMode extends GameMode {
         audienceJokers.add(new AudienceJoker(hasLiveAudience));
         chatJokers.add(new ChatJoker(false));
 
-        getNewQuestions();
-        Collections.shuffle(setOfQuestions);
-        currentQuestion = popQuestionOutOfSet();
-        currentQuestion.shuffleAnswers();
-    }
+    getNewQuestions();
+    Collections.shuffle(setOfQuestions);
+    currentQuestion = popQuestionOutOfSet();
+    currentQuestion.shuffleAnswers();
+  }
 
-    @Override
-    public void confirmAnswer(boolean isCorrect) {
-        if (isCorrect) {
-            jokerUsed = false;
-            getNewQuestions();
-            currentQuestion = popQuestionOutOfSet();
-            currentQuestion.shuffleAnswers();
-            questionCounter += 1;
-        } else {
-            finished = true;
-
-        }
+  @Override
+  public void confirmAnswer(boolean isCorrect) {
+    if (isCorrect) {
+      jokerUsed = false;
+      getNewQuestions();
+      currentQuestion = popQuestionOutOfSet();
+      currentQuestion.shuffleAnswers();
+      questionCounter += 1;
+    } else {
+      finished = true;
     }
+  }
 
-    @Override
-    public int calculateScore() {
-        return 0;
-    }
+  @Override
+  public int calculateScore() { return 0; }
 
-    private void getNewQuestions() {
-        if (setOfQuestions.size() < 2) {
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
-            setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
-        }
+  private void getNewQuestions() {
+    if (setOfQuestions.size() < 2) {
+      for (Difficulty d : Difficulty.values()) {
+        List<GameQuestion> current_gameQuestions = QuestionDictionary.get_randomQuestions(selectedQuestionnaires, d, 5);
+        if (current_gameQuestions != null) setOfQuestions.addAll(current_gameQuestions);
+      }
     }
+  }
 }

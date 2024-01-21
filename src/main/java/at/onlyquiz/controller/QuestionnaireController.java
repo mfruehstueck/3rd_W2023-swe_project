@@ -4,9 +4,12 @@ import at.onlyquiz.controller.cells.QuestionEditCell;
 import at.onlyquiz.controller.cells.QuestionnaireEditCell;
 import at.onlyquiz.controller.cells.models.QuestionEdit;
 import at.onlyquiz.controller.cells.models.QuestionnaireEdit;
+import at.onlyquiz.controller.eventHandlers.OnClickEventHandler;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.EditMode;
 import at.onlyquiz.model.question.GameQuestion;
+import at.onlyquiz.util.Configuration;
+import at.onlyquiz.util.FileManagement;
 import at.onlyquiz.util.QuestionDictionary;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +20,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+import java.io.File;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,10 +44,11 @@ public class QuestionnaireController extends BaseController implements Initializ
     questionnaire_obstList = FXCollections.observableArrayList();
     question_obstList = FXCollections.observableArrayList();
 
+    QuestionDictionary.init();
     fill_questionnaire_obstList();
 
     ui_questionnaire_listView.setItems(questionnaire_obstList);
-    ui_questionnaire_listView.setCellFactory(listView -> new QuestionnaireEditCell());
+    ui_questionnaire_listView.setCellFactory(listView -> new QuestionnaireEditCell(onClick_update));
 
     ui_question_listView.setItems(question_obstList);
     ui_question_listView.setCellFactory(listView -> new QuestionEditCell());
@@ -59,6 +64,17 @@ public class QuestionnaireController extends BaseController implements Initializ
       question_listView_selectedIdx = ui_question_listView.getSelectionModel().getSelectedIndex();
     });
   }
+
+  //NSEC: eventHandlers
+  private final OnClickEventHandler<QuestionnaireEdit> onClick_update = (item) -> {
+    File destionationQuestionnaire = FileManagement.save_file("Export Questionnaire", new String[]{"csv Files", "*.csv"});
+
+    if (destionationQuestionnaire == null) return;
+
+    File sourceQuestionnaire = QuestionDictionary.get_QuestionnaireFiles().get(item.getQuestionnaireName()).toFile();
+    FileManagement.copy_file(sourceQuestionnaire, destionationQuestionnaire);
+  };
+
   //NSEC: instance fields
   private ObservableList<QuestionnaireEdit> questionnaire_obstList;
   private ObservableList<QuestionEdit> question_obstList;
@@ -88,6 +104,7 @@ public class QuestionnaireController extends BaseController implements Initializ
 
     QuestionDictionary.update_gameQuestion(newQuestionnaireName, new GameQuestion());
 
+    QuestionDictionary.init();
     fill_questionnaire_obstList();
   }
 
@@ -110,5 +127,18 @@ public class QuestionnaireController extends BaseController implements Initializ
     editMode = new EditMode(gameQuestions, question_listView_selectedIdx, selected_questionnaireName);
 
     startingGameSession(editMode, get_stage(ui_container));
+  }
+
+  @FXML
+  public void onClick_ui_importQuestionnaire_button(ActionEvent actionEvent) {
+    File sourceQuestionnaire = FileManagement.open_file("Import Questionnaire", new String[]{"csv Files", "*.csv"});
+
+    if (sourceQuestionnaire == null) return;
+
+    File destinationQuestionnaire = FileManagement.getPath(Configuration.DEFAULT_BASEPATH_QUESTIONNARES, sourceQuestionnaire.getName()).toFile();
+    FileManagement.copy_file(sourceQuestionnaire, destinationQuestionnaire);
+
+    QuestionDictionary.init();
+    fill_questionnaire_obstList();
   }
 }

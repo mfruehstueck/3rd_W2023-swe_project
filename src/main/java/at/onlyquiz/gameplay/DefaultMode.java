@@ -4,11 +4,11 @@ import at.onlyquiz.model.joker.AudienceJoker;
 import at.onlyquiz.model.joker.ChatJoker;
 import at.onlyquiz.model.joker.FiftyFiftyJoker;
 import at.onlyquiz.model.question.Difficulty;
+import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.QuestionDictionary;
+import at.onlyquiz.util.jsonParser.models.PersistScore;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
-import at.onlyquiz.util.scoreSystem.savedScoresJSON.PersistScore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultMode extends GameMode {
@@ -28,9 +28,10 @@ public class DefaultMode extends GameMode {
     audienceJokers.add(new AudienceJoker(hasLiveAudience));
     chatJokers.add(new ChatJoker(false));
 
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.MEDIUM, 5));
-    setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.HARD, 5));
+    for (Difficulty d : Difficulty.values()) {
+      List<GameQuestion> current_gameQuestions = QuestionDictionary.get_randomQuestions(selectedQuestionnaires, d, 5);
+      if (current_gameQuestions != null) setOfQuestions.addAll(current_gameQuestions);
+    }
 
     currentQuestion = popQuestionOutOfSet();
     currentQuestion.shuffleAnswers();
@@ -39,10 +40,10 @@ public class DefaultMode extends GameMode {
   @Override
   public void confirmAnswer(boolean isCorrect) {
     if (isCorrect) {
-        questionCounter += 1;
-        totalScore += calculateScore();
-      if (questionCounter != 0 && questionCounter % 5 == 0){
-          achievedScore = totalScore;
+      questionCounter += 1;
+      totalScore += calculateScore();
+      if (questionCounter != 0 && questionCounter % 5 == 0) {
+        achievedScore = totalScore;
       }
       jokerUsed = false;
       if (setOfQuestions.isEmpty()) {
@@ -54,7 +55,9 @@ public class DefaultMode extends GameMode {
         currentQuestion.shuffleAnswers();
       }
     } else {
+      if (achievedScore != 0 && !playerName.isEmpty()) {
         PersistScore.saveScore(this);
+      }
       finished = true;
     }
   }

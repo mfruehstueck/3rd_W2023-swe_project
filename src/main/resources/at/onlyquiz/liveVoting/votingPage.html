@@ -46,6 +46,7 @@
     function redirectToThankYou() {
         window.location.href = "/thanks"
     }
+
     // Funktion, um auf Button-Klicks zu reagieren
     function handleButtonClick(buttonId) {
         // Sende AJAX-Anfrage an den Server, um den Klick zu zählen
@@ -60,7 +61,7 @@
         };
 
         // Sende Button-ID als JSON-Daten im Request-Body
-        xhr.send(JSON.stringify({ buttonId: buttonId }));
+        xhr.send(JSON.stringify({buttonId: buttonId}));
     }
 
     // Füge einen Event-Listener für jeden Button hinzu

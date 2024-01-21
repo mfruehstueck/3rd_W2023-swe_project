@@ -1,7 +1,6 @@
 package at.onlyquiz.model.joker;
 
 import at.onlyquiz.model.question.Answer;
-import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.liveAudienceVoting.VotingServer;
 import at.onlyquiz.util.timeSystem.TimeConstants;
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.*;
 
 public class AudienceJoker extends Joker {
@@ -24,15 +22,14 @@ public class AudienceJoker extends Joker {
 
   @Override
   public void use(GameQuestion gameQuestion) {
-    if (online){
+    if (online) {
       try {
         VotingServer.startServers(gameQuestion.getAnswers());
       } catch (IOException e) {
         throw new RuntimeException(e);
       }
 
-    }
-    else {
+    } else {
       List<Answer> answers = new ArrayList<>(gameQuestion.getAnswers());
       double votingSum = 100;
       double from = 0, to = 0;
@@ -69,8 +66,8 @@ public class AudienceJoker extends Joker {
     }
   }
 
-  public String generateQrURL(){
-      return "http://" + getLocalIPAddress() + ":8080/vote";
+  public String generateQrURL() {
+    return "http://" + getLocalIPAddress() + ":8080/vote";
   }
 
   public int getSecondsRemaining() {
@@ -108,10 +105,10 @@ public class AudienceJoker extends Joker {
     return "127.0.0.1"; // Fallback auf localhost
   }
 
-  public void stopVoting(List<Answer> answers){
+  public void stopVoting(List<Answer> answers) {
     Map<Integer, Double> resultMap = VotingServer.getResults(VotingServer.stopServer());
-    for (int key : resultMap.keySet()){
-      answers.get(key-1).setVotingValue(resultMap.get(key));
+    for (int key : resultMap.keySet()) {
+      answers.get(key - 1).setVotingValue(resultMap.get(key));
     }
   }
 

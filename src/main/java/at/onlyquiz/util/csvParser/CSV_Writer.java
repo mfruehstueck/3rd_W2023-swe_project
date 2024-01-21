@@ -22,7 +22,7 @@ public class CSV_Writer {
     String[] current_csvLine;
 
     try (CSVWriter writer = new CSVWriter(new FileWriter(csvPath.toString()))) {
-      if(entry == null && lineIdx >= Configuration.DEFAULT_CSV_HEADEREND_POSITION && !csvLines_all.isEmpty()) csvLines_all.remove(lineIdx);
+      if (entry == null && lineIdx >= Configuration.DEFAULT_CSV_HEADEREND_POSITION && !csvLines_all.isEmpty()) csvLines_all.remove(lineIdx);
       for (int i = 0; i < csvLines_all.size(); i++) {
         current_csvLine = (i == lineIdx && entry != null) ? entry : csvLines_all.get(i);
         writer.writeNext(current_csvLine);

@@ -1,7 +1,7 @@
 package at.onlyquiz.controller;
 
 import at.onlyquiz.controller.factories.View;
-import at.onlyquiz.util.scoreSystem.savedScoresJSON.PersistScore;
+import at.onlyquiz.util.jsonParser.models.PersistScore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,23 +30,24 @@ public class MenuController extends BaseController implements Initializable {
 
   public MenuController() { }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
         /*
         if (GeneralSettings.isColorBlind()){
             container.getStylesheets().add(String.valueOf(getClass().getResource("/at/onlyquiz/styles/gameSession.css")));
             container.getStylesheets().removeAll(String.valueOf(getClass().getResource("/at/onlyquiz/styles/general.css")));
         }
         */
-      List<PersistScore> allScores = PersistScore.getTop10fromAllGameModes();
-      ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
+    List<PersistScore> allScores = PersistScore.getTop10fromAllGameModes();
+    ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
 
-      top10Table.setItems(sortedScores);
-      gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
-      playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));
-      scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
-      top10Table.sort();
-    }
+    top10Table.setItems(sortedScores);
+    gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
+    playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));
+    scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
+
+    top10Table.sort();
+  }
 
   public void pressPlayButton() { set_view(get_stage(ui_container), View.GAME_SESSION_SETTINGS); }
   public void pressQuestionnairesButton() { set_view(get_stage(ui_container), View.QUESTIONNAIRE_VIEW); }

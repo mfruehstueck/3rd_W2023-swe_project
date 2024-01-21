@@ -1,6 +1,7 @@
 package at.onlyquiz.controller.cells;
 
 import at.onlyquiz.controller.cells.models.QuestionnaireEdit;
+import at.onlyquiz.controller.eventHandlers.OnClickEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -9,16 +10,22 @@ import javafx.scene.layout.Priority;
 public class QuestionnaireEditCell extends BaseCell<QuestionnaireEdit> {
   private final Label ui_questionnaireName;
   private final Button ui_rename_button;
+  private final Button ui_export_button;
   private final HBox ui_layout;
 
 
-  public QuestionnaireEditCell() {
+  public QuestionnaireEditCell(OnClickEventHandler<QuestionnaireEdit> onClick_ui_export_button) {
     super();
 
     ui_questionnaireName = new Label();
     ui_rename_button = new Button();
 
-    ui_layout = new HBox(ui_questionnaireName, blank);
+    ui_export_button = new Button();
+    ui_export_button.setText("Export");
+    ui_export_button.getStyleClass().add("export-button");
+    ui_export_button.setOnAction(actionEvent -> onClick_ui_export_button.onCLick(getItem()));
+
+    ui_layout = new HBox(ui_questionnaireName, blank, ui_export_button);
   }
 
   @Override
