@@ -1,9 +1,1 @@
-[
-  {
-    "userName": "admin",
-    "hashedPassword": "admin",
-    "selectedQuestionnaires": {
-      "testQuestions": true
-    }
-  }
-]
+[]

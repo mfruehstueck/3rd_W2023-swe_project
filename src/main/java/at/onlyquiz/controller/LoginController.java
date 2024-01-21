@@ -3,6 +3,7 @@ package at.onlyquiz.controller;
 import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.util.UserManagement;
+import at.onlyquiz.util.jsonParser.JSON_Parser;
 import at.onlyquiz.util.jsonParser.models.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -34,6 +35,8 @@ public class LoginController extends BaseController {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     super.initialize(location, resources);
+
+    UserManagement.init();
 
     current_loginType = LoginType.GUEST;
 
@@ -100,8 +103,8 @@ public class LoginController extends BaseController {
         showAlert("login info", "authentication failed", Alert.AlertType.WARNING);
       }
     } else {
-      if (password.isEmpty()) {
-        showAlert("login info", "username '" + username + "' has no password.\nplease provide a password", Alert.AlertType.INFORMATION);
+      if (password.isEmpty() || username.isEmpty()) {
+        showAlert("login info", "please provide username and password", Alert.AlertType.INFORMATION);
         return user;
       }
       Optional<ButtonType> result = showAlert("creating User", "username: " + username + "\n\n comfirm creation?", Alert.AlertType.CONFIRMATION);

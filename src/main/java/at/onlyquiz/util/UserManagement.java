@@ -10,8 +10,9 @@ public class UserManagement {
   private static List<User> users;
   private static User currentUser;
 
-  static {
+  public static void init() {
     users = JSON_Parser.read(Configuration.USER_FILE, User.class);
+    System.out.println(users.toString());
   }
 
   public static List<User> get_users() { return users; }

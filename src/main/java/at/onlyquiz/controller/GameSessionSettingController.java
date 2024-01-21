@@ -11,12 +11,12 @@ import at.onlyquiz.util.QuestionDictionary;
 import at.onlyquiz.util.UserManagement;
 import at.onlyquiz.util.jsonParser.JSON_Parser;
 import at.onlyquiz.util.jsonParser.models.User;
+import at.onlyquiz.util.userManagement.User_Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -35,7 +35,7 @@ public class GameSessionSettingController extends BaseController {
   public GridPane ui_container;
   @FXML
   public ListView<QuestionnaireSelection> ui_questionnaireSelection_listView;
-    public CheckBox liveAudienceCheckBox;
+  public CheckBox liveAudienceCheckBox;
 
   private ObservableList<QuestionnaireSelection> questionnaireSelection_obstList;
   private User current_user;
@@ -59,19 +59,28 @@ public class GameSessionSettingController extends BaseController {
     ui_questionnaireSelection_listView.setItems(questionnaireSelection_obstList);
     ui_questionnaireSelection_listView.setCellFactory(listView -> new QuestionnaireSelectionCell(onClick_update));
 
+    liveAudienceCheckBox.setOnAction(actionEvent -> {
+      if (current_user.getHashedPassword() != null) {
+        current_user.get_selectedProperties().put(User_Properties.LIVEAUDIENCE.getLiveAudience(), liveAudienceCheckBox.isSelected());
+        JSON_Parser.update(Configuration.USER_FILE, current_user);
+      }
+    });
+
     if (current_user.getHashedPassword() != null) {
+      if (current_user.get_selectedQuestionnaires().isEmpty() && current_user.get_selectedProperties().isEmpty()) return;
       for (QuestionnaireSelection qs : questionnaireSelection_obstList) {
-        if (current_user.getSelectedQuestionnaires().containsKey(qs.get_questionnaireName())) {
-          qs.set_isSelected(current_user.getSelectedQuestionnaires().get(qs.get_questionnaireName()));
+        if (current_user.get_selectedQuestionnaires().containsKey(qs.get_questionnaireName())) {
+          qs.set_isSelected(current_user.get_selectedQuestionnaires().get(qs.get_questionnaireName()));
         }
       }
+      liveAudienceCheckBox.setSelected(current_user.get_selectedProperties().get(User_Properties.LIVEAUDIENCE.getLiveAudience()));
     }
   }
 
   private final OnClickEventHandler<QuestionnaireSelection> onClick_update = (item) -> {
     item.set_isSelected(!item.isSelected());
     if (current_user.getHashedPassword() != null) {
-      current_user.getSelectedQuestionnaires().put(item.get_questionnaireName(), item.isSelected());
+      current_user.get_selectedQuestionnaires().put(item.get_questionnaireName(), item.isSelected());
       JSON_Parser.update(Configuration.USER_FILE, current_user);
     }
   };
