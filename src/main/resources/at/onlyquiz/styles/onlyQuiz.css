@@ -1,3 +1,39 @@
+/* General Styled*/
+.background {
+    -fx-background-color: lightblue;
+}
+
+.button {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #4747c4;
+}
+
+.back-button {
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
+
+/* Menu */
+
+.menu-button {
+    -fx-pref-width: 300;
+    -fx-font-size: 25;
+}
+
+.mode-button {
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
+
+.back-button {
+    -fx-pref-width: 200;
+    -fx-font-size: 25;
+}
+
 .question-box {
     -fx-background-color: #3232ce;
     -fx-padding: 20;

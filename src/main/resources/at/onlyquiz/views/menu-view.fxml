@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="ui_container" alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.MenuController">
+<GridPane fx:id="ui_container" alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/onlyQuiz.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.MenuController">
 
     <VBox alignment="CENTER" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
         <Button fx:id="playButton" onAction="#pressPlayButton" styleClass="menu-button" text="Play" />
@@ -14,9 +13,17 @@
         <Button fx:id="settingsButton" onAction="#pressSettingsButton" styleClass="menu-button" text="ScoreHistory" />
         <Button fx:id="quitButton" onAction="#pressQuitButton" styleClass="menu-button" text="Quit" />
     </VBox>
-   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
       <children>
-         <TableView fx:id="top10Table">
+         <Label id="topTen" alignment="BOTTOM_CENTER" text="Top 10" textFill="#0a07c1">
+            <font>
+               <Font name="System Bold" size="34.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="20.0" />
+            </VBox.margin>
+         </Label>
+         <TableView fx:id="top10Table" maxWidth="250.0" prefHeight="280.0" prefWidth="250.0">
            <columns>
                <TableColumn fx:id="scoreColumn" text="Score" />
                <TableColumn fx:id="playerNameColumn" text="Player Name" />
@@ -34,29 +41,16 @@
          <Insets left="40.0" right="15.0" />
       </GridPane.margin>
    </VBox>
-   <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
-      <children>
-         <Label alignment="BOTTOM_CENTER" text="Top 10" textFill="#0a07c1">
-            <font>
-               <Font name="System Bold" size="34.0" />
-            </font>
-         </Label>
-      </children>
-   </VBox>
-    
-    <stylesheets>
-        <URL value="@../styles/standard/general.css" />
-        <URL value="@../styles/standard/menu.css" />
-    </stylesheets>
+   <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" />
    <columnConstraints>
-      <ColumnConstraints percentWidth="33.3" />
-      <ColumnConstraints halignment="CENTER" percentWidth="33.3" />
-      <ColumnConstraints minWidth="10.0" percentWidth="33.3" prefWidth="100.0" />
+      <ColumnConstraints percentWidth="39.95" />
+      <ColumnConstraints halignment="CENTER" percentWidth="20.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="39.95" prefWidth="100.0" />
       <ColumnConstraints maxWidth="1.7976931348623157E308" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="242.0" minHeight="10.0" percentHeight="20.0" prefHeight="242.0" />
-      <RowConstraints maxHeight="268.0" minHeight="238.0" percentHeight="53.3" prefHeight="238.0" />
-      <RowConstraints minHeight="10.0" percentHeight="33.3" prefHeight="30.0" />
+      <RowConstraints maxHeight="268.0" minHeight="238.0" percentHeight="60.0" prefHeight="238.0" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" />
    </rowConstraints>
 </GridPane>
