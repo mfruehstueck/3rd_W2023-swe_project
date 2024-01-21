@@ -10,12 +10,11 @@ import java.util.Random;
 public abstract class ChatJokerPerson {
     List<String> greetingLines = new ArrayList<>();
     List<String> greetingBackLines = new ArrayList<>();
-    List<String> tellIsInSHowLines = new ArrayList<>();
+    List<String> tellIsInShowLines = new ArrayList<>();
     List<String> askQuestionsLines = new ArrayList<>();
-    //List<String> solutionLines = new ArrayList<>();
     Random random = new Random();
 
-    public String greetingPerson(){
+    public String greetingPerson() {
         if (!greetingLines.isEmpty()) {
             int index = random.nextInt(0, greetingLines.size());
             return greetingLines.get(index);
@@ -23,7 +22,7 @@ public abstract class ChatJokerPerson {
         return "Hello!";
     }
 
-    public String greetingBack(){
+    public String greetingBack() {
         if (!greetingBackLines.isEmpty()) {
             int index = random.nextInt(0, greetingBackLines.size());
             return greetingBackLines.get(index);
@@ -31,16 +30,16 @@ public abstract class ChatJokerPerson {
         return "I'm fine. Thank you.";
     }
 
-    public String tellIsInShow(){
-        if (!tellIsInSHowLines.isEmpty()) {
-            int index = random.nextInt(0, tellIsInSHowLines.size());
-            return tellIsInSHowLines.get(index);
+    public String tellIsInShow() {
+        if (!tellIsInShowLines.isEmpty()) {
+            int index = random.nextInt(0, tellIsInShowLines.size());
+            return tellIsInShowLines.get(index);
         }
         return "Wow, how exciting! Tell me your question!";
     }
 
 
-    public String askQuestion(){
+    public String askQuestion() {
         if (!askQuestionsLines.isEmpty()) {
             int index = random.nextInt(0, askQuestionsLines.size());
             return askQuestionsLines.get(index);
@@ -51,19 +50,19 @@ public abstract class ChatJokerPerson {
     public String getSolution(GameQuestion gameQuestion) {
         int possibility = 0;
         List<Answer> tmp = new ArrayList<>();
-        for (Answer a: gameQuestion.getAnswers()){
-            if (a.isCorrect()){
+        for (Answer a : gameQuestion.getAnswers()) {
+            if (a.isCorrect()) {
                 tmp.add(a);
             }
         }
 
-        for (Answer a: gameQuestion.getAnswers()){
-            if (!a.isCorrect()){
+        for (Answer a : gameQuestion.getAnswers()) {
+            if (!a.isCorrect()) {
                 tmp.add(a);
             }
         }
 
-        switch (gameQuestion.getDifficulty()){
+        switch (gameQuestion.getDifficulty()) {
             case EASY -> possibility = 1;
             case MEDIUM -> possibility = 2;
             case HARD -> possibility = 3;

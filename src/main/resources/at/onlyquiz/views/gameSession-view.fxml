@@ -9,325 +9,371 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="ui_container" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionController">
+<GridPane fx:id="ui_container" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background"
+          xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="at.onlyquiz.controller.GameSessionController">
 
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
-        <ColumnConstraints hgrow="SOMETIMES" percentWidth="50.0" />
-        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0" />
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="25.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="55.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" percentWidth="20.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints maxHeight="316.4" minHeight="10.0" prefHeight="306.4" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="189.0" minHeight="10.0" prefHeight="189.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="103.0" minHeight="0.0" percentHeight="15.0" prefHeight="0.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" percentHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="316.4" minHeight="10.0" percentHeight="45.0" prefHeight="306.4" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="189.0" minHeight="10.0" percentHeight="20.0" prefHeight="189.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="103.0" minHeight="0.0" percentHeight="10.0" prefHeight="0.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" percentHeight="35.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
         <GridPane>
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
                 <GridPane GridPane.rowIndex="1">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                        <VBox alignment="CENTER_LEFT" maxHeight="100.0" styleClass="informationBox">
                             <children>
-                                <Label fx:id="totalScoreLabel" styleClass="ui-label" text="Total Score: " />
+                                <Label fx:id="questionCounterLabel" styleClass="informationLabels"
+                                       text="Question number:"/>
+                                <Label fx:id="totalScoreLabel" styleClass="informationLabels" text="Total Score:"/>
+                                <Label fx:id="achievableScoreLabel" styleClass="informationLabels"
+                                       text="achievable Score:"/>
+                                <Label fx:id="timeLabel" styleClass="informationLabels"/>
                             </children>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
-                            <children>
-                                <Label fx:id="achievableScoreLabel" styleClass="ui-label" text="achievable Score:" />
-                            </children>
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
-                            <children>
-                                <Label fx:id="timeLabel" styleClass="ui-label" text="Time: 00:00" />
-                            </children>
-                     <padding>
-                        <Insets left="25.0" />
-                     </padding>
-                        </HBox>
+                            <opaqueInsets>
+                                <Insets/>
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets left="20.0" right="10.0" top="20.0"/>
+                            </GridPane.margin>
+                            <padding>
+                                <Insets left="30.0"/>
+                            </padding>
+                        </VBox>
                     </children>
                 </GridPane>
             </children>
         </GridPane>
         <GridPane GridPane.columnIndex="2">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label fx:id="questionCounterLabel" styleClass="ui-label" text="Question number: XX" />
-                    </children>
-                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"/>
             </children>
         </GridPane>
-        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1"
+              GridPane.rowIndex="2">
             <children>
-            <GridPane>
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                      <Button fx:id="audienceJokerButton" mnemonicParsing="false" onAction="#useAudienceJoker" styleClass="joker" text="Aud Joker" GridPane.columnIndex="1" />
-                      <Button fx:id="fiftyFiftyJokerButton" mnemonicParsing="false" onAction="#useFiftyFiftyJoker" styleClass="joker" text="50/50" />
-                      <Button fx:id="chatJokerButton" mnemonicParsing="false" onAction="#useChatJoker" styleClass="joker" text="Chat Joker" GridPane.columnIndex="2" />
-                  <CheckBox fx:id="easyCheckBox" contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectEasyDifficulty" text="EASY" />
-                  <CheckBox fx:id="mediumCheckBox" mnemonicParsing="false" onAction="#selectMediumDifficulty" text="MEDIUM" GridPane.columnIndex="1" />
-                  <CheckBox fx:id="hardCheckBox" mnemonicParsing="false" onAction="#selectHardDifficulty" text="HARD" GridPane.columnIndex="2" />
-               </children>
-            </GridPane>
+                <GridPane HBox.hgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.3"
+                                           prefWidth="100.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="33.3"
+                                           prefWidth="100.0"/>
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" percentWidth="33.3"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="audienceJokerButton" mnemonicParsing="false" onAction="#useAudienceJoker"
+                                styleClass="joker" text="Audience Joker" GridPane.columnIndex="1"/>
+                        <Button fx:id="fiftyFiftyJokerButton" mnemonicParsing="false" onAction="#useFiftyFiftyJoker"
+                                styleClass="joker" text="50/50"/>
+                        <Button fx:id="chatJokerButton" mnemonicParsing="false" onAction="#useChatJoker"
+                                styleClass="joker" text="Chat Joker" GridPane.columnIndex="2"/>
+                        <CheckBox fx:id="easyCheckBox" contentDisplay="TOP" mnemonicParsing="false"
+                                  onAction="#selectEasyDifficulty" styleClass="difficultyCheckBox" text="EASY"
+                                  textAlignment="CENTER" textFill="#008000">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </CheckBox>
+                        <CheckBox fx:id="mediumCheckBox" alignment="CENTER" contentDisplay="TOP" mnemonicParsing="false"
+                                  onAction="#selectMediumDifficulty" styleClass="difficultyCheckBox" text="MEDIUM"
+                                  textAlignment="CENTER" textFill="#ce7602" GridPane.columnIndex="1">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </CheckBox>
+                        <CheckBox fx:id="hardCheckBox" contentDisplay="TOP" mnemonicParsing="false"
+                                  onAction="#selectHardDifficulty" text="HARD" textAlignment="CENTER" textFill="DARKRED"
+                                  GridPane.columnIndex="2">
+                            <font>
+                                <Font name="System Bold" size="20.0"/>
+                            </font>
+                        </CheckBox>
+                    </children>
+                </GridPane>
             </children>
             <GridPane.margin>
-                <Insets />
+                <Insets/>
             </GridPane.margin>
             <padding>
-                <Insets bottom="15.0" />
+                <Insets bottom="15.0"/>
             </padding>
         </HBox>
         <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
             <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="142.0" minHeight="10.0" percentHeight="50.0" prefHeight="142.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="45.0" minHeight="10.0" percentHeight="20.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="142.0" minHeight="10.0" percentHeight="50.0" prefHeight="142.0"
+                                vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="45.0" minHeight="10.0" percentHeight="20.0" prefHeight="34.0"
+                                vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
                 <VBox fx:id="questionBox" alignment="CENTER" styleClass="question-box" GridPane.hgrow="SOMETIMES">
                     <children>
                         <GridPane alignment="CENTER" HBox.hgrow="ALWAYS">
                             <columnConstraints>
-                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
                             </rowConstraints>
                             <children>
-                                <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="question-textField" text="QuestionLabel" GridPane.hgrow="ALWAYS" />
-                                <TextField fx:id="questionTextField" maxHeight="800.0" prefHeight="200.0" prefWidth="200.0">
-                           <styleClass>
-                              <String fx:value="question-textField" />
-                              <String fx:value="question-box" />
-                           </styleClass></TextField>
+                                <Label fx:id="questionLabel" alignment="CENTER" contentDisplay="CENTER"
+                                       styleClass="question-textField" text="QuestionLabel" GridPane.hgrow="ALWAYS"/>
+                                <TextField fx:id="questionTextField" maxHeight="800.0" prefHeight="200.0"
+                                           prefWidth="200.0">
+                                    <styleClass>
+                                        <String fx:value="question-textField"/>
+                                        <String fx:value="question-box"/>
+                                    </styleClass>
+                                </TextField>
                             </children>
                         </GridPane>
                     </children>
                 </VBox>
                 <GridPane alignment="CENTER" GridPane.rowIndex="1">
                     <columnConstraints>
-                        <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="50.0" />
-                        <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="50.0" />
+                        <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="50.0"/>
+                        <ColumnConstraints fillWidth="false" halignment="CENTER" percentWidth="50.0"/>
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                     </rowConstraints>
                     <children>
                         <GridPane alignment="CENTER">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" />
+                                <ColumnConstraints hgrow="SOMETIMES"/>
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints valignment="CENTER" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button fx:id="answerAButton" alignment="CENTER" mnemonicParsing="false" onAction="#selectAnswerA" styleClass="answer-button" text="answerA" />
-                                <TextField fx:id="answerATextField" alignment="CENTER" styleClass="answer-textField-right" />
+                                <Button fx:id="answerAButton" alignment="CENTER" mnemonicParsing="false"
+                                        onAction="#selectAnswerA" styleClass="answer-button" text="answerA"/>
+                                <TextField fx:id="answerATextField" alignment="CENTER"
+                                           styleClass="answer-textField-right"/>
                             </children>
                         </GridPane>
                         <GridPane alignment="CENTER" GridPane.columnIndex="1">
                             <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                             </rowConstraints>
                             <children>
-                                <Button fx:id="answerBButton" mnemonicParsing="false" onAction="#selectAnswerB" styleClass="answer-button" text="answerB" />
-                                <TextField fx:id="answerBTextField" alignment="CENTER" styleClass="answer-textField-wrong" />
+                                <Button fx:id="answerBButton" mnemonicParsing="false" onAction="#selectAnswerB"
+                                        styleClass="answer-button" text="answerB"/>
+                                <TextField fx:id="answerBTextField" alignment="CENTER"
+                                           styleClass="answer-textField-wrong"/>
                             </children>
-                     <columnConstraints>
-                        <ColumnConstraints />
-                     </columnConstraints>
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
                         </GridPane>
                         <GridPane alignment="CENTER" GridPane.rowIndex="1">
                             <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" />
+                                <ColumnConstraints hgrow="SOMETIMES"/>
                             </columnConstraints>
                             <children>
-                                <Button fx:id="answerCButton" mnemonicParsing="false" onAction="#selectAnswerC" styleClass="answer-button" text="answerC" />
-                                <TextField fx:id="answerCTextField" alignment="CENTER" styleClass="answer-textField-wrong" />
+                                <Button fx:id="answerCButton" mnemonicParsing="false" onAction="#selectAnswerC"
+                                        styleClass="answer-button" text="answerC"/>
+                                <TextField fx:id="answerCTextField" alignment="CENTER"
+                                           styleClass="answer-textField-wrong"/>
                             </children>
-                     <rowConstraints>
-                        <RowConstraints />
-                     </rowConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
                         </GridPane>
                         <GridPane alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <children>
-                                <Button fx:id="answerDButton" mnemonicParsing="false" onAction="#selectAnswerD" styleClass="answer-button" text="answerD" />
-                                <TextField fx:id="answerDTextField" alignment="CENTER" styleClass="answer-textField-wrong" />
+                                <Button fx:id="answerDButton" mnemonicParsing="false" onAction="#selectAnswerD"
+                                        styleClass="answer-button" text="answerD"/>
+                                <TextField fx:id="answerDTextField" alignment="CENTER"
+                                           styleClass="answer-textField-wrong"/>
                             </children>
-                     <columnConstraints>
-                        <ColumnConstraints />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints />
-                     </rowConstraints>
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                            </rowConstraints>
                         </GridPane>
                     </children>
                 </GridPane>
             </children>
         </GridPane>
-        <VBox fx:id="chatButtonBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+        <HBox alignment="CENTER" GridPane.rowIndex="3">
             <children>
-                <Button fx:id="stopButton" mnemonicParsing="false" onAction="#pressStopButton" styleClass="stop-button" text="Stop" />
+                <Button fx:id="stopButton" mnemonicParsing="false" onAction="#pressExitButton" styleClass="back-button"
+                        text="Exit"/>
             </children>
+            <GridPane.margin>
+                <Insets left="50.0" top="60.0"/>
+            </GridPane.margin>
+        </HBox>
+        <GridPane alignment="CENTER" GridPane.columnIndex="1">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="293.6" valignment="CENTER"
+                                vgrow="ALWAYS"/>
+            </rowConstraints>
+            <children>
+                <BarChart fx:id="votingResultsChart" legendVisible="false" prefHeight="381.0" prefWidth="640.0">
+                    <xAxis>
+                        <CategoryAxis animated="false" prefHeight="11.0" prefWidth="556.0" side="BOTTOM"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
+                            <tickLabelFont>
+                                <Font size="15.0"/>
+                            </tickLabelFont>
+                        </NumberAxis>
+                    </yAxis>
+                    <GridPane.margin>
+                        <Insets right="30.0" top="10.0"/>
+                    </GridPane.margin>
+                </BarChart>
+                <TextFlow fx:id="chatJokerTextFlow" lineSpacing="10.0" maxHeight="300.0"
+                          style="-fx-background-color: white; -fx-background-radius: 30;" textAlignment="CENTER">
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <GridPane.margin>
+                        <Insets top="15.0"/>
+                    </GridPane.margin>
+                </TextFlow>
+                <VBox alignment="CENTER" maxHeight="0.0">
+                    <children>
+                        <ImageView fx:id="qrCodeImageView" fitHeight="219.0" fitWidth="261.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <VBox.margin>
+                                <Insets top="30.0"/>
+                            </VBox.margin>
+                        </ImageView>
+                        <Label fx:id="liveAudienceTimer" text="Label" textFill="#3232ce" visible="false">
+                            <VBox.margin>
+                                <Insets top="10.0"/>
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="34.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
+                </VBox>
+            </children>
+        </GridPane>
+        <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <GridPane alignment="CENTER" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false"
+                                onAction="#pressCommitButton" styleClass="actionButton" text="commit"/>
+                        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#pressNextButton"
+                                styleClass="actionButton" text="next"/>
+                        <Button fx:id="endButton" mnemonicParsing="false" onAction="#pressEndButton"
+                                styleClass="actionButton" text="End"/>
+                    </children>
+                </GridPane>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0"
+                                           prefWidth="100.0"/>
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0"
+                                           prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="prevQuestionButton" mnemonicParsing="false" onAction="#pressPrevQuestionButton"
+                                text="&lt;" GridPane.columnIndex="1">
+                            <GridPane.margin>
+                                <Insets right="10.0"/>
+                            </GridPane.margin>
+                        </Button>
+                        <Button fx:id="nextQuestionButton" mnemonicParsing="false" onAction="#pressNextQuestionButton"
+                                text="&gt;" GridPane.columnIndex="2">
+                            <GridPane.margin>
+                                <Insets left="10.0"/>
+                            </GridPane.margin>
+                        </Button>
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#pressDeleteButton"
+                                styleClass="delete-button" text="X"/>
+                    </children>
+                </GridPane>
+            </children>
+        </GridPane>
+        <VBox alignment="CENTER" spacing="8.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+              GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+            <children>
+                <Button fx:id="chatInput1" mnemonicParsing="false" onAction="#pressChatInput1" styleClass="chatButtons"
+                        text="Button"/>
+                <Button fx:id="chatInput2" mnemonicParsing="false" onAction="#pressChatInput2" styleClass="chatButtons"
+                        text="Button"/>
+                <Button fx:id="chatInput3" mnemonicParsing="false" onAction="#pressChatInput3" styleClass="chatButtons"
+                        text="Button"/>
+                <Button fx:id="chatInput4" mnemonicParsing="false" onAction="#pressChatInput4" styleClass="chatButtons"
+                        text="Button"/>
+            </children>
+            <GridPane.margin>
+                <Insets top="10.0"/>
+            </GridPane.margin>
         </VBox>
-      <GridPane alignment="CENTER" GridPane.columnIndex="1">
-        <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="31.400005722045876" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="345.4" minHeight="10.0" prefHeight="293.6" valignment="CENTER" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="175.4" minHeight="10.0" prefHeight="47.19999999999999" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <BarChart fx:id="votingResultsChart" legendVisible="false" prefHeight="381.0" prefWidth="640.0" style="-fx-region-background: blue;" GridPane.rowIndex="1">
-              <xAxis>
-                <CategoryAxis animated="false" prefHeight="11.0" prefWidth="556.0" side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis label="Percent" minorTickCount="10" side="LEFT" tickLabelGap="10.0">
-                     <tickLabelFont>
-                        <Font size="15.0" />
-                     </tickLabelFont>
-                  </NumberAxis>
-              </yAxis>
-            </BarChart>
-            <TextFlow fx:id="chatJokerTextFlow" lineSpacing="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" textAlignment="CENTER" GridPane.rowIndex="1">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets></TextFlow>
-            <GridPane alignment="CENTER" GridPane.rowIndex="2">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-            </GridPane>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-               <children>
-                  <ImageView fx:id="qrCodeImageView" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </VBox>
-            <Label fx:id="liveAudienceTimer" text="Label" GridPane.rowIndex="2">
-               <font>
-                  <Font size="34.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets top="50.0" />
-               </GridPane.margin>
-            </Label>
-         </children>
-      </GridPane>
-      <GridPane GridPane.columnIndex="2" GridPane.rowIndex="3">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <GridPane alignment="CENTER" GridPane.rowIndex="1">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button fx:id="commitButton" alignment="CENTER" mnemonicParsing="false" onAction="#pressCommitButton" styleClass="commit-button" text="commit" />
-                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#pressNextButton" styleClass="commit-button" text="next" />
-                  <Button fx:id="endButton" mnemonicParsing="false" onAction="#pressEndButton" styleClass="answer-button" text="End" />
-               </children>
-            </GridPane>
-            <GridPane>
-              <columnConstraints>
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Button fx:id="prevQuestionButton" mnemonicParsing="false" onAction="#pressPrevQuestionButton" text="&lt;" GridPane.columnIndex="1">
-                     <GridPane.margin>
-                        <Insets right="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="nextQuestionButton" mnemonicParsing="false" onAction="#pressNextQuestionButton" text="&gt;" GridPane.columnIndex="2">
-                     <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#pressDeleteButton" style="-fx-background-color: darkred;" text="X" />
-               </children>
-            </GridPane>
-         </children>
-      </GridPane>
-      <VBox alignment="CENTER" spacing="8.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
-         <children>
-            <Button fx:id="chatInput1" mnemonicParsing="false" onAction="#pressChatInput1" text="Button" />
-            <Button fx:id="chatInput2" mnemonicParsing="false" onAction="#pressChatInput2" text="Button" />
-            <Button fx:id="chatInput3" mnemonicParsing="false" onAction="#pressChatInput3" text="Button" />
-            <Button fx:id="chatInput4" mnemonicParsing="false" onAction="#pressChatInput4" text="Button" />
-         </children>
-      </VBox>
     </children>
     <stylesheets>
-        <URL value="@../styles/standard/general.css" />
-        <URL value="@../styles/standard/gameSession.css" />
+        <URL value="@../styles/onlyQuiz.css"/>
     </stylesheets>
 </GridPane>

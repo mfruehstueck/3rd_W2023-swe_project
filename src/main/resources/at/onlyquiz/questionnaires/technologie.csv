@@ -1,0 +1,31 @@
+TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
+0,Who is known as the co-founder of Microsoft?,EASY,Bill Gates,Steve Jobs,Mark Zuckerberg,Elon Musk
+0,What does the abbreviation "CPU" stand for in computing?,EASY,Central Processing Unit,Computer Power Unit,Core Processing Unit,Central Power Unit
+0,Which programming language is commonly used for web development and design?,EASY,HTML/CSS,Java,C++,Python
+0,What does the acronym "URL" stand for in the context of the internet?,EASY,Uniform Resource Locator,Universal Record Locator,Unique Reference Link,User Resource Language
+0,Which company developed the first commercially successful personal computer?,EASY,IBM,Apple,Microsoft,Intel
+0,What is the term for a network of interconnected computers that share resources?,MEDIUM,Internet,IntranetF,LAN (Local Area Network),MAN (Metropolitan Area Network)
+0,In computer graphics what does "GPU" stand for?,MEDIUM,Graphics Processing Unit,Gaming Processing Unit,General Processing Unit,Giga Processing Unit
+0,What does the term "Wi-Fi" stand for?,MEDIUM,Wireless Fidelity,Worldwide Interconnection,Fast Internet,Web Interface
+0,Which operating system is developed by Apple Inc.?,MEDIUM,macOS,Windows,Linux,Android
+0,What is the programming language primarily used for building Android apps?,MEDIUM,Java,Kotlin,C++,Swift
+0,What is the main function of an accelerometer in a smartphone?,HARD,Measuring Acceleration,Sending Text Messages,Taking Photos,Playing Music
+0,Which computer scientist is known as the father of artificial intelligence?,HARD,Alan Turing,John McCarthy,Ada Lovelace,Grace Hopper
+0,What is the name of the first satellite launched into space by humans?,HARD,Sputnik 1,Explorer 1,Vostok 1,Skynet
+0,What does the term "HTML" stand for in web development?,HARD,Hypertext Markup Language,Hyperlink and Text Markup Language,High-Level Text Manipulation Language,Human-Translated Multimedia Language
+0,Which programming language is often used for data analysis and machine learning?,HARD,Python,Ruby,C++,Java
+0,What is the term for a computer virus that spreads by attaching itself to other programs?,EASY,Computer Worm,Trojan Horse,Adware,Spyware
+0,Who is the co-founder of Tesla and SpaceX?,EASY,Elon Musk,Bill Gates,Jeff Bezos,Mark Zuckerberg
+0,What does "WWW" stand for in a website address?,EASY,World Wide Web,Web World Wonderland,Wide Width Web,Wonderful Web World
+0,Which social media platform is known for its character limit per tweet?,EASY,Twitter,Facebook,Instagram,LinkedIn
+0,What is the name of the open-source operating system based on the Linux kernel?,EASY,Ubuntu,Windows,macOS,Android
+0,In computer science what does "AI" stand for?,MEDIUM,Artificial Intelligence,Advanced Interface,Adaptive Information,Automated Integration
+0,Who is the founder of Amazon?,MEDIUM,Jeff Bezos,Bill Gates,Elon Musk,Mark Zuckerberg
+0,Which programming language was created by Guido van Rossum?,MEDIUM,Python,Ruby,JavaScript,C++
+0,What is the term for a software program that replicates itself and spreads to other computers?,MEDIUM,Computer Virus,Malware,Spyware,Ransomware
+0,What does the acronym "ISP" stand for in the context of internet services?,MEDIUM,Internet Service Provider,Information System Protocol,Integrated Security Platform,Internet Security Program
+0,What is the main purpose of a QR code?,HARD,Quick Response Code,Quality Recognition Code,Quantum Resonance Code,Query Response Code
+0,Which company developed the Java programming language?,HARD,Sun Microsystems,Microsoft,Oracle,IBM
+0,In computer networking what does "LAN" stand for?,HARD,Local Area Network,Wide Area Network,Local Access Node,Longitudinal Amplitude Navigation
+0,Who is the co-founder of Apple Inc. alongside Steve Jobs?,HARD,Steve Wozniak,Bill Gates,Elon Musk,Mark Zuckerberg
+0,What is the primary programming language for building iOS apps?,HARD,Swift,Objective-C,C++,Java

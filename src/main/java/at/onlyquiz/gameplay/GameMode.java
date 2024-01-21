@@ -2,184 +2,198 @@ package at.onlyquiz.gameplay;
 
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.JokerQueue;
+import at.onlyquiz.util.jsonParser.models.User;
 import at.onlyquiz.util.timeSystem.TimeConstants;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class GameMode {
-  List<GameQuestion> setOfQuestions = new ArrayList<>();
-  GameQuestion currentQuestion;
-  Integer totalScore, achievableScore, questionCounter;
-  Integer achievedScore = 0;
-  JokerQueue audienceJokers = new JokerQueue();
-  JokerQueue fiftyFiftyJokers = new JokerQueue();
-  JokerQueue chatJokers = new JokerQueue();
-  boolean scoreVisible, timerVisible;
-  boolean jokersAvailable;
-  boolean editAble;
-  boolean finished = false;
-  boolean jokerUsed = false;
-  int answerSecondsRemaining, readingSecondsRemaining;
-  int indexInQuestionnaire = 0;
-  protected List<String> selectedQuestionnaires;
-  String playername;
+    List<GameQuestion> setOfQuestions = new ArrayList<>();
+    GameQuestion currentQuestion;
+    Integer totalScore, achievableScore, questionCounter;
+    Integer achievedScore = 0;
+    JokerQueue audienceJokers = new JokerQueue();
+    JokerQueue fiftyFiftyJokers = new JokerQueue();
+    JokerQueue chatJokers = new JokerQueue();
+    boolean scoreVisible, timerVisible;
+    boolean jokersAvailable;
+    boolean editAble;
+    boolean finished = false;
+    boolean won = false;
+    boolean jokerUsed = false;
+    int answerSecondsRemaining, readingSecondsRemaining;
+    int indexInQuestionnaire = 0;
+    protected List<String> selectedQuestionnaires;
+    User current_user;
 
-  public GameMode() { super(); }
-
-  public GameMode(List<String> selectedQuestionnaires, String playername) {
-      this.selectedQuestionnaires = selectedQuestionnaires;
-      this.playername = playername;
-  }
-
-  public abstract void confirmAnswer(boolean isCorrect);
-  public abstract int calculateScore();
-
-  public GameQuestion popQuestionOutOfSet() {
-    if (setOfQuestions.isEmpty()) return null;
-    GameQuestion q = setOfQuestions.get(0);
-    setOfQuestions.remove(0);
-    return q;
-  }
-
-  public void resetTimer() {
-    resetReadingSecondsRemaining();
-    resetAnswerSecondsRemaining();
-  }
-
-  private void resetReadingSecondsRemaining() {
-    switch (currentQuestion.getDifficulty()) {
-      case EASY -> readingSecondsRemaining = TimeConstants.EASY_TIME_TO_READ_SEC;
-      case MEDIUM -> readingSecondsRemaining = TimeConstants.MEDIUM_TIME_TO_READ_SEC;
-      case HARD -> readingSecondsRemaining = TimeConstants.HARD_TIME_TO_READ_SEC;
+    public GameMode() {
+        super();
     }
-  }
 
-  private void resetAnswerSecondsRemaining() {
-    switch (currentQuestion.getDifficulty()) {
-      case EASY -> answerSecondsRemaining = TimeConstants.EASY_TIME_TO_ANSWER;
-      case MEDIUM -> answerSecondsRemaining = TimeConstants.MEDIUM_TIME_TO_ANSWER;
-      case HARD -> answerSecondsRemaining = TimeConstants.HARD_TIME_TO_ANSWER;
+    public GameMode(List<String> selectedQuestionnaires, User current_user) {
+        this.selectedQuestionnaires = selectedQuestionnaires;
+        this.current_user = current_user;
     }
-  }
 
-  public boolean nextIndex() {
-    if (indexInQuestionnaire + 1 < setOfQuestions.size()) {
-      indexInQuestionnaire++;
-      currentQuestion = setOfQuestions.get(indexInQuestionnaire);
-      return false;
+    public abstract void confirmAnswer(boolean isCorrect);
+
+    public abstract int calculateScore();
+
+    public GameQuestion popQuestionOutOfSet() {
+        if (setOfQuestions.isEmpty()) return null;
+        GameQuestion q = setOfQuestions.get(0);
+        setOfQuestions.remove(0);
+        return q;
     }
-    if (indexInQuestionnaire + 1 == setOfQuestions.size()) {
-      indexInQuestionnaire++;
+
+    public void resetTimer() {
+        resetReadingSecondsRemaining();
+        resetAnswerSecondsRemaining();
     }
-    return true;
-  }
 
-  public boolean previousIndex() {
-    if (indexInQuestionnaire - 1 >= 0) {
-      indexInQuestionnaire--;
-      currentQuestion = setOfQuestions.get(indexInQuestionnaire);
-      return false;
+    private void resetReadingSecondsRemaining() {
+        switch (currentQuestion.getDifficulty()) {
+            case EASY -> readingSecondsRemaining = TimeConstants.EASY_TIME_TO_READ_SEC;
+            case MEDIUM -> readingSecondsRemaining = TimeConstants.MEDIUM_TIME_TO_READ_SEC;
+            case HARD -> readingSecondsRemaining = TimeConstants.HARD_TIME_TO_READ_SEC;
+        }
     }
-    return true;
-  }
 
-  public int getIndexInQuestionnaire() {
-    return indexInQuestionnaire;
-  }
+    private void resetAnswerSecondsRemaining() {
+        switch (currentQuestion.getDifficulty()) {
+            case EASY -> answerSecondsRemaining = TimeConstants.EASY_TIME_TO_ANSWER;
+            case MEDIUM -> answerSecondsRemaining = TimeConstants.MEDIUM_TIME_TO_ANSWER;
+            case HARD -> answerSecondsRemaining = TimeConstants.HARD_TIME_TO_ANSWER;
+        }
+    }
 
-  public boolean isScoreVisible() {
-    return scoreVisible;
-  }
+    public boolean nextIndex() {
+        if (indexInQuestionnaire + 1 < setOfQuestions.size()) {
+            indexInQuestionnaire++;
+            currentQuestion = setOfQuestions.get(indexInQuestionnaire);
+            return false;
+        }
+        if (indexInQuestionnaire + 1 == setOfQuestions.size()) {
+            indexInQuestionnaire++;
+        }
+        return true;
+    }
 
-  public boolean isTimerVisible() {
-    return timerVisible;
-  }
+    public boolean previousIndex() {
+        if (indexInQuestionnaire - 1 >= 0) {
+            indexInQuestionnaire--;
+            currentQuestion = setOfQuestions.get(indexInQuestionnaire);
+            return false;
+        }
+        return true;
+    }
 
-  public List<GameQuestion> getSetOfQuestions() {
-    return setOfQuestions;
-  }
+    public int getIndexInQuestionnaire() {
+        return indexInQuestionnaire;
+    }
 
-  public Integer getAchievableScore() {
-    return achievableScore;
-  }
+    public boolean isScoreVisible() {
+        return scoreVisible;
+    }
 
-  public Integer getTotalScore() {
-    return totalScore;
-  }
+    public boolean isTimerVisible() {
+        return timerVisible;
+    }
 
-  public boolean areJokersAvailable() {
-    return jokersAvailable;
-  }
+    public List<GameQuestion> getSetOfQuestions() {
+        return setOfQuestions;
+    }
 
-  public JokerQueue getAudienceJokers() {
-    return audienceJokers;
-  }
+    public Integer getAchievableScore() {
+        return achievableScore;
+    }
 
-  public JokerQueue getFiftyFiftyJokers() {
-    return fiftyFiftyJokers;
-  }
+    public Integer getTotalScore() {
+        return totalScore;
+    }
 
-  public JokerQueue getChatJokers() {
-    return chatJokers;
-  }
+    public boolean areJokersAvailable() {
+        return jokersAvailable;
+    }
 
-  public GameQuestion getCurrentQuestion() {
-    return currentQuestion;
-  }
+    public JokerQueue getAudienceJokers() {
+        return audienceJokers;
+    }
 
-  public boolean isEditAble() {
-    return editAble;
-  }
+    public JokerQueue getFiftyFiftyJokers() {
+        return fiftyFiftyJokers;
+    }
 
-  public int getAnswerSecondsRemaining() {
-    return answerSecondsRemaining;
-  }
+    public JokerQueue getChatJokers() {
+        return chatJokers;
+    }
 
-  public void setAnswerSecondsRemaining(int answerSecondsRemaining) {
-    this.answerSecondsRemaining = answerSecondsRemaining;
-  }
+    public GameQuestion getCurrentQuestion() {
+        return currentQuestion;
+    }
 
-  public int getReadingSecondsRemaining() {
-    return readingSecondsRemaining;
-  }
+    public boolean isEditAble() {
+        return editAble;
+    }
 
-  public void setReadingSecondsRemaining(int readingSecondsRemaining) {
-    this.readingSecondsRemaining = readingSecondsRemaining;
-  }
+    public int getAnswerSecondsRemaining() {
+        return answerSecondsRemaining;
+    }
 
-  public boolean isFinished() {
-    return finished;
-  }
+    public void setAnswerSecondsRemaining(int answerSecondsRemaining) {
+        this.answerSecondsRemaining = answerSecondsRemaining;
+    }
 
-  public Integer getQuestionCounter() {
-    return questionCounter;
-  }
+    public int getReadingSecondsRemaining() {
+        return readingSecondsRemaining;
+    }
 
-  public boolean isJokerUsed() {
-    return jokerUsed;
-  }
+    public void setReadingSecondsRemaining(int readingSecondsRemaining) {
+        this.readingSecondsRemaining = readingSecondsRemaining;
+    }
 
-  public void setJokerUsed(boolean jokerUsed) {
-    this.jokerUsed = jokerUsed;
-  }
+    public boolean isFinished() {
+        return finished;
+    }
 
-  public void setCurrentQuestion(GameQuestion currentQuestion) {
-    this.currentQuestion = currentQuestion;
-  }
+    public Integer getQuestionCounter() {
+        return questionCounter;
+    }
 
-  public String getPlayername() {
-    return playername;
-  }
+    public boolean isJokerUsed() {
+        return jokerUsed;
+    }
 
-  public void setPlayername(String playername) {
-    this.playername = playername;
-  }
+    public void setJokerUsed(boolean jokerUsed) {
+        this.jokerUsed = jokerUsed;
+    }
 
-  public Integer getAchievedScore() {
-    return achievedScore;
-  }
+    public void setCurrentQuestion(GameQuestion currentQuestion) {
+        this.currentQuestion = currentQuestion;
+    }
 
-  public void setAchievedScore(Integer achievedScore) {
-    this.achievedScore = achievedScore;
-  }
+    public User getCurrent_user() {
+        return current_user;
+    }
+
+    public void setCurrent_user(User current_user) {
+        this.current_user = current_user;
+    }
+
+    public Integer getAchievedScore() {
+        return achievedScore;
+    }
+
+    public void setAchievedScore(Integer achievedScore) {
+        this.achievedScore = achievedScore;
+    }
+
+    public boolean hasWon() {
+        return won;
+    }
+
+    public void setWon(boolean won) {
+        this.won = won;
+    }
 }

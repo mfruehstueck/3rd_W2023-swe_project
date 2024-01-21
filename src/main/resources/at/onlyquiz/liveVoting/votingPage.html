@@ -12,7 +12,8 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: lightblue;
+            background-color: #e6f7ff;
+            font-family: 'Arial', sans-serif;
         }
 
         .button-container {
@@ -26,7 +27,7 @@
             padding: 15px;
             width: 300px;
             height: 150px;
-            background-color: blue;
+            background-color: #004080;
             color: white;
             border: none;
             border-radius: 8px;
@@ -46,6 +47,7 @@
     function redirectToThankYou() {
         window.location.href = "/thanks"
     }
+
     // Funktion, um auf Button-Klicks zu reagieren
     function handleButtonClick(buttonId) {
         // Sende AJAX-Anfrage an den Server, um den Klick zu zählen
@@ -60,7 +62,7 @@
         };
 
         // Sende Button-ID als JSON-Daten im Request-Body
-        xhr.send(JSON.stringify({ buttonId: buttonId }));
+        xhr.send(JSON.stringify({buttonId: buttonId}));
     }
 
     // Füge einen Event-Listener für jeden Button hinzu

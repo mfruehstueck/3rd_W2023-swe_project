@@ -2,50 +2,121 @@
 
 <?import java.lang.*?>
 <?import java.net.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionSettingController">
+<GridPane fx:id="ui_container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="720.0" prefWidth="1280.0" styleClass="background" xmlns="http://javafx.com/javafx/17.0.2-ea"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.onlyquiz.controller.GameSessionSettingController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" percentHeight="80.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="1">
+        <VBox alignment="TOP_CENTER" maxWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
             <children>
-                <Button fx:id="defaultModeButton" mnemonicParsing="false" onAction="#pressDefaultModeButton" text="Default Mode">
+                <ImageView fitHeight="298.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Button fx:id="defaultModeButton" minHeight="24.0" mnemonicParsing="false"
+                        onAction="#pressDefaultModeButton" prefWidth="300.0" text="Default Mode">
                     <styleClass>
-                        <String fx:value="mode-button" />
-                        <String fx:value="button" />
+                        <String fx:value="mode-button"/>
+                        <String fx:value="button"/>
                     </styleClass>
                 </Button>
-                <Button fx:id="endlessModeButton" mnemonicParsing="false" onAction="#pressEndlessModeButton" styleClass="mode-button" text="Endless Mode" />
-                <Button fx:id="trainingModeButton" mnemonicParsing="false" onAction="#pressTrainingModeButton" styleClass="mode-button" text="Training Mode" />
+                <Button fx:id="endlessModeButton" mnemonicParsing="false" onAction="#pressEndlessModeButton"
+                        styleClass="mode-button" text="Endless Mode"/>
+            </children>
+            <GridPane.margin>
+                <Insets left="250.0" top="70.0"/>
+            </GridPane.margin>
+        </VBox>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+            <children>
+                <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+                    <children>
+                        <Label alignment="CENTER" styleClass="headerLabels" text="Your Name">
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </Label>
+                        <TextField fx:id="playerNameTextField" alignment="BOTTOM_CENTER" editable="false"
+                                   maxWidth="400.0" promptText="Playername">
+                            <font>
+                                <Font name="System Italic" size="12.0"/>
+                            </font>
+                            <VBox.margin>
+                                <Insets/>
+                            </VBox.margin>
+                        </TextField>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0"/>
+                    </VBox.margin>
+                </VBox>
+                <Label alignment="CENTER" styleClass="headerLabels" text="Select your Questionnaires"
+                       textAlignment="CENTER">
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </Label>
+                <ListView fx:id="ui_questionnaireSelection_listView" maxHeight="300.0" maxWidth="400.0"
+                          prefHeight="200.0" prefWidth="200.0"/>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <Label alignment="CENTER" styleClass="headerLabels" text="Properties"
+                                       textAlignment="CENTER"/>
+                                <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                        <CheckBox fx:id="liveAudienceCheckBox" mnemonicParsing="false"
+                                                  text="Live Audience">
+                                            <HBox.margin>
+                                                <Insets/>
+                                            </HBox.margin>
+                                            <font>
+                                                <Font name="System Bold" size="15.0"/>
+                                            </font>
+                                        </CheckBox>
+                                    </children>
+                                    <padding>
+                                        <Insets top="10.0"/>
+                                    </padding>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets top="30.0"/>
+                    </padding>
+                </HBox>
             </children>
         </VBox>
-        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
             <children>
-                <ListView fx:id="ui_questionnaireSelection_listView" prefHeight="200.0" prefWidth="200.0"/>
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#pressBackButton" styleClass="back-button"
+                        text="Back to Menu"/>
             </children>
-        </VBox>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
-            <children>
-                <Button fx:id="backButton" mnemonicParsing="false" onAction="#pressBackButton" styleClass="back-button" text="Back" />
-            </children>
+            <GridPane.margin>
+                <Insets bottom="50.0" right="150.0"/>
+            </GridPane.margin>
         </HBox>
-      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
-         <children>
-            <TextField fx:id="playerNameTextField" alignment="BOTTOM_CENTER" prefWidth="200.0" promptText="Your Name" />
-         </children>
-      </HBox>
     </children>
     <stylesheets>
-        <URL value="@../styles/standard/general.css" />
-        <URL value="@../styles/standard/gameSessionSettings.css" />
+        <URL value="@../styles/onlyQuiz.css"/>
     </stylesheets>
 </GridPane>

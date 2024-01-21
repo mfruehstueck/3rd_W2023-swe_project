@@ -1,9 +1,7 @@
 package at.onlyquiz.controller;
 
 import at.onlyquiz.controller.factories.View;
-import at.onlyquiz.util.scoreSystem.savedScoresJSON.PersistScore;
-import com.fasterxml.jackson.databind.deser.impl.PropertyValue;
-import javafx.beans.Observable;
+import at.onlyquiz.util.jsonParser.models.PersistScore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,6 +26,8 @@ public class ScoreHistoryController extends BaseController implements Initializa
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
+
         List<PersistScore> allScores = PersistScore.getSavedScores();
         ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
 
