@@ -5,6 +5,10 @@ import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.GameMode;
 import at.onlyquiz.model.joker.AudienceJoker;
 import at.onlyquiz.model.joker.ChatJoker;
+import at.onlyquiz.model.joker.chatJokerPersons.Aunt;
+import at.onlyquiz.model.joker.chatJokerPersons.Bestfriend;
+import at.onlyquiz.model.joker.chatJokerPersons.Father;
+import at.onlyquiz.model.joker.chatJokerPersons.GrandMa;
 import at.onlyquiz.model.question.Answer;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
@@ -281,42 +285,70 @@ public class GameSessionController extends BaseController{
         if (!currentGameMode.getChatJokers().isEmpty()) {
             activeChatJoker = (ChatJoker) currentGameMode.getChatJokers().pop();
 
+            // Set up chat inputs for choosing the ChatJokerPerson
+            chatInput1.setText("Talk with GrandMa");
+            chatInput2.setText("Talk with Father");
+            chatInput3.setText("Talk with Bestfriend");
+            chatInput4.setText("Talk with Aunt");
+
+            chatInput1.setVisible(true);
+            chatInput2.setVisible(true);
+            chatInput3.setVisible(true);
+            chatInput4.setVisible(true);
+
+            chatJokerTextFlow.getChildren().add(new Text("Choose who you want to talk to:\n"));
             chatJokerTextFlow.setVisible(true);
-            chatInput2.setVisible(true); chatInput3.setVisible(true);
 
-            activeChatJoker.use(currentGameMode.getCurrentQuestion());
-
-            chatJokerTextFlow.getChildren().add(new Text("\n \n"));
-            chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.getNextResponse()));
-
-            refreshChatInputs();
-
-            chatJokerTextFlow.setVisible(true);
 
             refreshJokerButtons();
         }
     }
 
-    public void pressChatInput1() {
-        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
-        refreshChatInputs();
 
+    public void pressChatInput1() {
+        if (activeChatJoker.getPerson() == null) {
+            activeChatJoker.setPerson(new GrandMa());
+            continueChatConversation();
+        } else {
+            chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
+            refreshChatInputs();
+        }
     }
     public void pressChatInput2() {
-        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput2.getText())));
-        refreshChatInputs();
-
+        if (activeChatJoker.getPerson() == null) {
+            activeChatJoker.setPerson(new Father());
+            continueChatConversation();
+        } else {
+            chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
+            refreshChatInputs();
+        }
     }
     public void pressChatInput3() {
-        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput3.getText())));
+        if (activeChatJoker.getPerson() == null) {
+        activeChatJoker.setPerson(new Bestfriend());
+        continueChatConversation();
+    } else {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
         refreshChatInputs();
-
     }
+}
     public void pressChatInput4() {
-        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput4.getText())));
+        if (activeChatJoker.getPerson() == null) {
+        activeChatJoker.setPerson(new Aunt());
+        continueChatConversation();
+    } else {
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.setSelectedInput(chatInput1.getText())));
         refreshChatInputs();
     }
+}
 
+    private void continueChatConversation() {
+        activeChatJoker.use(currentGameMode.getCurrentQuestion());
+        chatJokerTextFlow.getChildren().clear();
+        chatJokerTextFlow.getChildren().add(new Text("\n \n"));
+        chatJokerTextFlow.getChildren().add(new Text(activeChatJoker.getNextResponse()));
+        refreshChatInputs();
+    }
     private void refreshChatInputs(){
         if (!activeChatJoker.getInputText1().isEmpty()){
             chatInput1.setText(activeChatJoker.getInputText1());
