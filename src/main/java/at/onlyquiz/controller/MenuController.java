@@ -45,7 +45,6 @@ public class MenuController extends BaseController implements Initializable {
       gameModeColumn.setCellValueFactory(new PropertyValueFactory<>("gameMode"));
       playerNameColumn.setCellValueFactory(new PropertyValueFactory<>("playerName"));
       scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
-
       top10Table.sort();
     }
 
