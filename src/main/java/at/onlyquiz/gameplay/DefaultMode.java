@@ -57,8 +57,8 @@ public class DefaultMode extends GameMode {
     } else {
       if (achievedScore != 0 && !playerName.isEmpty()) {
         PersistScore.saveScore(this);
-        finished = true;
       }
+      finished = true;
     }
   }
 

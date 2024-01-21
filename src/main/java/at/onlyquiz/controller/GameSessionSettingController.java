@@ -5,6 +5,7 @@ import at.onlyquiz.controller.cells.models.QuestionnaireSelection;
 import at.onlyquiz.controller.eventHandlers.OnClickEventHandler;
 import at.onlyquiz.controller.factories.View;
 import at.onlyquiz.gameplay.DefaultMode;
+import at.onlyquiz.gameplay.EndlessMode;
 import at.onlyquiz.util.QuestionDictionary;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

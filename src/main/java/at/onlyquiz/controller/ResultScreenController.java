@@ -18,8 +18,8 @@ public class ResultScreenController extends BaseController {
     private GameMode currentGameMode;
 
     public void initialize() {
-        if (currentGameMode.getPlayername() != null){
-            playerNameLabel.setText("Player: " + currentGameMode.getPlayername());
+        if (currentGameMode.getPlayerName() != null){
+            playerNameLabel.setText("Player: " + currentGameMode.getPlayerName());
         }
         if (currentGameMode.getAchievedScore() != null){
             achievedScoreLabel.setText("Achieved Score: " + currentGameMode.getAchievedScore());
