@@ -1,0 +1,31 @@
+TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
+0,Which animal is the largest mammal on Earth?,EASY,Blue Whale,Elephant,Giraffe,Hippopotamus
+0,What is the only marsupial found in North America?,EASY,Opossum,Kangaroo,Koala,Wombat
+0,Which bird is known for its ability to mimic human speech?,EASY,Parrot,Crow,Mockingbird,Canary
+0,What is the primary diet of a panda?,EASY,Bamboo,Meat,Grass,Insects
+0,Which big cat is known for its distinctive black mane?,EASY,Lion,Tiger,Leopard,Cheetah
+0,What is the largest species of bear?,MEDIUM,Polar Bear,Grizzly Bear,Brown Bear,Black Bear
+0,Which species of snake is the world's longest venomous snake?,MEDIUM,King Cobra,Black Mamba,Rattlesnake,Python
+0,Which animal is known as the "ship of the desert"?,MEDIUM,Camel,Horse,Elephant,Giraffe
+0,What is the largest living species of tortoise?,MEDIUM,Galápagos Tortoise,Aldabra Giant Tortoise,Leatherback Sea Turtle,Loggerhead Sea Turtle
+0,Which insect is known for its luminous light production?,MEDIUM,Firefly,Glowworm,Dragonfly,Butterfly
+0,What is the world's fastest land animal?,HARD,Cheetah,Pronghorn,Gray Wolf,Thomson's Gazelle
+0,Which bird is the national symbol of the United States?,HARD,Bald Eagle,Golden Eagle,Osprey,Red-tailed Hawk
+0,What is the only mammal capable of sustained flight?,HARD,Bat,Swan,Squirrel,Marsupial Glide
+0,Which venomous snake is native to Australia?,HARD,Inland Taipan(Brown Snake),Black Mamba,Rattlesnake,Cobra
+0,What is the largest living species of fish?,HARD,Whale Shark,Great White Shark,Manta Ray,Bluefin Tuna
+0,What is the only continent where giraffes live in the wild?,EASY,Africa,South America,Asia,Australia
+0,Which species of bear is native to the Arctic Circle?,EASY,Polar Bear,Brown Bear,Black Bear,Sloth Bear
+0,What is the world's largest species of big cat?,EASY,Siberian Tiger,Lion,Jaguar,Cheetah
+0,Which animal is known for its ability to change color to match its surroundings?,EASY,Chameleon,Cuttlefish,Squid,Octopus
+0,What is the primary food source for giant pandas in the wild?,EASY,Bamboo,Grass,Insects,Small Mammals
+0,Which bird is the symbol of wisdom in many cultures?,MEDIUM,Owl,Eagle,Hawk,Falcon
+0,What is the world's largest species of rodent?,MEDIUM,Capybara,Beaver,Groundhog,Rat
+0,Which marine mammal is known for its long tusks?,MEDIUM,Narwhal,Seal,Walrus,Manatee
+0,What is the only species of bear native to South America?,MEDIUM,Spectacled Bear,Andean Bear,Panda Bear,Sloth Bear
+0,Which bird is the national symbol of New Zealand?,MEDIUM,Kiwi,Emu,Kākāpō,Kākā
+0,Which species of monkey is known for its colorful face and long tail?,HARD,Mandrill,Baboon,Capuchin Monkey,Howler Monkey
+0,What is the largest species of crocodile?,HARD,Saltwater Crocodile,Nile Crocodile,Alligator,Caiman
+0,Which animal is known as the "silent killer" due to its stealthy hunting ability?,HARD,Leopard,Python,Cheetah,Jaguar
+0,What is the world's smallest species of whale?,HARD,Baiji (Yangtze River Dolphin),Vaquita,Porpoise,Killer Whale
+0,Which insect is known for its destructive swarming behavior?,HARD,Locust,Army Ants,Cicada,Praying Mantis
