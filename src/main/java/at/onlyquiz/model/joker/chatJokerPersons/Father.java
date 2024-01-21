@@ -5,7 +5,7 @@ public class Father extends ChatJokerPerson {
     public Father() {
         super();
         greetingLines.add("Hey kiddo, how's it going?");
-        greetingLines.add("Hello there! Ready to win this thing?");
+        greetingLines.add("Hello there! what's going on ?");
 
         greetingBackLines.add("I'm good, thanks. What's new..");
 
