@@ -12,6 +12,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -30,8 +31,9 @@ public class GameSessionSettingController extends BaseController {
   public GridPane ui_container;
   @FXML
   public ListView<QuestionnaireSelection> ui_questionnaireSelection_listView;
+    public CheckBox liveAudienceCheckBox;
 
-  private ObservableList<QuestionnaireSelection> questionnaireSelection_obstList;
+    private ObservableList<QuestionnaireSelection> questionnaireSelection_obstList;
 
   public GameSessionSettingController() {
 
@@ -61,12 +63,12 @@ public class GameSessionSettingController extends BaseController {
 
   public void pressDefaultModeButton() {
     if (get_selectedQuestionnairs().isEmpty()) return;
-    startingGameSession(new DefaultMode(get_selectedQuestionnairs(), playerNameTextField.getText()), get_stage(ui_container));
+    startingGameSession(new DefaultMode(get_selectedQuestionnairs(), playerNameTextField.getText(), liveAudienceCheckBox.isSelected()), get_stage(ui_container));
   }
 
   public void pressEndlessModeButton() {
     if (get_selectedQuestionnairs().isEmpty()) return;
-    startingGameSession(new EndlessMode(get_selectedQuestionnairs(), playerNameTextField.getText()), get_stage(ui_container));
+    startingGameSession(new EndlessMode(get_selectedQuestionnairs(), playerNameTextField.getText(), liveAudienceCheckBox.isSelected()), get_stage(ui_container));
   }
 
   public void pressTrainingModeButton() {

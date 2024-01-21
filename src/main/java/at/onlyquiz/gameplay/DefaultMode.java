@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DefaultMode extends GameMode {
 
-  public DefaultMode(List<String> selectedQuestionnaires, String playername) {
+  public DefaultMode(List<String> selectedQuestionnaires, String playername, boolean hasLiveAudience) {
     super(selectedQuestionnaires, playername);
     editAble = false;
     scoreVisible = true;
@@ -25,7 +25,7 @@ public class DefaultMode extends GameMode {
 
     //set up jokers;
     fiftyFiftyJokers.add(new FiftyFiftyJoker());
-    audienceJokers.add(new AudienceJoker(true));
+    audienceJokers.add(new AudienceJoker(hasLiveAudience));
     chatJokers.add(new ChatJoker(false));
 
     setOfQuestions.addAll(QuestionDictionary.get_randomQuestions(selectedQuestionnaires, Difficulty.EASY, 5));

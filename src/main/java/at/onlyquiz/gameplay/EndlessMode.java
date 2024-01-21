@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class EndlessMode extends GameMode {
-    public EndlessMode(List<String> selectedQuestionnaires, String playername) {
+    public EndlessMode(List<String> selectedQuestionnaires, String playername, boolean hasLiveAudience) {
         super(selectedQuestionnaires, playername);
         editAble = false;
         scoreVisible = false;
@@ -22,7 +22,7 @@ public class EndlessMode extends GameMode {
         jokersAvailable = true;
 
         fiftyFiftyJokers.add(new FiftyFiftyJoker());
-        audienceJokers.add(new AudienceJoker(false));
+        audienceJokers.add(new AudienceJoker(hasLiveAudience));
         chatJokers.add(new ChatJoker(false));
 
         getNewQuestions();
