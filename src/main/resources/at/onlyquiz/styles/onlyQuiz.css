@@ -29,9 +29,20 @@
     -fx-background-color: darkred;
 }
 
+.delete-button {
+    -fx-background-color: darkred;
+    -fx-min-height: 25;
+    -fx-min-width: 25;
+    -fx-max-height: 25;
+    -fx-max-width: 25;
+}
+
 .table-view {
     -fx-text-fill: white;
     -fx-padding: 0;
+    -fx-border-width: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: #3232ce;
 }
 
 .table-row-cell {
@@ -40,8 +51,7 @@
 
 .table-view .column-header,
 .table-view .table-cell {
-    -fx-background-color: #3263ce; /* Hintergrundfarbe des Column Headers und der Zellen */
-    -fx-text-fill: white;
+    -fx-background-color: white; /* Hintergrundfarbe des Column Headers und der Zellen */
     -fx-border-width: 0;
     -fx-font-size: 15;
     -fx-alignment: CENTER;
@@ -50,6 +60,12 @@
 .table-view .column-header .label {
     -fx-text-fill: white;
 }
+
+.table-view .column-header {
+    -fx-background-color: #3232ce;
+    -fx-text-fill: white;
+}
+
 
 .table-view .scroll-bar * {
     -fx-min-width: 0;
@@ -68,13 +84,16 @@
     -fx-font-size: 25;
 }
 
-.top10 {
+.scoreHeader {
     -fx-font-size: 30;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-color: #3232ce;
     -fx-background-radius: 20;
-    -fx-min-width: 250px;
+}
+
+.top10Label{
+    -fx-min-width: 350px;
 }
 
 /* GameSetting View */
@@ -104,11 +123,16 @@
     -fx-background-color: green;
 }
 
-.action-buttons{
-
+.list-view{
+    -fx-border-color: #3270ce;
+    -fx-border-width: 3px;
+    -fx-border-radius: 5;
 }
 
-
+/* Score History View */
+.scoreHistoryLabel{
+    -fx-min-width: 1000px;
+}
 
 .question-box {
     -fx-background-color: #3232ce;
