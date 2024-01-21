@@ -57,7 +57,7 @@
    </HBox>
    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <children>
-          <ListView fx:id="ui_question_listView" minWidth="500.0" />
+          <ListView fx:id="ui_question_listView" minWidth="600.0" />
       </children></HBox>
     <stylesheets>
         <URL value="@../styles/onlyQuiz.css" />

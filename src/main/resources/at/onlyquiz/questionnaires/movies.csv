@@ -1,0 +1,31 @@
+TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
+0,Which actor played the character Jack Dawson in the movie "Titanic"?,EASY,Leonardo DiCaprio,Brad Pitt,Johnny Depp,Matt Damon
+0,In the movie "The Shawshank Redemption" what is the name of the main character?,EASY,Andy Dufresne,Red,Ellis Boyd 'Red' Redding,Tommy Williams
+0,Who directed the 1994 film "Pulp Fiction"?,EASY,Quentin Tarantino,Christopher Nolan,Steven Spielberg,Martin Scorsese
+0,Which movie features a character named Darth Vader?,EASY,Star Wars,The Godfather,The Matrix,Forrest Gump
+0,In the film "The Dark Knight" who played the role of the Joker?,EASY,Heath Ledger,Jack Nicholson,Joaquin Phoenix,Cesar Romero
+0,Which movie won the Academy Award for Best Picture in 2019?,MEDIUM,Parasite,1917,Joker,Once Upon a Time in Hollywood
+0,In the movie "Inception" what is the concept of entering someone's dreams called?,MEDIUM,Extraction,Implantation,Deception,Projection
+0,Who played the character Tony Stark in the Marvel Cinematic Universe?,MEDIUM,Robert Downey Jr.,Chris Evans,Chris Hemsworth,Mark Ruffalo
+0,Which film is known for the quote "Here's looking at you kid"?,MEDIUM,Casablanca,Gone with the Wind,Citizen Kane,The Maltese Falcon
+0,What is the name of the fictional African country in the movie "Black Panther"?,MEDIUM,Wakanda,Zamunda,Genovia,Asgard
+0,In the movie "Forrest Gump" what product made the main character wealthy?,HARD,Bubba Gump Shrimp Co.,Apple Computers,Microsoft,Google
+0,Who directed the 1979 film "Apocalypse Now"?,HARD,Francis Ford Coppola,Martin Scorsese,Steven Spielberg,Stanley Kubrick
+0,What is the title of the first James Bond film released in 1962?,HARD,Dr. No,Goldfinger,Skyfall,Casino Royale
+0,Which actor played the role of Hannibal Lecter in "The Silence of the Lambs"?,HARD,Anthony Hopkins,Mads Mikkelsen,Brian Cox,Benicio del Toro
+0,In the film "Fight Club," what is the first rule of Fight Club?,HARD,You do not talk about Fight Club,Always bring a towel,No running with scissors,Do not feed after midnight
+0,Who directed the film "Jurassic Park"?,EASY,Steven Spielberg,James Cameron,Christopher Nolan,George Lucas
+0,In the movie "The Wizard of Oz" what color is Dorothy's magical shoes?,EASY,Ruby Red,Sapphire Blue,Golden Yellow,Emerald Green
+0,Which actor played the lead role in the film "The Matrix"?,EASY,Keanu Reeves,Will Smith,Tom Cruise,Matt Damon
+0,What is the name of the artificial intelligence system in the film "2001: A Space Odyssey"?,EASY,HAL 9000,Siri,Alexa,Cortana
+0,Who played the character Jack in the movie "Jack and the Beanstalk"?,EASY,No specific answer provided,No specific answer provided,No specific answer provided,No specific answer provided
+0,In the film "Casablanca" which actor played the role of Rick Blaine?,MEDIUM,Humphrey Bogart,Cary Grant,Clark Gable,James Stewart
+0,What is the title of the film adaptation of J.R.R. Tolkien's novel "The Fellowship of the Ring"?,MEDIUM,The Lord of the Rings: The Fellowship of the Ring,The Hobbit: An Unexpected Journey,The Two Towers,The Return of the King
+0,Who directed the 1991 film "Terminator 2: Judgment Day"?,MEDIUM,James Cameron,George Lucas,Christopher Nolan,Steven Spielberg
+0,What is the title of the Pixar animated film featuring a clownfish searching for his son?,MEDIUM,Finding Nemo,Toy Story,The Incredibles,Up
+0,In the movie "The Sound of Music" what is the name of the family's governess?,MEDIUM,Maria,Anna,Liesl,Gretl
+0,Which film won the Academy Award for Best Animated Feature in 2016?,HARD,Zootopia,Moana,Kubo and the Two Strings,My Life as a Zucchini
+0,In the movie "Blade Runner" who played the character Rick Deckard?,HARD,Harrison Ford,Rutger Hauer,Sean Young,Edward James Olmos
+0,What is the title of the film adaptation of Margaret Atwood's novel "The Handmaid's Tale"?,HARD,The Handmaid's Tale,No specific answer provided,No specific answer provided,No specific answer provided
+0,Who directed the 1968 film "2001: A Space Odyssey"?,HARD,Stanley Kubrick,Steven Spielberg,Alfred Hitchcock,Martin Scorsese
+0,In the film "Schindler's List," who portrayed Oskar Schindler?,HARD,Liam Neeson,Tom Hanks,Anthony Hopkins,Mel Gibson

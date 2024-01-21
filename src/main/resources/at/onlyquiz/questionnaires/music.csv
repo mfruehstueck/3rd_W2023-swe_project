@@ -1,0 +1,31 @@
+TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
+0,Who is known as the "King of Pop"?,EASY,Michael Jackson,Elvis Presley,Prince,Madonna
+0,Which band released the album "The Dark Side of the Moon"?,EASY,Pink Floyd,The Beatles,Queen,Led Zeppelin
+0,In which decade did the Beatles first become famous?,EASY,1960s,1970s,1980s,1950s
+0,What is the name of Beyoncé's debut solo album?,EASY,Dangerously In Love,Lemonade,I Am... Sasha Fierce,B'Day
+0,Which musical genre is characterized by a strong, repetitive beat?,EASY,Electronic/Dance,Reggae,Classical,Jazz
+0,Who is the lead singer of the rock band Queen?,MEDIUM,Freddie Mercury,David Bowie,Elton John,Bono
+0,What is the name of Adele's best-selling album released in 2011?,MEDIUM,21,25,19,30
+0,Which instrument does Yo-Yo Ma play?,MEDIUM,Cello,Violin,Piano,Trumpet
+0,Who wrote the opera "The Magic Flute"?,MEDIUM,Wolfgang Amadeus Mozart,Ludwig van Beethoven,Giacomo Puccini,George Frideric Handel
+0,What is the largest musical instrument in the orchestra?,MEDIUM,Double Bass,Tuba,Cello,Trumpet
+0,Which rapper is known for his alter ego "Slim Shady"?,HARD,Eminem,Jay-Z,Kanye West,Drake
+0,What is the name of the lead singer of the Rolling Stones?,HARD,Mick Jagger,Keith Richards,Paul McCartney,John Lennon
+0,Which composer is known for his "Moonlight Sonata"?,HARD,Ludwig van Beethoven,Wolfgang Amadeus Mozart,Johann Sebastian Bach,Frederic Chopin
+0,Who wrote the musical "Les Misérables"?,HARD,Claude-Michel Schönberg,Andrew Lloyd Webber,Stephen Sondheim,Lin-Manuel Miranda
+0,What is the term for the high-pitched singing voice used by castrato singers?,HARD,Falsetto,Countertenor,Tenor,Bass
+0,Which country is known as the birthplace of tango music?,EASY,Argentina,Brazil,Spain,Italy
+0,Who is known for playing the electric guitar with his teeth?,EASY,Jimi Hendrix,Eric Clapton,Jimmy Page,B.B. King
+0,In which musical genre would you typically find a banjo?,EASY,Bluegrass,Country,Blues,Jazz
+0,What is the name of Taylor Swift's first studio album?,EASY,Taylor Swift,Fearless,Speak Now,Red
+0,Which composer is known for "The Four Seasons"?,EASY,Antonio Vivaldi,Wolfgang Amadeus Mozart,Ludwig van Beethoven,Johann Sebastian Bach
+0,Which artist is known for the hit song "Shape of You"?,MEDIUM,Ed Sheeran,Adele,Bruno Mars,Taylor Swift
+0,In which decade did the Woodstock Festival take place?,MEDIUM,1960s,1970s,1980s,1950s
+0,What is the primary woodwind instrument in an orchestra?,MEDIUM,Flute,Clarinet,Oboe,Bassoon
+0,Who is the lead vocalist of the band Coldplay?,MEDIUM,Chris Martin,Bono,Thom Yorke,Brandon Flowers
+0,Which composer is known for the opera "The Barber of Seville"?,MEDIUM,Gioachino Rossini,Wolfgang Amadeus Mozart,Giacomo Puccini,Richard Wagner
+0,What is the term for a piece of music written for two performers?,HARD,Duet,Sonata,Symphony,Concerto
+0,Who composed the soundtrack for the movie "The Lion King"?,HARD,Hans Zimmer,Elton John,Alan Menken,John Williams
+0,Which rock band released the album "Back in Black"?,HARD,AC/DC,Queen,Led Zeppelin,Pink Floyd
+0,What is the name of the lead singer of the band U2?,HARD,Bono,Chris Martin,Thom Yorke,Brandon Flowers
+0,Who is known as the "Queen of Soul"?,HARD,Aretha Franklin,Whitney Houston,Tina Turner,Diana Ross

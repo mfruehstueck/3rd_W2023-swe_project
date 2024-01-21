@@ -1,0 +1,31 @@
+TIMES_SELECTED,QUESTION,DIFFICULTY,CORRECT_ANSWER,WRONG_ANSWER_1,WRONG_ANSWER_2,WRONG_ANSWER_3
+0,Who played the character Jack Dawson in the movie "Titanic"?,EASY,Leonardo DiCaprio,Brad Pitt,Tom Hanks,Johnny Depp
+0,Which actress portrayed Hermione Granger in the "Harry Potter" film series?,EASY,Emma Watson,Daniel Radcliffe,Rupert Grint,Keira Knightley
+0,Who is known as the "Iron Man" in the Marvel Cinematic Universe?,EASY,Robert Downey Jr.,Chris Evans,Chris Hemsworth,Mark Ruffalo
+0,Which actor starred as James Bond in the film "Casino Royale"?,EASY,Daniel Craig,Pierce Brosnan,Sean Connery,Roger Moore
+0,Who is the lead actor in the movie "Forrest Gump"?,EASY,Tom Hanks,Brad Pitt,Johnny Depp,Leonardo DiCaprio
+0,Which actress won an Academy Award for her role in "La La Land"?,MEDIUM,Emma Stone,Natalie Portman,Cate Blanchett,Julia Roberts
+0,Who is the director of the film "The Shawshank Redemption"?,MEDIUM,Frank Darabont,Steven Spielberg,Christopher Nolan,Quentin Tarantino
+0,Which actor starred as the Joker in the film "The Dark Knight"?,MEDIUM,Heath Ledger,Jack Nicholson,Joaquin Phoenix,Cesar Romero
+0,Who is the lead actress in the film "Pretty Woman"?,MEDIUM,Julia Roberts,Sandra Bullock,Meryl Streep,Angelina Jolie
+0,Which actor played the character Neo in "The Matrix" trilogy?,MEDIUM,Keanu Reeves, Laurence Fishburne,Hugo Weaving,Carrie-Anne Moss
+0,Who won the Academy Award for Best Actor for his role in "The Revenant"?,HARD,Leonardo DiCaprio,Matthew McConaughey,Joaquin Phoenix,Christian Bale
+0,Which actress starred as Katniss Everdeen in "The Hunger Games" film series?,HARD,Jennifer Lawrence,Emma Watson,Shailene Woodley,Scarlett Johansson
+0,Who directed the film "Inception"?,HARD,Christopher Nolan,Quentin Tarantino,Steven Spielberg,Martin Scorsese
+0,Which actor played Tony Stark's father, Howard Stark, in the Marvel Cinematic Universe?,HARD,John Slattery,Dominic Cooper,Jeff Bridges,Sam Rockwell
+0,Who is the lead actor in the film "The Pursuit of Happyness"?,HARD,Will Smith,Chris Hemsworth,Brad Pitt,Matt Damon
+0,Who played the character Jack Sparrow in the "Pirates of the Caribbean" film series?,EASY,Johnny Depp,Orlando Bloom,Geoffrey Rush,Kevin Costner
+0,Which actress is known for her role as Black Widow in the Marvel Cinematic Universe?,EASY,Scarlett Johansson,Natalie Portman,Gal Gadot,Emma Stone
+0,Who is the lead actor in the film "The Great Gatsby"?,EASY,Leonardo DiCaprio,Tobey Maguire,Robert Redford,Johnny Depp
+0,Which actor starred as Wolverine in the "X-Men" film series?,EASY,Hugh Jackman,Ryan Reynolds,Chris Hemsworth,Patrick Stewart
+0,Who is the lead actress in the TV series "Friends"?,EASY,Jennifer Aniston,Courteney Cox,Lisa Kudrow,Matthew Perry
+0,Which actor played the character Tony Montana in the film "Scarface"?,MEDIUM,Al Pacino,Robert De Niro,Joe Pesci,Denzel Washington
+0,Who is known for her role as Kat Stratford in the film "10 Things I Hate About You"?,MEDIUM,Julia Stiles,Alicia Silverstone,Heath Ledger,Larisa Oleynik
+0,Which actor starred as Jason Bourne in the "Bourne" film series?,MEDIUM,Matt Damon,Jeremy Renner,Tom Cruise,Chris Evans
+0,Who is the lead actor in the TV series "Breaking Bad"?,MEDIUM,Bryan Cranston,Aaron Paul,Jonathan Banks,Dean Norris
+0,Which actress won an Academy Award for her role in "Silver Linings Playbook"?,MEDIUM,Jennifer Lawrence,Anne Hathaway,Cate Blanchett,Emma Stone
+0,Who directed the film "The Social Network"?,HARD,David Fincher,Martin Scorsese,Christopher Nolan,Quentin Tarantino
+0,Which actor starred as James Franco's character's brother in "Pineapple Express"?,HARD,Seth Rogen,Jonah Hill,Jason Segel,Danny McBride
+0,Who is known for his role as Jules Winnfield in the film "Pulp Fiction"?,HARD,Samuel L. Jackson,John Travolta,Bruce Willis,Uma Thurman
+0,Which actress played the lead role in the film "The Devil Wears Prada"?,HARD,Meryl Streep,Anne Hathaway,Emily Blunt,Stanley Tucci
+0,Who is the lead actor in the TV series "Sherlock"?,HARD,Benedict Cumberbatch,Martin Freeman,Andrew Scott,Lara Pulver
