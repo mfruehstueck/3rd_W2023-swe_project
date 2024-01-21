@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-public class QuestionEditCell extends BaseCell<QuestionEdit> {
+public class QuestionEditCell extends BaseCell<GameQuestion> {
   private final Label ui_questionName;
   private final HBox ui_layout;
   private final Button editButton;
@@ -34,12 +34,12 @@ public class QuestionEditCell extends BaseCell<QuestionEdit> {
   }
 
   @Override
-  protected void updateItem(QuestionEdit item, boolean empty) {
+  protected void updateItem(GameQuestion item, boolean empty) {
     super.updateItem(item, empty);
 
     if (isEmptyItem(item, empty)) return;
 
-    ui_questionName.setText(item.getQuestionName());
+    ui_questionName.setText(item.getQuestion());
 
     HBox.setHgrow(blank, Priority.ALWAYS);
     setGraphic(ui_layout);

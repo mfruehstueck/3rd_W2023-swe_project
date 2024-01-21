@@ -35,6 +35,11 @@ public class QuestionnaireEditCell extends BaseCell<QuestionnaireEdit> {
     ui_export_button.getStyleClass().add("export-button");
     ui_export_button.setOnAction(actionEvent -> onClick_ui_export_button.onCLick(getItem()));
 
+    ui_delete_button = new Button();
+    ui_delete_button.setText("X");
+    ui_delete_button.getStyleClass().add("delete-button");
+    ui_delete_button.setOnAction(actionEvent -> onClick_delete_button.onCLick(getItem()));
+
     ui_layout = new HBox(ui_questionnaireName, blank, editButton, ui_export_button, ui_delete_button);
     ui_layout.setSpacing(10);
   }

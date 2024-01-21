@@ -29,7 +29,7 @@ public class QuestionnaireController extends BaseController implements Initializ
   @FXML
   public ListView<QuestionnaireEdit> ui_questionnaire_listView;
   @FXML
-  public ListView<QuestionEdit> ui_question_listView;
+  public ListView<GameQuestion> ui_question_listView;
   @FXML
   public GridPane ui_container;
   @FXML
@@ -61,8 +61,7 @@ public class QuestionnaireController extends BaseController implements Initializ
     ui_questionnaire_listView.getSelectionModel().selectedItemProperty().addListener((observable -> {
       questionnaire_listView_selected = ui_questionnaire_listView.getSelectionModel().getSelectedItem();
       if (questionnaire_listView_selected == null) return;
-      question_obstList.clear();
-      for (var item : QuestionDictionary.get_questionNames(questionnaire_listView_selected.getQuestionnaireName())) { question_obstList.add(new QuestionEdit(item)); }
+      question_obstList.setAll(QuestionDictionary.get_allQuestions(questionnaire_listView_selected.getQuestionnaireName()));
     }));
 
     ui_question_listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -115,8 +114,16 @@ public class QuestionnaireController extends BaseController implements Initializ
       questionnaire_obstList.add(new QuestionnaireEdit(k));
     }
   }
-  private void fill_question_listView() {
+  private void open_editMode(int idx) {
+    String selected_questionnaireName = questionnaire_listView_selected.getQuestionnaireName();
+    List<GameQuestion> gameQuestions = QuestionDictionary.get_allQuestions(selected_questionnaireName);
 
+    //if file empty because of previous edit mode deleted all, create new question
+    if (gameQuestions.isEmpty()) { gameQuestions.add(new GameQuestion()); }
+
+    EditMode editMode = new EditMode(gameQuestions, idx, selected_questionnaireName);
+
+    startingGameSession(editMode, get_stage(ui_container));
   }
 
   @FXML
