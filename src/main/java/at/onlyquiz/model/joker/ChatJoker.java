@@ -1,7 +1,6 @@
 package at.onlyquiz.model.joker;
 
-import at.onlyquiz.model.joker.chatJokerPersons.Bestfriend;
-import at.onlyquiz.model.joker.chatJokerPersons.ChatJokerPerson;
+import at.onlyquiz.model.joker.chatJokerPersons.*;
 import at.onlyquiz.model.question.GameQuestion;
 
 public class ChatJoker extends Joker {
@@ -16,12 +15,13 @@ public class ChatJoker extends Joker {
   public ChatJoker(boolean isOnline) {
     super();
     this.online = isOnline;
-    this.person = new Bestfriend();
+    this.person = null;
   }
+
 
   @Override
   public void use(GameQuestion question) {
-    if (!online) {
+    if(!online){
       chatHistory = person.greetingPerson();
       currentQuestion = question;
     }
@@ -29,41 +29,78 @@ public class ChatJoker extends Joker {
 
 
   public String getNextResponse() {
+    String personType = person.getClass().getSimpleName(); // Get the type of ChatJokerPerson
+
+
     switch (responseCounter) {
-      case 0 -> {
-        //Options after he greets you - you have to answer the person back how he / she is.
-        inputText1 = "";
-        inputText2 = "Hello, im fine - how are you?";
-        inputText3 = "";
-        inputText4 = "";
+      case 1 -> {
+        // Different options after the greeting based on the ChatJokerPerson
+        switch (personType) {
+          case "GrandMa" -> {
+            inputText1 = "I'm doing well, Granny. How about you?";
+            inputText2 = "Hi Grandma! how is it going?";
+            inputText3 = "Just the usual, Grandma. how is it going for you?";
+          }
+          case "Father" -> {
+            inputText1 = "All good, Dad. how is it going?";
+            inputText2 = "Hey Dad, got a tricky quiz question here.";
+            inputText3 = "Doing fine, Dad. Need some advice on a question.";
+          }
+          case "Bestfriend" -> {
+            inputText1 = "Hey! All good. Need help with a quiz.";
+            inputText2 = "What's up! Stuck on a quiz question.";
+            inputText3 = "Just hanging out. Got a question for you.";
+          }
+          case "Aunt" -> {
+            inputText1 = "Hello Auntie, I need your wisdom on something.";
+            inputText2 = "Hi Aunt, got a moment to help with a quiz?";
+            inputText3 = "Hey there, Auntie! Struggling with a quiz question here.";
+          }
+        }
         return person.greetingPerson() + "\n";
       }
-      case 1 -> {
-        //after you greets him back
-        inputText1 = "";
-        inputText2 = "I am playing \"OnlyQuiz\" and I have a question I need your help with";
-        inputText3 = "";
-        inputText4 = "";
+      case 2 -> {
+        // Responses after greeting back, personalized for each ChatJokerPerson
+        switch (personType) {
+          case "GrandMa" -> {
+            inputText1 = "Just the usual stuff, Grandma. Need a bit of your wisdom.";
+            inputText2 = "Grandma, I’m playing a quiz and I’m stuck. Can you help?";
+            inputText3 = "Everything's fine. Just pondering over a quiz question.";
+          }
+          case "Father" -> {
+            inputText1 = "All good, Dad. There's this question in a quiz...";
+            inputText2 = "Hey Dad, I could use your help with a quiz question.";
+            inputText3 = "Things are fine. Got a tricky question here.";
+          }
+          case "Bestfriend" -> {
+            inputText1 = "You know me, always into something. Got a quiz question.";
+            inputText2 = "Hey! Just trying to ace this quiz. Need your brain.";
+            inputText3 = "All's well. Just stuck on this weird quiz question.";
+          }
+          case "Aunt" -> {
+            inputText1 = "Auntie, I'm good. There’s this quiz I'm trying to figure out.";
+            inputText2 = "Doing well, Aunt. Just puzzled by a quiz question.";
+            inputText3 = "All's great. But there's a question in a quiz I can't crack.";
+          }
+        }
         return person.greetingBack() + "\n";
       }
-      case 2 -> {
-        //after you tell him that you playing onlyQuiz
-        inputText1 = "the question is: " + currentQuestion.getQuestion();
-        inputText2 = "";
-        inputText3 = currentQuestion.getQuestion();
-        inputText4 = "";
+      case 3 -> {
+        // Tell them about playing OnlyQuiz
+        inputText1 = "The question is: " + currentQuestion.getQuestion();
+        inputText2 = "Here's a tough one: " + currentQuestion.getQuestion();
+        inputText3 = "Need your brain for this: " + currentQuestion.getQuestion();
         return person.tellIsInShow() + "\n";
       }
-      case 3 -> {
-        //after you ask the Question.
-        inputText1 = "What could be the right answer?";
-        inputText2 = "It could be " + currentQuestion.getAnswers().get(0).getAnswer();
-        inputText3 = "I am complete lost. Hopefully you can help me...";
-        inputText4 = "";
+      case 4 -> {
+        // After asking the question, vary the options
+        inputText1 = "Any idea about the right answer?";
+        inputText2 = "This one's hard. What do you think?";
+        inputText3 = "I'm stumped. Your thoughts?";
         return person.askQuestion() + "\n";
       }
-      case 4 -> {
-        // values must be empty - cause the joker ends here
+      case 5 -> {
+        // Conclude the chat
         inputText1 = "";
         inputText2 = "";
         inputText3 = "";
@@ -76,6 +113,7 @@ public class ChatJoker extends Joker {
 
   public void setPerson(ChatJokerPerson person) {
     this.person = person;
+    this.responseCounter++;
   }
 
   public String getChatHistory() {
