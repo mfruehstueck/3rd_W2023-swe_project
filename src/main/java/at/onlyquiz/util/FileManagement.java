@@ -23,17 +23,14 @@ public class FileManagement {
         return Path.of(path.toString(), file);
     }
 
-  public static File save_file(String title, String[] filter) {
-    FileChooser ofd = new FileChooser();
-    ofd.setTitle(title);
+    public static File save_file(String title, String[] filter) {
+        FileChooser ofd = new FileChooser();
+        ofd.setTitle(title);
 
-    // Set the initial directory (optional)
-    // fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-
-    // Add file filters (optional)
-    if (filter != null && filter.length == 2) {
-      ofd.getExtensionFilters().add(new FileChooser.ExtensionFilter(filter[0], filter[1]));
-    }
+        // Add file filters (optional)
+        if (filter != null && filter.length == 2) {
+            ofd.getExtensionFilters().add(new FileChooser.ExtensionFilter(filter[0], filter[1]));
+        }
 
         File selectedFile = ofd.showSaveDialog(null);
 

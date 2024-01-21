@@ -2,8 +2,8 @@ package at.onlyquiz.controller;
 
 import at.debugtools.DebugTools;
 import at.onlyquiz.controller.factories.View;
-import at.onlyquiz.util.UserManagement;
-import at.onlyquiz.util.jsonParser.JSON_Parser;
+import at.onlyquiz.util.Configuration;
+import at.onlyquiz.util.userManagement.UserManagement;
 import at.onlyquiz.util.jsonParser.models.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
@@ -89,7 +89,7 @@ public class LoginController extends BaseController {
   private User handle_guestLogin() {
     String nickname = ui_loginGuest_nickname.getText();
 
-    if (nickname.isEmpty()) return new User("Guest");
+    if (nickname.isEmpty()) return new User(Configuration.DEFAULT_GUEST);
     else return new User(nickname);
   }
   private User handle_userLogin() {

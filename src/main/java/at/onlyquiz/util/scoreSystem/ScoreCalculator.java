@@ -3,6 +3,8 @@ package at.onlyquiz.util.scoreSystem;
 import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.util.timeSystem.TimeConstants;
 
+import java.util.function.Function;
+
 public class ScoreCalculator {
 
   public static int calculateDefaultModeScore(Difficulty difficulty, int timeRemaining, boolean jokerUsed) {

@@ -111,27 +111,21 @@ public class QuestionDictionary {
             }
         }
 
-    return out_questions;
-  }
+        return out_questions;
+    }
 
-//    public static void update_questions_bulk(Path csvPath, List<GameQuestion> questions) {
-//        HashMap<Integer, String[]> csvLines = new HashMap<>();
-//
-//        for (GameQuestion q : questions) { csvLines.put(q.getLineNumber(), q.getCsvLine()); }
-//
-//        try {
-//            CSV_Writer.update_lines_bulk(csvPath, csvLines);
-//        } catch (IOException | CsvException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    //NSEC: instance getter
+    public static HashMap<String, Path> get_QuestionnaireFiles() {
+        return questionnaireFilePaths;
+    }
 
-  //NSEC: instance getter
-  public static HashMap<String, Path> get_QuestionnaireFiles() { return questionnaireFilePaths; }
-  public static Path get_csvPath_from(String questionnaireName) {
-    return Path.of(DEFAULT_BASEPATH_QUESTIONNARES + File.separator + questionnaireName + ".csv");
-  }
-  public static HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> get_dictionary() { return dictionary; }
+    public static Path get_csvPath_from(String questionnaireName) {
+        return Path.of(DEFAULT_BASEPATH_QUESTIONNARES + File.separator + questionnaireName + ".csv");
+    }
+
+    public static HashMap<Path, HashMap<Integer, HashMap<Difficulty, List<Integer>>>> get_dictionary() {
+        return dictionary;
+    }
 
     private static HashMap<String, Path> get_ListOfQuestionnaireFiles() {
         HashMap<String, Path> csvPaths = new HashMap<>();
