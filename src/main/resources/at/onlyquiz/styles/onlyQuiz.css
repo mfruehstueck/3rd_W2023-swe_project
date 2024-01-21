@@ -3,6 +3,16 @@
     -fx-background-color: lightblue;
 }
 
+.headerLabels {
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #3232ce;
+    -fx-background-radius: 10;
+    -fx-min-width: 400px;
+    -fx-min-height: 30px;
+}
+
 .button {
     -fx-background-color: #3232ce;
     -fx-text-fill: white;
@@ -84,6 +94,21 @@
     -fx-font-size: 20;
     -fx-min-height: 50;
 }
+
+/* Questionnaires View */
+.export-button {
+    -fx-background-color: #3232ce;
+}
+
+.import-button {
+    -fx-background-color: green;
+}
+
+.action-buttons{
+
+}
+
+
 
 .question-box {
     -fx-background-color: #3232ce;
