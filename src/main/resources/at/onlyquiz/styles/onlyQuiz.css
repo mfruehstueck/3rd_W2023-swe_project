@@ -13,8 +13,10 @@
 }
 
 .back-button {
-    -fx-pref-width: 200;
-    -fx-font-size: 25;
+    -fx-min-width: 150;
+    -fx-font-size: 15;
+    -fx-max-height: 20;
+    -fx-background-color: darkred;
 }
 
 .table-view {
@@ -66,14 +68,21 @@
 }
 
 /* GameSetting View */
-.mode-button {
-    -fx-pref-width: 200;
-    -fx-font-size: 25;
+
+.headerLabels {
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-color: #3232ce;
+    -fx-background-radius: 10;
+    -fx-min-width: 400px;
+    -fx-min-height: 30px;
 }
 
-.back-button {
-    -fx-pref-width: 200;
-    -fx-font-size: 25;
+.mode-button {
+    -fx-min-width: 300;
+    -fx-font-size: 20;
+    -fx-min-height: 50;
 }
 
 .question-box {
