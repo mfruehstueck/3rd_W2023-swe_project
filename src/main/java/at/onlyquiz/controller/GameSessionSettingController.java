@@ -8,17 +8,14 @@ import at.onlyquiz.gameplay.DefaultMode;
 import at.onlyquiz.gameplay.EndlessMode;
 import at.onlyquiz.util.Configuration;
 import at.onlyquiz.util.QuestionDictionary;
-import at.onlyquiz.util.userManagement.UserManagement;
 import at.onlyquiz.util.jsonParser.JSON_Parser;
 import at.onlyquiz.util.jsonParser.models.User;
+import at.onlyquiz.util.userManagement.UserManagement;
 import at.onlyquiz.util.userManagement.User_Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
@@ -99,12 +96,12 @@ public class GameSessionSettingController extends BaseController {
     }
 
     public void pressDefaultModeButton() {
-        if (get_selectedQuestionnairs().isEmpty()) return;
+        if(isQuestionnaireEmpty()) return;
         startingGameSession(new DefaultMode(get_selectedQuestionnairs(), current_user, liveAudienceCheckBox.isSelected()), get_stage(ui_container));
     }
 
     public void pressEndlessModeButton() {
-        if (get_selectedQuestionnairs().isEmpty()) return;
+        if(isQuestionnaireEmpty()) return;
         startingGameSession(new EndlessMode(get_selectedQuestionnairs(), current_user, liveAudienceCheckBox.isSelected()), get_stage(ui_container));
     }
 
@@ -112,5 +109,11 @@ public class GameSessionSettingController extends BaseController {
         set_view(get_stage(ui_container), View.MENU_VIEW);
     }
 
-
+    private boolean isQuestionnaireEmpty(){
+        if (get_selectedQuestionnairs().isEmpty()) {
+            showAlert("game info", "please select at least 1 questionnaire", Alert.AlertType.INFORMATION);
+            return true;
+        }
+        return false;
+    }
 }

@@ -14,6 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -139,8 +140,14 @@ public class QuestionnaireController extends BaseController implements Initializ
     public void onClick_ui_editQuestionnaire_button() {
         String newQuestionnaireName = ui_newQuestionnaire_textField.getText();
 
-        if (newQuestionnaireName.isEmpty()) return;
-        if (QuestionDictionary.get_QuestionnaireFiles().containsKey(newQuestionnaireName)) return;
+        if (newQuestionnaireName.isEmpty()) {
+            showAlert("questionnaire info", "please provide a questionnaire name", Alert.AlertType.INFORMATION);
+            return;
+        }
+        if (QuestionDictionary.get_QuestionnaireFiles().containsKey(newQuestionnaireName)) {
+            showAlert("questionnaire info", "questionnaire '" + newQuestionnaireName + "' already exists", Alert.AlertType.INFORMATION);
+            return;
+        }
 
         QuestionDictionary.update_gameQuestion(newQuestionnaireName, new GameQuestion());
 
