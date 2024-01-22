@@ -43,7 +43,7 @@ public class PersistScore {
     public static List<PersistScore> getTop10fromAllGameModes() {
         List<PersistScore> output = getSavedScores();
 
-        output.sort(Comparator.comparingInt(PersistScore::getScore));
+        output.sort(Comparator.comparingInt(PersistScore::getScore).reversed());
 
         return output.stream().limit(10).collect(Collectors.toList());
     }
