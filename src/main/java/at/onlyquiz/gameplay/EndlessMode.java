@@ -7,10 +7,11 @@ import at.onlyquiz.model.question.Difficulty;
 import at.onlyquiz.model.question.GameQuestion;
 import at.onlyquiz.util.Configuration;
 import at.onlyquiz.util.QuestionDictionary;
-import at.onlyquiz.util.userManagement.UserManagement;
 import at.onlyquiz.util.jsonParser.models.PersistScore;
 import at.onlyquiz.util.jsonParser.models.User;
 import at.onlyquiz.util.scoreSystem.ScoreCalculator;
+import at.onlyquiz.util.scoreSystem.ScoreConstants;
+import at.onlyquiz.util.userManagement.UserManagement;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,40 +31,41 @@ public class EndlessMode extends GameMode {
         audienceJokers.add(new AudienceJoker(hasLiveAudience));
         chatJokers.add(new ChatJoker(false));
 
-    getNewQuestions();
-    Collections.shuffle(setOfQuestions);
-    currentQuestion = popQuestionOutOfSet();
-    currentQuestion.shuffleAnswers();
-  }
+        getNewQuestions();
+        Collections.shuffle(setOfQuestions);
+        currentQuestion = popQuestionOutOfSet();
+        currentQuestion.shuffleAnswers();
+    }
 
-  @Override
-  public void confirmAnswer(boolean isCorrect) {
-    if (isCorrect) {
-        questionCounter += 1;
-        jokerUsed = false;
-      getNewQuestions();
-      currentQuestion = popQuestionOutOfSet();
-      currentQuestion.shuffleAnswers();
-      totalScore += calculateScore();
-      achievedScore += totalScore;
-    } else {
-        if (achievedScore != 0 && !UserManagement.get_currentUser().getUserName().equals(Configuration.DEFAULT_GUEST)) {
-            PersistScore.saveScore(this);
+    @Override
+    public void confirmAnswer(boolean isCorrect) {
+        if (isCorrect) {
+            questionCounter += 1;
+            jokerUsed = false;
+            getNewQuestions();
+            currentQuestion = popQuestionOutOfSet();
+            currentQuestion.shuffleAnswers();
+            totalScore = calculateScore();
+            achievedScore = totalScore;
+        } else {
+            if (achievedScore != 0 && !UserManagement.get_currentUser().getUserName().equals(Configuration.DEFAULT_GUEST)) {
+                PersistScore.saveScore(this);
+            }
+            finished = true;
         }
-      finished = true;
     }
-  }
 
-  @Override
-  public int calculateScore() {
-        return ScoreCalculator.calculateEndlessModeScore(currentQuestion.getDifficulty()); }
-
-  private void getNewQuestions() {
-    if (setOfQuestions.size() < 2) {
-      for (Difficulty d : Difficulty.values()) {
-        List<GameQuestion> current_gameQuestions = QuestionDictionary.get_randomQuestions(selectedQuestionnaires, d, 5);
-        if (current_gameQuestions != null) setOfQuestions.addAll(current_gameQuestions);
-      }
+    @Override
+    public int calculateScore() {
+        return ScoreCalculator.calculateEndlessModeScore(totalScore);
     }
-  }
+
+    private void getNewQuestions() {
+        if (setOfQuestions.size() < 2) {
+            for (Difficulty d : Difficulty.values()) {
+                List<GameQuestion> current_gameQuestions = QuestionDictionary.get_randomQuestions(selectedQuestionnaires, d, 5);
+                if (current_gameQuestions != null) setOfQuestions.addAll(current_gameQuestions);
+            }
+        }
+    }
 }

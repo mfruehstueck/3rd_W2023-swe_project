@@ -468,7 +468,7 @@ public class GameSessionController extends BaseController {
                 }
                 currentGameMode.confirmAnswer(selectedAnswer.isCorrect());
                 System.out.println(DebugTools.debugLine(new Throwable()));
-                ;
+
                 commitButton.setVisible(false);
 
                 if (currentGameMode.isFinished()) {

@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,11 +27,12 @@ public class MenuController extends BaseController implements Initializable {
     @FXML
     private TableColumn<PersistScore, String> playerNameColumn, scoreColumn, gameModeColumn;
 
-    public MenuController() {
-    }
+    public MenuController() { }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        super.initialize(url, resourceBundle);
+
         List<PersistScore> allScores = PersistScore.getTop10fromAllGameModes();
         ObservableList<PersistScore> sortedScores = FXCollections.observableArrayList(allScores);
 

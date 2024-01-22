@@ -19,4 +19,5 @@ module at.onlyquiz.onlyquiz {
     exports at.onlyquiz.util.jsonParser.models;
     exports at.onlyquiz.util;
     exports at.onlyquiz.util.userManagement;
+    exports at.onlyquiz.model.question;
 }

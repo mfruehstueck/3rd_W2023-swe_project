@@ -55,16 +55,17 @@
     -fx-border-color: #3232ce;
 }
 
-.table-row-cell {
-    -fx-background-color: #3232ce;
-}
-
 .table-view .column-header,
 .table-view .table-cell {
     -fx-background-color: white;
     -fx-border-width: 0;
     -fx-font-size: 15;
     -fx-alignment: CENTER;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: black;
+    -fx-background-color: lightGrey;
 }
 
 .table-view .column-header .label {

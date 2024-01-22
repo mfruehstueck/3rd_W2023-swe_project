@@ -8,4 +8,5 @@ public class ScoreConstants {
     public static final int EASY_POINTS = 20000;
     public static final int MEDIUM_POINTS = 60000;
     public static final int HARD_POINTS = 120000;
+    public static final int SCALE_FACTOR = 10;
 }

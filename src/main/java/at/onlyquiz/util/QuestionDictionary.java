@@ -51,6 +51,7 @@ public class QuestionDictionary {
     public static List<GameQuestion> get_randomQuestions(List<String> questionnaireFileNames, Difficulty difficulty, int amount) {
         List<GameQuestion> out_questions = new ArrayList<>();
         List<Integer> current_listOf_lineIdx = new ArrayList<>();
+        List<String> current_questionnaireFileNames = new ArrayList<>(questionnaireFileNames);
         HashMap<Difficulty, List<Integer>> current_mapOf_difficulty = new HashMap<>();
         GameQuestion current_gameQuestion;
         Random random = new Random();
@@ -61,9 +62,9 @@ public class QuestionDictionary {
         HashMap<Integer, HashMap<Difficulty, List<Integer>>> current_mapOf_timesSelected;
 
         for (int i = 0; i < amount; i++) {
-            if (questionnaireFileNames.isEmpty()) return null;
-            randomFileID = random.nextInt(0, questionnaireFileNames.size());
-            pathOfQuestionnaireFile = questionnaireFilePaths.get(questionnaireFileNames.get(randomFileID));
+            if (current_questionnaireFileNames.isEmpty()) return null;
+            randomFileID = random.nextInt(0, current_questionnaireFileNames.size());
+            pathOfQuestionnaireFile = questionnaireFilePaths.get(current_questionnaireFileNames.get(randomFileID));
             current_mapOf_timesSelected = dictionary.get(pathOfQuestionnaireFile);
 
             for (Integer timesSelected : current_mapOf_timesSelected.keySet()) {
@@ -76,9 +77,7 @@ public class QuestionDictionary {
 
             }
             if (current_mapOf_difficulty == null || current_mapOf_difficulty.isEmpty() || current_listOf_lineIdx == null) {
-                questionnaireFileNames.remove(questionnaireFileNames.get(randomFileID));
-                if (questionnaireFileNames.isEmpty())
-                    System.out.println(DebugTools.debugLine(new Throwable()) + "failed questionnaireFileNames is empty");
+                current_questionnaireFileNames.remove(current_questionnaireFileNames.get(randomFileID));
                 i--;
                 continue;
             }
